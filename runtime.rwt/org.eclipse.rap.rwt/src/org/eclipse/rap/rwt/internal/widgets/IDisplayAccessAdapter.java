@@ -11,22 +11,13 @@
 
 package org.eclipse.rap.rwt.internal.widgets;
 
-import org.eclipse.rap.rwt.graphics.Image;
-import org.eclipse.rap.rwt.lifecycle.WidgetUtil;
-import org.eclipse.rap.rwt.widgets.Item;
+import org.eclipse.rap.rwt.graphics.Rectangle;
 
 
-public class ItemLCAUtil {
-
-  private ItemLCAUtil() {
-    // prevent instantiation
-  }
+/**
+ * TODO [rh] JavaDoc
+ */
+public interface IDisplayAccessAdapter {
   
-  public static void preserve( final Item item ) {
-    IWidgetAdapter adapter = WidgetUtil.getAdapter( item );
-    adapter.preserve( Props.TEXT, item.getText() );
-    // TODO [rh] why preserve Imge.getPath(), wouldn't it be more straigtforward
-    //      to preserve item.getImage() directly?
-    adapter.preserve( Props.IMAGE, Image.getPath( item.getImage() ) );
-  }
+  void setBounds( Rectangle bounds );
 }
