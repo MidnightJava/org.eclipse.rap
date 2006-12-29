@@ -9,19 +9,17 @@
  *     Innoopract Informationssysteme GmbH - initial API and implementation
  ******************************************************************************/
 
-package org.eclipse.rap.rwt.lifecycle;
-
-import java.io.IOException;
-import org.eclipse.rap.rwt.widgets.Widget;
+package org.eclipse.rap.rwt.events;
 
 
 /**
- * TODO [rh] JavaDoc
- * <p></p>
+ * TODO: [rh] JavaDoc
  */
-public interface IWidgetLifeCycleAdapter extends ILifeCycleAdapter {
+public abstract class ActivateAdapter implements ActivateListener {
 
-  void preserveValues( Widget widget );
-  void readData( Widget widget );
-  void render( Widget widget ) throws IOException;
+  public void activated( final ActivateEvent event ) {
+  }
+
+  public void deactivated( final ActivateEvent event ) {
+  }
 }

@@ -13,27 +13,29 @@ package org.eclipse.rap.rwt.events;
 
 import com.w4t.Adaptable;
 
-
 /**
- * TODO [rh] JavaDoc
- * <p></p>
+ * TODO: [rh] JavaDoc
  */
-// TODO [rh] should we support the 'doit' flag, at least for shellClosed?
-public class ShellEvent extends RWTEvent {
+public final class ActivateEvent extends RWTEvent {
 
-  public static final int SHELL_CLOSED = 0;
+  public static final int ACTIVATED = 0;
+  public static final int DEACTIVATED = 1;
   
-  private static final Class LISTENER = ShellListener.class;
-  
-  public ShellEvent( final Object source, final int id ) {
+  private static final Class LISTENER = ActivateListener.class;
+
+
+  public ActivateEvent( final Object source, final int id ) {
     super( source, id );
   }
 
   protected void dispatchToObserver( final Object listener ) {
     switch( getID() ) {
-      case SHELL_CLOSED:
-        ( ( ShellListener )listener ).shellClosed( this );
-        break;
+      case ACTIVATED:
+        ( ( ActivateListener )listener ).activated( this );
+      break;
+      case DEACTIVATED:
+        ( ( ActivateListener )listener ).deactivated( this );
+      break;
       default:
         throw new IllegalStateException( "Invalid event handler type." );
     }
@@ -42,23 +44,23 @@ public class ShellEvent extends RWTEvent {
   protected Class getListenerType() {
     return LISTENER;
   }
+
+  public static void addListener( final Adaptable adaptable, 
+                                  final ActivateListener listener )
+  {
+    addListener( adaptable, LISTENER, listener );
+  }
+
+  public static void removeListener( final Adaptable adaptable, 
+                                     final ActivateListener listener )
+  {
+    removeListener( adaptable, LISTENER, listener );
+  }
   
   public static boolean hasListener( final Adaptable adaptable ) {
     return hasListener( adaptable, LISTENER );
   }
   
-  public static void addListener( final Adaptable adaptable,
-                                  final ShellListener listener )
-  {
-    addListener( adaptable, LISTENER, listener );
-  }
-
-  public static void removeListener( final Adaptable adaptable,
-                                     final ShellListener listener )
-  {
-    removeListener( adaptable, LISTENER, listener );
-  }
-
   public static Object[] getListeners( final Adaptable adaptable ) {
     return getListener( adaptable, LISTENER );
   }

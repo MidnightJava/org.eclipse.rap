@@ -9,19 +9,15 @@
  *     Innoopract Informationssysteme GmbH - initial API and implementation
  ******************************************************************************/
 
-package org.eclipse.rap.rwt.lifecycle;
+package org.eclipse.rap.rwt.internal.widgets;
 
-import java.io.IOException;
-import org.eclipse.rap.rwt.widgets.Widget;
+import org.eclipse.rap.rwt.graphics.Rectangle;
 
 
 /**
  * TODO [rh] JavaDoc
- * <p></p>
  */
-public interface IWidgetLifeCycleAdapter extends ILifeCycleAdapter {
-
-  void preserveValues( Widget widget );
-  void readData( Widget widget );
-  void render( Widget widget ) throws IOException;
+public interface IDisplayAdapter {
+  
+  void setBounds( Rectangle bounds );
 }
