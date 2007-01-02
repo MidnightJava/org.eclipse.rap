@@ -9,17 +9,11 @@
  *     Innoopract Informationssysteme GmbH - initial API and implementation
  ******************************************************************************/
 
-package org.eclipse.rap.rwt.widgets;
+package org.eclipse.rap.rwt.events;
 
-// TODO [rh] had to make this interface public, since otherwise not visible
-//      from ...custom-package. Is OK?, should this be moved to another package?
-public interface IItemHolderAdapter {
 
-  void add( Item item );
-  
-  void insert( Item item, int index );
+public abstract class SelectionAdapter implements SelectionListener {
 
-  void remove( Item item );
-
-  Item[] getItems();
+  public void widgetSelected( final SelectionEvent event ) {
+  }
 }

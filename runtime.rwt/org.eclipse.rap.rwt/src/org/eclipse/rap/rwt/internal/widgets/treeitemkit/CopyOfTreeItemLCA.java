@@ -24,12 +24,16 @@ import org.eclipse.rap.rwt.widgets.Widget;
 import com.w4t.engine.service.ContextProvider;
 
 
-public final class TreeItemLCA extends AbstractWidgetLCA {
+public final class CopyOfTreeItemLCA extends AbstractWidgetLCA {
 
   // Expanded/collapsed state constants, used by readData 
   private static final String STATE_COLLAPSED = "collapsed";
   private static final String STATE_EXPANDED = "expanded";
   
+  // tree item functions as defined in org.eclipse.rap.rwt.TreeUtil
+  private static final String CREATE_TREE_ITEM 
+    = "org.eclipse.rap.rwt.TreeUtil.createTreeItem";
+
   public void preserveValues( final Widget widget ) {
     TreeItem treeItem = ( TreeItem )widget;
     ItemLCAUtil.preserve( treeItem );
@@ -39,26 +43,26 @@ public final class TreeItemLCA extends AbstractWidgetLCA {
   }
 
   public void readData( final Widget widget ) {
-    // TODO [rh] TreeEvent behave different from SWT: SWT-style is to send
-    //      the event and afterwards set the expanded property of the item
     String state = WidgetUtil.readPropertyValue( widget, "state" );
     if( STATE_EXPANDED.equals( state ) || STATE_COLLAPSED.equals( state ) ) {
       TreeItem treeItem = ( TreeItem )widget;
       treeItem.setExpanded( STATE_EXPANDED.equals( state ) );
     }
     processWidgetSelectedEvent( widget );
-    processTreeExpandedEvent( widget );
-    processTreeCollapsedEvent( widget );
+    if( !processTreeExpandedEvent( widget ) ) {
+      processTreeCollapsedEvent( widget );
+    }
   }
   
   public void renderInitialization( final Widget widget ) throws IOException {
     TreeItem treeItem = ( TreeItem )widget;
     JSWriter writer = JSWriter.getWriterFor( widget );
     Object[] args = new Object[] { 
+      treeItem.getParent(), 
       WidgetUtil.getId( treeItem ), 
       treeItem.getParentItem()
     };
-    writer.call( treeItem.getParent(), "createItem", args );
+    writer.callStatic( CREATE_TREE_ITEM, args );
   }
 
   public void renderChanges( final Widget widget ) throws IOException {
@@ -104,7 +108,8 @@ public final class TreeItemLCA extends AbstractWidgetLCA {
     return result;
   }
 
-  private static void processTreeExpandedEvent( final Widget widget ) {
+  private static boolean processTreeExpandedEvent( final Widget widget ) {
+    boolean result = false;
     HttpServletRequest request = ContextProvider.getRequest();
     String id = request.getParameter( JSConst.EVENT_TREE_EXPANDED );
     if( WidgetUtil.getId( widget ).equals( id ) ) {
@@ -113,10 +118,13 @@ public final class TreeItemLCA extends AbstractWidgetLCA {
                                        treeItem,
                                        TreeEvent.TREE_EXPANDED );
       event.processEvent();
+      result = true;
     }
+    return result;
   }
 
-  private static void processTreeCollapsedEvent( final Widget widget ) {
+  private static boolean processTreeCollapsedEvent( final Widget widget ) {
+    boolean result = false;
     HttpServletRequest request = ContextProvider.getRequest();
     String id = request.getParameter( JSConst.EVENT_TREE_COLLAPSED );
     if( WidgetUtil.getId( widget ).equals( id ) ) {
@@ -125,6 +133,8 @@ public final class TreeItemLCA extends AbstractWidgetLCA {
                                        treeItem,
                                        TreeEvent.TREE_COLLAPSED );
       event.processEvent();
+      result = true;
     }
+    return result;
   }
 }

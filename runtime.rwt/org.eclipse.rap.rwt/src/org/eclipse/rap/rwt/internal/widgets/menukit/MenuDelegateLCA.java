@@ -9,17 +9,19 @@
  *     Innoopract Informationssysteme GmbH - initial API and implementation
  ******************************************************************************/
 
-package org.eclipse.rap.rwt.widgets;
+package org.eclipse.rap.rwt.internal.widgets.menukit;
 
-// TODO [rh] had to make this interface public, since otherwise not visible
-//      from ...custom-package. Is OK?, should this be moved to another package?
-public interface IItemHolderAdapter {
+import java.io.IOException;
+import org.eclipse.rap.rwt.widgets.Menu;
 
-  void add( Item item );
+
+abstract class MenuDelegateLCA {
+
+  abstract void preserveValues( Menu menu );
+
+  abstract void readData( Menu menu );
   
-  void insert( Item item, int index );
-
-  void remove( Item item );
-
-  Item[] getItems();
+  abstract void renderInitialization( Menu menu ) throws IOException; 
+  
+  abstract void renderChanges( Menu menu ) throws IOException;
 }
