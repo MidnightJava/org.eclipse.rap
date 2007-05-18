@@ -11,12 +11,12 @@
 
 package org.eclipse.ui;
 
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.graphics.Device;
 
 
 public interface IWorkbench {
   IWorkbenchWindow getActiveWorkbenchWindow();
-  Display getDisplay();
+  Device getDisplay();
   IPerspectiveRegistry getPerspectiveRegistry();
   void close();
 }
