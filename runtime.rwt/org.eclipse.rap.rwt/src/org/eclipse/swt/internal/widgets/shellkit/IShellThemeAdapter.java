@@ -1,4 +1,3 @@
-
 /*******************************************************************************
  * Copyright (c) 2007 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
@@ -10,16 +9,20 @@
  *     Innoopract Informationssysteme GmbH - initial API and implementation
  ******************************************************************************/
 
-qx.Theme.define( "org.eclipse.swt.theme.Default",
-{
-  title : "RAP default theme",
+package org.eclipse.swt.internal.widgets.shellkit;
 
-  meta : {
-    color : org.eclipse.swt.theme.DefaultColors,
-    border : org.eclipse.swt.theme.DefaultBorders,
-    font : org.eclipse.swt.theme.DefaultFonts,
-    widget : org.eclipse.swt.theme.DefaultWidgetIcons,
-    appearance : org.eclipse.swt.theme.DefaultAppearances,
-    icon : org.eclipse.swt.theme.DefaultIcons
-  }
-});
+import org.eclipse.swt.internal.theme.QxBoxDimensions;
+import org.eclipse.swt.internal.widgets.controlkit.IControlThemeAdapter;
+import org.eclipse.swt.widgets.Shell;
+
+public interface IShellThemeAdapter extends IControlThemeAdapter {
+
+  abstract public QxBoxDimensions getPadding( Shell shell );
+
+  abstract public int getTitleBarHeight( Shell shell );
+
+  abstract public QxBoxDimensions getTitleBarMargin( Shell shell );
+
+  abstract public int getMenuBarHeight( Shell shell );
+
+}
