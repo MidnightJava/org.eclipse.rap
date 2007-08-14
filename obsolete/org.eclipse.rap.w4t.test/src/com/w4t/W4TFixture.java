@@ -24,27 +24,36 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import junit.framework.Assert;
 
+import org.eclipse.rwt.Adaptable;
+import org.eclipse.rwt.internal.*;
+import org.eclipse.rwt.internal.browser.Browser;
+import org.eclipse.rwt.internal.browser.Default;
+import org.eclipse.rwt.internal.engine.EngineConfig;
+import org.eclipse.rwt.internal.lifecycle.HtmlResponseWriter;
+import org.eclipse.rwt.internal.lifecycle.LifeCycleFactory;
+import org.eclipse.rwt.internal.resources.*;
+import org.eclipse.rwt.internal.service.*;
+import org.eclipse.rwt.resources.IResourceManager;
+import org.eclipse.rwt.service.ISessionStore;
+import org.eclipse.rwt.service.ServiceManager;
 import org.xml.sax.SAXException;
 
 import com.w4t.IWindowManager.IWindow;
 import com.w4t.ajax.AjaxStatus;
 import com.w4t.ajax.AjaxStatusAdapterFactory;
 import com.w4t.engine.adapter.TestEngineConfig;
-import com.w4t.engine.lifecycle.LifeCycleFactory;
 import com.w4t.engine.lifecycle.standard.*;
-import com.w4t.engine.requests.RequestParams;
-import com.w4t.engine.service.*;
-import com.w4t.engine.util.*;
+import com.w4t.engine.service.DispatchHandler;
+import com.w4t.engine.util.FormManager;
+import com.w4t.engine.util.WindowManager;
 import com.w4t.internal.adaptable.IFormAdapter;
 import com.w4t.internal.adaptable.RenderInfoAdapterFactory;
-import com.w4t.util.*;
-import com.w4t.util.browser.Default;
 import com.w4t.util.image.ImageCache;
 
 /*
  * This class provides fake context data for test runs.
  */
-public class Fixture {
+public class W4TFixture {
 
   public final static File TEMP_DIR 
     = new File( System.getProperty( "java.io.tmpdir" ) );
@@ -869,7 +878,7 @@ public class Fixture {
     }
   }
   
-  private Fixture() {
+  private W4TFixture() {
   }
   
   public static void setUp() {
@@ -896,7 +905,7 @@ public class Fixture {
   }
 
   public static void clearSingletons() {
-    setPrivateField( ResourceManager.class, null, "_instance", null );
+    setPrivateField( ResourceManagerImpl.class, null, "_instance", null );
     setPrivateField( ImageCache.class, null, "_instance", null );
     setPrivateField( LifeCycleFactory.class, null, "globalLifeCycle", null );
   }
@@ -925,7 +934,7 @@ public class Fixture {
       String submittersNone = IInitialization.NOSCRIPT_SUBMITTERS_NONE;
       ImageCache.createInstance( CONTEXT_DIR.toString(), submittersNone );
 
-      setPrivateField( ResourceManager.class,
+      setPrivateField( ResourceManagerImpl.class,
                        null, 
                        "_instance",
                        new TestResourceManager() );
@@ -933,8 +942,9 @@ public class Fixture {
       createContextWithoutResourceManager();
       String webAppBase = CONTEXT_DIR.toString();
       String deliverFromDisk = IInitialization.RESOURCES_DELIVER_FROM_DISK;
-      ResourceManager.createInstance( webAppBase, deliverFromDisk );
+      ResourceManagerImpl.createInstance( webAppBase, deliverFromDisk );
     }
+    ServiceManager.setHandler( new DispatchHandler() );
   }
   
   public static void createContext()
@@ -978,6 +988,7 @@ public class Fixture {
     if( CONTEXT_DIR.exists() ) {
       delete( CONTEXT_DIR );
     }
+    setPrivateField( ServiceManager.class, null, "handlerDispatcher", null );
   }
   
   public static void delete( final File toDelete ) {
@@ -994,7 +1005,7 @@ public class Fixture {
                                        final File destination )
     throws FileNotFoundException, IOException
   {
-    ClassLoader loader = Fixture.class.getClassLoader();
+    ClassLoader loader = W4TFixture.class.getClassLoader();
     InputStream is = loader.getResourceAsStream( resourceName );
     try {
       OutputStream out = new FileOutputStream( destination );
@@ -1038,15 +1049,15 @@ public class Fixture {
   {
     ServiceContext context = new ServiceContext( request, response );
     ServiceStateInfo stateInfo = new ServiceStateInfo();
-    stateInfo.setRendereringSchedule( new IRenderingSchedule() {
+    context.setStateInfo( stateInfo );
+    ContextProvider.setContext( context );
+    LifeCycleHelper.setSchedule( new IRenderingSchedule() {
       public boolean isScheduled( final Object component ) {
         return true;
       }
       public void schedule( final Object component ) {
       }
     } );
-    context.setStateInfo( stateInfo );
-    ContextProvider.setContext( context );
   }
   
   public static void fakeEngineForRender( final WebForm formToRender )
@@ -1064,8 +1075,8 @@ public class Fixture {
     config.setClassDir( new File( getWebAppBase(), "WEB-INF/classes" ) );
     config.setLibDir( new File( getWebAppBase(), "WEB-INF/lib" ) );
     ConfigurationReader.setEngineConfig( config );
-    ResourceManager.createInstance( Fixture.getWebAppBase().toString(), 
-                                    ResourceManager.DELIVER_FROM_DISK );
+    ResourceManagerImpl.createInstance( W4TFixture.getWebAppBase().toString(), 
+                                    ResourceManagerImpl.DELIVER_FROM_DISK );
   }
   
   
