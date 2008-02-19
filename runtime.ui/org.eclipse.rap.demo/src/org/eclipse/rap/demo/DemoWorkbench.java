@@ -18,9 +18,9 @@ import org.eclipse.ui.PlatformUI;
 
 public class DemoWorkbench implements IEntryPoint {
 
-  public Display createUI() {
-    final Display result = PlatformUI.createDisplay();
-    PlatformUI.createAndRunWorkbench( result, new DemoWorbenchAdvisor() );
-    return result;
+  public int createUI() {
+    final Display display = PlatformUI.createDisplay();
+    DemoWorbenchAdvisor worbenchAdvisor = new DemoWorbenchAdvisor();
+    return PlatformUI.createAndRunWorkbench( display, worbenchAdvisor );
   }
 }
