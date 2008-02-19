@@ -11,20 +11,13 @@
 
 package org.eclipse.rwt.internal.lifecycle;
 
-import java.io.IOException;
-
-import org.eclipse.rwt.lifecycle.PhaseId;
+import org.eclipse.rwt.service.ISessionStore;
 
 
-/**
- * TODO [rh] JavaDoc
- * <p></p>
- */
-interface IPhase {
-
-  interface IInterruptible extends IPhase {
-  }
+public interface ISessionShutdownAdapter {
+  void setSessionStore( ISessionStore sessionStore );
+  void setShutdownCallback( Runnable shutdownCallback );
   
-  abstract PhaseId getPhaseID();
-  abstract PhaseId execute() throws IOException;
+  void interceptShutdown();
+  void processShutdown();
 }
