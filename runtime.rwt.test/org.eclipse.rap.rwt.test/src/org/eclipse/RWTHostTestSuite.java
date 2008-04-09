@@ -9,7 +9,7 @@
  *     Innoopract Informationssysteme GmbH - initial API and implementation
  ******************************************************************************/
 
-package org.eclipse.swt;
+package org.eclipse;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -34,42 +34,33 @@ import org.eclipse.swt.browser.Browser_Test;
 import org.eclipse.swt.custom.*;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.*;
-import org.eclipse.swt.internal.custom.ctabfolderkit.CTabFolderLCA_Test;
-import org.eclipse.swt.internal.custom.scrolledcompositekit.ScrolledCompositeLCA_Test;
-import org.eclipse.swt.internal.events.ActivateEvent_Test;
 import org.eclipse.swt.internal.graphics.*;
 import org.eclipse.swt.internal.widgets.*;
-import org.eclipse.swt.internal.widgets.buttonkit.ButtonLCA_Test;
-import org.eclipse.swt.internal.widgets.combokit.ComboLCA_Test;
-import org.eclipse.swt.internal.widgets.controlkit.ControlLCA_Test;
-import org.eclipse.swt.internal.widgets.coolbarkit.CoolBarLCA_Test;
-import org.eclipse.swt.internal.widgets.displaykit.DisplayLCAFocus_Test;
-import org.eclipse.swt.internal.widgets.displaykit.DisplayLCA_Test;
-import org.eclipse.swt.internal.widgets.labelkit.LabelLCA_Test;
-import org.eclipse.swt.internal.widgets.linkkit.LinkLCA_Test;
-import org.eclipse.swt.internal.widgets.listkit.ListLCA_Test;
-import org.eclipse.swt.internal.widgets.menuitemkit.MenuItemLCA_Test;
-import org.eclipse.swt.internal.widgets.menukit.MenuLCA_Test;
-import org.eclipse.swt.internal.widgets.sashkit.SashLCA_Test;
-import org.eclipse.swt.internal.widgets.shellkit.ShellLCA_Test;
-import org.eclipse.swt.internal.widgets.spinnerkit.SpinnerLCA_Test;
-import org.eclipse.swt.internal.widgets.tabfolderkit.TabFolderLCA_Test;
-import org.eclipse.swt.internal.widgets.tablecolumnkit.TableColumnLCA_Test;
-import org.eclipse.swt.internal.widgets.tableitemkit.TableItemLCA_Test;
-import org.eclipse.swt.internal.widgets.tablekit.TableLCA_Test;
-import org.eclipse.swt.internal.widgets.textkit.TextLCA_Test;
-import org.eclipse.swt.internal.widgets.toolitemkit.ToolItemLCA_Test;
-import org.eclipse.swt.internal.widgets.treecolumnkit.TreeColumnLCA_Test;
-import org.eclipse.swt.internal.widgets.treeitemkit.TreeItemLCA_Test;
-import org.eclipse.swt.internal.widgets.treekit.TreeLCA_Test;
 import org.eclipse.swt.widgets.*;
 
 
 
-public class RWTTestSuite {
+public class RWTHostTestSuite {
 
   public static Test suite() {
     TestSuite suite = new TestSuite( "Test for org.eclipse.rap.rwt" );
+    
+// TODO [fappel]: Note that the following commented tests belong semantically
+//                to the RWT host tests, but there is still some refactoring
+//                necessary to achieve this, so they've been moved temporarily
+//                to the q07 fragment tests.
+//    suite.addTestSuite( PreserveWidgetsPhaseListener_Test.class );
+//    suite.addTestSuite( WidgetAdapter_Test.class );
+//    suite.addTestSuite( DuplicateRequest_Test.class );
+//    suite.addTestSuite( MouseEvent_Test.class );
+//    suite.addTestSuite( ControlEvent_Test.class );
+//    suite.addTestSuite( ActivateEvent_Test.class );
+//    suite.addTestSuite( FocusEvent_Test.class );
+//    suite.addTestSuite( TypedEvent_Test.class );
+//    suite.addTestSuite( UntypedEvents_Test.class );
+//    suite.addTestSuite( Tree_Test.class );
+//    suite.addTestSuite( TreeItem_Test.class );
+
     // Former W4T Tests
     suite.addTestSuite( NLS_Test.class );
     suite.addTestSuite( AdapterManager_Test.class );
@@ -99,36 +90,20 @@ public class RWTTestSuite {
     suite.addTestSuite( AdapterFactoryRegistry_Test.class );
     suite.addTestSuite( PhaseListenerRegistry_Test.class );
     suite.addTestSuite( ResourceRegistry_Test.class );
-    suite.addTestSuite( RWTLifeCycle_Test.class );
     suite.addTestSuite( RWTRequestVersionControl_Test.class );
-    suite.addTestSuite( LifeCycleAdapter_Test.class );
     suite.addTestSuite( ResourceManager_Test.class );
     suite.addTestSuite( BrandingManager_Test.class );
     suite.addTestSuite( BrandingUtil_Test.class );
-    suite.addTestSuite( PreserveWidgetsPhaseListener_Test.class );
-    suite.addTestSuite( RenderDispose_Test.class );
-    suite.addTestSuite( WidgetAdapter_Test.class );
-    suite.addTestSuite( JSWriter_Test.class );
     suite.addTestSuite( JSListenerType_Test.class );
     suite.addTestSuite( JSVar_Test.class );
     suite.addTestSuite( WidgetUtil_Test.class );
-    suite.addTestSuite( WidgetLCAUtil_Test.class );
-    suite.addTestSuite( ControlLCAUtil_Test.class );
     suite.addTestSuite( SelectionEvent_Test.class );
-    suite.addTestSuite( MouseEvent_Test.class );
-    suite.addTestSuite( ControlEvent_Test.class );
     suite.addTestSuite( DisposeEvent_Test.class );
     suite.addTestSuite( ShellEvent_Test.class );
     suite.addTestSuite( TreeEvent_Test.class );
-    suite.addTestSuite( ActivateEvent_Test.class );
-    suite.addTestSuite( FocusEvent_Test.class );
-    suite.addTestSuite( TypedEvent_Test.class );
-    suite.addTestSuite( UntypedEvents_Test.class );
     suite.addTestSuite( UntypedEventAdapter_Test.class );
     suite.addTestSuite( UICallBackManager_Test.class );
     suite.addTestSuite( UICallBackServiceHandler_Test.class );
-    suite.addTestSuite( DuplicateRequest_Test.class );
-    suite.addTestSuite( UITestUtil_Test.class );
 
     suite.addTestSuite( Display_Test.class );
     suite.addTestSuite( Shell_Test.class );
@@ -143,8 +118,6 @@ public class RWTTestSuite {
     suite.addTestSuite( Layout_Test.class );
     suite.addTestSuite( SlimList_Test.class );
     suite.addTestSuite( Button_Test.class );
-    suite.addTestSuite( Tree_Test.class );
-    suite.addTestSuite( TreeItem_Test.class );
     suite.addTestSuite( TreeColumn_Test.class );
     suite.addTestSuite( TabFolderAndItem_Test.class );
     suite.addTestSuite( Menu_Test.class );
@@ -182,33 +155,6 @@ public class RWTTestSuite {
     suite.addTestSuite( TextSizeEstimation_Test.class );
     suite.addTestSuite( TextSizeDetermination_Test.class );
     suite.addTestSuite( ResourceFactory_Test.class );
-
-    // == LCAs ==
-    suite.addTestSuite( DisplayLCA_Test.class );
-    suite.addTestSuite( DisplayLCAFocus_Test.class );
-    suite.addTestSuite( ControlLCA_Test.class );
-    suite.addTestSuite( LabelLCA_Test.class );
-    suite.addTestSuite( TextLCA_Test.class );
-    suite.addTestSuite( ButtonLCA_Test.class );
-    suite.addTestSuite( SashLCA_Test.class );
-    suite.addTestSuite( TreeLCA_Test.class );
-    suite.addTestSuite( TreeItemLCA_Test.class );
-    suite.addTestSuite( TreeColumnLCA_Test.class );
-    suite.addTestSuite( ShellLCA_Test.class );
-    suite.addTestSuite( MenuLCA_Test.class );
-    suite.addTestSuite( MenuItemLCA_Test.class );
-    suite.addTestSuite( TableLCA_Test.class );
-    suite.addTestSuite( TableColumnLCA_Test.class );
-    suite.addTestSuite( TableItemLCA_Test.class );
-    suite.addTestSuite( CTabFolderLCA_Test.class );
-    suite.addTestSuite( CoolBarLCA_Test.class );
-    suite.addTestSuite( LinkLCA_Test.class );
-    suite.addTestSuite( ListLCA_Test.class );
-    suite.addTestSuite( SpinnerLCA_Test.class );
-    suite.addTestSuite( ComboLCA_Test.class );
-    suite.addTestSuite( ToolItemLCA_Test.class );
-    suite.addTestSuite( TabFolderLCA_Test.class );
-    suite.addTestSuite( ScrolledCompositeLCA_Test.class );
 
     // == Theming ==
     suite.addTestSuite( Theme_Test.class );
