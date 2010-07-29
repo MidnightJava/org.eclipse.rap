@@ -31,7 +31,7 @@ public class Validation {
     return result;
   }
 
-  public void addError( final ValidationError error ) {
+  void addError( final ValidationError error ) {
     errors.add( error );
   }
   
