@@ -321,6 +321,23 @@ qx.Class.define( "org.eclipse.rwt.widgets.Upload", {
         this._uploadButton.setLabel( uploadButtonText );
         this._uploadButton.setWidth( width );
       }
+    },
+    
+    // 325753: [upload] Styling of text widget border is not applied correctly
+	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=325753
+    addState : function(vState) {
+    	// Delegate styles ("rwt_BORDER") to TextField
+    	if (this._uploadField && this._uploadField._text) {
+    		this._uploadField._text.addState(vState);
+    	}
+    },
+    
+    removeState : function(vState) {
+    	// Delegate styles ("rwt_BORDER") to TextField
+    	if (this._uploadField && this._uploadField._text) {
+    		this._uploadField._text.removeState(vState);
+    	}
     }
+    
   }
 } );
