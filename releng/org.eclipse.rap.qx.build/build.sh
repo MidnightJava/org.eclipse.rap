@@ -28,7 +28,7 @@ $QXROOT/qooxdoo/frontend/framework/tool/generator.py \
   --version="${VERSION} (r${REVISION})" \
   `echo ${SETTINGS}` \
   --use-variant=qx.debug:off \
-  --exclude=debug-settings \
+  --exclude=debug-settings,settings \
   --optimize-strings \
   --optimize-variables \
   --optimize-base-call
