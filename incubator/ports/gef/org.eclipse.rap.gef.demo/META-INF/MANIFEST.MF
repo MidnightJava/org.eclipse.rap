@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: org.eclipse.rap.gef.demo;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.draw2d,
+ org.eclipse.gef,
+ org.eclipse.rap.ui.views;bundle-version="1.4.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Import-Package: javax.servlet;version="2.4.0",
+ javax.servlet.http;version="2.4.0"
+Bundle-Vendor: %Bundle-Vendor

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            class="org.eclipse.rap.gef.demo.Application"
+            parameter="demo"
+            id="org.eclipse.rap.gef.demo.Application">
+      </entrypoint>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.branding">
+      <branding
+            defaultEntrypointId="org.eclipse.rap.gef.demo.Applicationorg.eclipse.rap.gef.demo.Application"
+            id="org.eclipse.rap.gef.demo.branding"
+            servletName="gef"
+            title="RAP GEF Demo">
+      </branding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.eclipse.rap.gef.demo.PerspectiveFactory"
+            id="org.eclipse.rap.gef.demo.PerspectiveFactory"
+            name="GEF Examples">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.eclipse.rap.gef.demo.Application$Draw2DExampleView"
+            id="org.eclipse.rap.gef.demo.Application$Draw2DExampleView"
+            name="Draw2D"
+            restorable="true">
+      </view>
+      <view
+            class="org.eclipse.rap.gef.demo.Application$FlowExampleView"
+            id="org.eclipse.rap.gef.demo.Application$FlowExampleView"
+            name="Flow"
+            restorable="true">
+      </view>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.rap.gef.demo.PerspectiveFactory">
+         <view
+               closeable="false"
+               id="org.eclipse.rap.gef.demo.Application$Draw2DExampleView"
+               minimized="false"
+               moveable="true"
+               relationship="left"
+               relative="org.eclipse.ui.editorss"
+               showTitle="true"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="org.eclipse.rap.gef.demo.Application$FlowExampleView"
+               minimized="false"
+               moveable="true"
+               relationship="stack"
+               relative="org.eclipse.rap.gef.demo.Application$Draw2DExampleView"
+               showTitle="true"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+</plugin>
