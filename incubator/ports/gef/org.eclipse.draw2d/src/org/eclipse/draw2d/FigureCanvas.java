@@ -1,9 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
+ * Austin Riddle (Texas Center for Applied Technology) - initial RAP port
  *******************************************************************************/
 package org.eclipse.draw2d;
 
@@ -89,7 +93,7 @@ public class FigureCanvas extends Composite {
 		public void propertyChange(PropertyChangeEvent event) {
 			RangeModel model = getViewport().getHorizontalRangeModel();
 			hBarOffset = Math.max(0, -model.getMinimum());
-			Slider horizontalBar = getHorizontalBar();
+			Slider horizontalBar = getHorizontalSlider();
 			if (horizontalBar != null) {
 				horizontalBar.setValues(model.getValue() + hBarOffset,
 						model.getMinimum() + hBarOffset, model.getMaximum()
@@ -104,7 +108,7 @@ public class FigureCanvas extends Composite {
 		public void propertyChange(PropertyChangeEvent event) {
 			RangeModel model = getViewport().getVerticalRangeModel();
 			vBarOffset = Math.max(0, -model.getMinimum());
-			Slider verticalBar = getVerticalBar();
+			Slider verticalBar = getVerticalSlider();
 			if (verticalBar != null) {
 				verticalBar.setValues(model.getValue() + vBarOffset,
 						model.getMinimum() + vBarOffset, model.getMaximum()
@@ -195,26 +199,26 @@ public class FigureCanvas extends Composite {
 				org.eclipse.swt.graphics.Point size = composite.getSize();
 				int vScrollBarWidth = getVScrollBarWidth();
 				int hScrollBarHeight = getHScrollBarHeight();
-				if (!getHorizontalBar().isVisible()) {
+				if (!getHorizontalSlider().isVisible()) {
 					hScrollBarHeight = 0;
 				}
-				if (!getVerticalBar().isVisible()) {
+				if (!getVerticalSlider().isVisible()) {
 					vScrollBarWidth = 0;
 				}
-				getHorizontalBar().setBounds(0, size.y - hScrollBarHeight,
+				getHorizontalSlider().setBounds(0, size.y - hScrollBarHeight,
 						size.x - vScrollBarWidth, hScrollBarHeight);
-				getVerticalBar().setBounds(size.x - vScrollBarWidth, 0,
+				getVerticalSlider().setBounds(size.x - vScrollBarWidth, 0,
 						vScrollBarWidth, size.y - hScrollBarHeight);
 				innerCanvas.setLocation(0, 0);
 				innerCanvas.setSize(size.x - vScrollBarWidth, size.y
 						- hScrollBarHeight);
 			}
 		});
-		Slider horizontalBar = getHorizontalBar();
+		Slider horizontalBar = getHorizontalSlider();
 		if (horizontalBar != null) {
 			horizontalBar.setVisible(false);
 		}
-		Slider verticalBar = getVerticalBar();
+		Slider verticalBar = getVerticalSlider();
 		if (verticalBar != null) {
 			verticalBar.setVisible(false);
 		}
@@ -353,7 +357,7 @@ public class FigureCanvas extends Composite {
 					}
 				});
 
-		final Slider horizontalBar = getHorizontalBar();
+		final Slider horizontalBar = getHorizontalSlider();
 		if (horizontalBar != null) {
 			horizontalBar.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent event) {
@@ -362,7 +366,7 @@ public class FigureCanvas extends Composite {
 			});
 		}
 
-		final Slider verticalBar = getVerticalBar();
+		final Slider verticalBar = getVerticalSlider();
 		if (verticalBar != null) {
 			verticalBar.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent event) {
@@ -396,13 +400,13 @@ public class FigureCanvas extends Composite {
 				innerCanvas.computeTrim(0, 0, 0, 0).height);
 		getLightweightSystem().setIgnoreResize(true);
 		try {
-			Slider horizontalBar = getHorizontalBar();
+			Slider horizontalBar = getHorizontalSlider();
 			if (horizontalBar != null
 					&& horizontalBar.getVisible() != result.showH) {
 				horizontalBar.setVisible(result.showH);
 				layout(new Control[] { horizontalBar });
 			}
-			Slider verticalBar = getVerticalBar();
+			Slider verticalBar = getVerticalSlider();
 			if (verticalBar != null && verticalBar.getVisible() != result.showV) {
 				verticalBar.setVisible(result.showV);
 				layout(new Control[] { verticalBar });
@@ -692,7 +696,7 @@ public class FigureCanvas extends Composite {
 		return Math.min(model.getMaximum() - model.getExtent(), value);
 	}
 
-	public Slider getHorizontalBar() {
+	public Slider getHorizontalSlider() {
 		checkWidget();
 		if (horizontalBar == null) {
 			horizontalBar = new Slider(this, SWT.HORIZONTAL);
@@ -702,7 +706,7 @@ public class FigureCanvas extends Composite {
 		return horizontalBar;
 	}
 
-	public Slider getVerticalBar() {
+	public Slider getVerticalSlider() {
 		checkWidget();
 		if (verticalBar == null) {
 			verticalBar = new Slider(this, SWT.VERTICAL);
