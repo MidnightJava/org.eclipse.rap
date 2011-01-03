@@ -116,7 +116,7 @@ protected IFigure getContents() {
 				new Label(" Drag the shapes to see the Locators in action ");
 	instructions.setBorder(new LineBorder());
 	instructions.setLocation(new Point(10, 420));
-	instructions.setSize(instructions.getPreferredSize());
+//	instructions.setSize(instructions.getPreferredSize());
 	
 	ellipsePanel.add(node3);
 	ellipsePanel.add(node4);
