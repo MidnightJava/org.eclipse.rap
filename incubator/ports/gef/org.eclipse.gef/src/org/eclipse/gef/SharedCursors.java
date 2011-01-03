@@ -55,6 +55,7 @@ public class SharedCursors extends Cursors {
 				sourceName);
 		ImageDescriptor mask = ImageDescriptor.createFromFile(Internal.class,
 				maskName);
+		// UNSUPPORTED - api not implemented in RAP
 		// return new Cursor(null, src.getImageData(), mask.getImageData(), 0,
 		// 0);
 		return null;

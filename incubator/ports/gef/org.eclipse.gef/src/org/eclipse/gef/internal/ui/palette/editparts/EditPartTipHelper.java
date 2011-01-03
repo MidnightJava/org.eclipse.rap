@@ -1,16 +1,16 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.gef.internal.ui.palette.editparts;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseMoveListener;
-import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.ShellAdapter;
@@ -80,6 +80,7 @@ class EditPartTipHelper extends org.eclipse.draw2d.PopUpHelper {
 			getLightweightSystem().setContents(tip);
 			setShellBounds(tipPosX, tipPosY, tipSize.width, tipSize.height);
 			show();
+			// UNSUPPORTED - api not implemented in RAP
 			// getShell().setCapture(true);
 		}
 	}
@@ -106,28 +107,30 @@ class EditPartTipHelper extends org.eclipse.draw2d.PopUpHelper {
 		 * If the cursor leaves the tip window, hide the tooltip and dispose of
 		 * its shell
 		 */
-		getShell().addMouseTrackListener(new MouseTrackAdapter() {
-			public void mouseExit(MouseEvent e) {
-				// getShell().setCapture(false);
-				dispose();
-			}
-		});
+		// UNSUPPORTED - api not implemented in RAP
+		// getShell().addMouseTrackListener(new MouseTrackAdapter() {
+		// public void mouseExit(MouseEvent e) {
+		// getShell().setCapture(false);
+		// dispose();
+		// }
+		// });
 		/*
 		 * If the mouseExit listener does not get called, dispose of the shell
 		 * if the cursor is no longer in the tooltip. This occurs in the rare
 		 * case that a mouseEnter is not received on the tooltip when it
 		 * appears.
 		 */
-		getShell().addMouseMoveListener(new MouseMoveListener() {
-			public void mouseMove(MouseEvent e) {
-				Point eventPoint = getShell().toDisplay(new Point(e.x, e.y));
-				if (!getShell().getBounds().contains(eventPoint)) {
-					// if (isShowing())
-					// getShell().setCapture(false);
-					dispose();
-				}
-			}
-		});
+		// UNSUPPORTED - api not implemented in RAP
+		// getShell().addMouseMoveListener(new MouseMoveListener() {
+		// public void mouseMove(MouseEvent e) {
+		// Point eventPoint = getShell().toDisplay(new Point(e.x, e.y));
+		// if (!getShell().getBounds().contains(eventPoint)) {
+		// if (isShowing())
+		// getShell().setCapture(false);
+		// dispose();
+		// }
+		// }
+		// });
 
 		// This is to dispose of the tooltip when the user ALT-TABs to another
 		// window.
@@ -142,6 +145,7 @@ class EditPartTipHelper extends org.eclipse.draw2d.PopUpHelper {
 									|| control.getShell() == active
 									|| getShell().isDisposed())
 								return;
+							// UNSUPPORTED - api not implemented in RAP
 							// if (isShowing())
 							// getShell().setCapture(false);
 							dispose();
@@ -167,6 +171,7 @@ class EditPartTipHelper extends org.eclipse.draw2d.PopUpHelper {
 						// listeners may attempt to paint on a disposed control.
 						Display.getCurrent().asyncExec(new Runnable() {
 							public void run() {
+								// UNSUPPORTED - api not implemented in RAP
 								// if (isShowing())
 								// getShell().setCapture(false);
 								dispose();

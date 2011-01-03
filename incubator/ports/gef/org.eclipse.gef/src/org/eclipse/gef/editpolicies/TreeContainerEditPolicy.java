@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.gef.editpolicies;
@@ -66,6 +69,7 @@ public abstract class TreeContainerEditPolicy extends AbstractEditPolicy {
 			ChangeBoundsRequest request);
 
 	private void eraseDropFeedback(Request req) {
+		// UNSUPPORTED - api not implemented in RAP
 		// getTree().setInsertMark(null, true);
 		restoreSelection();
 	}
@@ -162,6 +166,7 @@ public abstract class TreeContainerEditPolicy extends AbstractEditPolicy {
 	private void insertMarkAfterLastChild(TreeItem[] children) {
 		if (children != null && children.length > 0) {
 			TreeItem item = children[children.length - 1];
+			// UNSUPPORTED - api not implemented in RAP
 			// getTree().setInsertMark(item, false);
 		}
 	}
@@ -216,9 +221,11 @@ public abstract class TreeContainerEditPolicy extends AbstractEditPolicy {
 				insertMarkAfterLastChild(tree.getItems());
 			}
 		} else if (item == hostWidget) {
+			// UNSUPPORTED - api not implemented in RAP
 			// tree.setInsertMark(null, true);
 		} else {
 			boolean before = isInUpperHalf(item.getBounds(), pt);
+			// UNSUPPORTED - api not implemented in RAP
 			// tree.setInsertMark(item, before);
 		}
 	}

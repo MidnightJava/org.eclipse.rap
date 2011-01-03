@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.gef.tools;
@@ -1120,6 +1123,7 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 	 *            the mouse event
 	 * @param viewer
 	 *            the originating viewer
+	 * 
 	 */
 	public void mouseHover(MouseEvent me, EditPartViewer viewer) {
 		if (!isViewerImportant(viewer))
@@ -1302,6 +1306,7 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 		org.eclipse.swt.graphics.Point swt = new org.eclipse.swt.graphics.Point(
 				p.x, p.y);
 		swt = c.toDisplay(swt);
+		// UNSUPPORTED - api not supported in RAP
 		// c.getDisplay().setCursorLocation(swt);
 	}
 
@@ -1437,6 +1442,7 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 	}
 
 	void setMouseCapture(boolean value) {
+	  // UNSUPPORTED - capture api not implemented in RAP
 		// if (getCurrentViewer() != null
 		// && getCurrentViewer().getControl() != null
 		// && !getCurrentViewer().getControl().isDisposed())

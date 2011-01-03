@@ -64,7 +64,7 @@
 			</view>
 		</perspectiveExtension>
 	</extension>
-
+<!-- UNSUPPORTED extension point -->
 <!--
 	<extension point="org.eclipse.ui.bindings">
 		<key

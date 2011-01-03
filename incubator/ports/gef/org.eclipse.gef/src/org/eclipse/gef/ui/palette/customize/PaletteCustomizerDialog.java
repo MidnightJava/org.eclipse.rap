@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.gef.ui.palette.customize;
@@ -338,6 +341,7 @@ public class PaletteCustomizerDialog extends Dialog implements
 	 * <LI>Outline ({@link #createOutline(Composite)})</LI>
 	 * <LI>Properties Panel ({@link #createPropertiesPanel(Composite)})</LI>
 	 * </UL>
+	 * 
 	 * <p>
 	 * It is recommended that this method not be overridden. Override one of the
 	 * methods that this method calls in order to customize the appearance of
@@ -394,6 +398,7 @@ public class PaletteCustomizerDialog extends Dialog implements
 
 	/**
 	 * Creates the outline part of the dialog.
+	 * 
 	 * <p>
 	 * The outline creates the following:
 	 * <UL>
@@ -434,6 +439,7 @@ public class PaletteCustomizerDialog extends Dialog implements
 	/**
 	 * Creates the actions that manipulate the palette model. These actions will
 	 * populate the toolbar and the outline's context menu.
+	 * 
 	 * <p>
 	 * IMPORTANT: All the elements in the returned List MUST be
 	 * <code>PaletteCustomizationAction</code>s.
@@ -526,6 +532,7 @@ public class PaletteCustomizerDialog extends Dialog implements
 			public void paintControl(PaintEvent e) {
 				Rectangle area = composite.getBounds();
 				GC gc = e.gc;
+				// UNSUPPORTED - api not implemented in RAP
 				// gc.setLineStyle(SWT.LINE_SOLID);
 				gc.setForeground(ColorConstants.buttonDarker);
 				gc.drawLine(area.x, area.y, area.x + area.width - 2, area.y);
@@ -605,6 +612,7 @@ public class PaletteCustomizerDialog extends Dialog implements
 	/**
 	 * Creates the part of the dialog where the properties of the element
 	 * selected in the outline will be displayed.
+	 * 
 	 * <p>
 	 * The properties panel contains the following:
 	 * <UL>

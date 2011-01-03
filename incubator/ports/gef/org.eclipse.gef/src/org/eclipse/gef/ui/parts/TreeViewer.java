@@ -182,9 +182,11 @@ public class TreeViewer extends AbstractEditPartViewer {
 		final Tree tree = (Tree) getControl();
 		tree.addFocusListener(dispatcher);
 		tree.addMouseListener(dispatcher);
-		tree.addMouseMoveListener(dispatcher);
+		// UNSUPPORTED - api not implemented in RAP
+		// tree.addMouseMoveListener(dispatcher);
 		tree.addKeyListener(dispatcher);
-		tree.addMouseTrackListener(dispatcher);
+		// UNSUPPORTED - api not implemented in RAP
+		// tree.addMouseTrackListener(dispatcher);
 		tree.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				TreeItem[] ties = tree.getSelection();

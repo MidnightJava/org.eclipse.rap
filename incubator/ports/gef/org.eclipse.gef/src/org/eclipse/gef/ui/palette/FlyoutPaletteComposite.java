@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2004, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.gef.ui.palette;
@@ -15,6 +18,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.accessibility.ACC;
+import org.eclipse.swt.accessibility.AccessibleAdapter;
+import org.eclipse.swt.accessibility.AccessibleControlAdapter;
+import org.eclipse.swt.accessibility.AccessibleControlEvent;
+import org.eclipse.swt.accessibility.AccessibleEvent;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.DisposeEvent;
@@ -513,6 +521,7 @@ public class FlyoutPaletteComposite extends Composite {
 		Assert.isTrue(graphicalViewer.getParent() == this);
 		Assert.isTrue(graphicalControl == null);
 		graphicalControl = graphicalViewer;
+		// UNSUPPORTED - api not implemented in RAP
 		// addListenerToCtrlHierarchy(graphicalControl, SWT.MouseEnter, new
 		// Listener()
 		// {
@@ -732,7 +741,7 @@ public class FlyoutPaletteComposite extends Composite {
 			super(parent, style);
 			button = createFlyoutControlButton(this);
 			new SashDragManager();
-
+			// UNSUPPORTED - api not implemented in RAP
 			// addMouseTrackListener(new MouseTrackAdapter()
 			// {
 			// public void mouseHover(MouseEvent e)
@@ -850,7 +859,8 @@ public class FlyoutPaletteComposite extends Composite {
 			};
 
 			public SashDragManager() {
-				Sash.this.addMouseMoveListener(this);
+				// UNSUPPORTED - api not implemented in RAP
+				// Sash.this.addMouseMoveListener(this);
 				Sash.this.addMouseListener(this);
 			}
 
@@ -920,7 +930,8 @@ public class FlyoutPaletteComposite extends Composite {
 		public TitleDragManager(Control ctrl) {
 			ctrl.addListener(SWT.DragDetect, this);
 			ctrl.addMouseListener(this);
-			ctrl.addMouseTrackListener(this);
+			// UNSUPPORTED - api not implemented in RAP
+			// ctrl.addMouseTrackListener(this);
 		}
 
 		public void handleEvent(Event event) {
@@ -1003,6 +1014,7 @@ public class FlyoutPaletteComposite extends Composite {
 				}
 			});
 
+			// HACK for DND in RAP
 			Job dragJob = new Job("Drag-Job") {
 				protected IStatus run(IProgressMonitor monitor) {
 
@@ -1254,31 +1266,25 @@ public class FlyoutPaletteComposite extends Composite {
 		}
 
 		private void provideAccSupport() {
-			// getAccessible().addAccessibleListener(new AccessibleAdapter()
-			// {
-			// public void getDescription(AccessibleEvent e)
-			// {
-			// e.result = PaletteMessages.ACC_DESC_PALETTE_BUTTON;
-			// }
-			//
-			// public void getHelp(AccessibleEvent e)
-			// {
-			// getDescription(e);
-			// }
-			//
-			// public void getName(AccessibleEvent e)
-			// {
-			// e.result = getToolTipText();
-			// }
-			// });
-			// getAccessible().addAccessibleControlListener(new
-			// AccessibleControlAdapter()
-			// {
-			// public void getRole(AccessibleControlEvent e)
-			// {
-			// e.detail = ACC.ROLE_PUSHBUTTON;
-			// }
-			// });
+			getAccessible().addAccessibleListener(new AccessibleAdapter() {
+				public void getDescription(AccessibleEvent e) {
+					e.result = PaletteMessages.ACC_DESC_PALETTE_BUTTON;
+				}
+
+				public void getHelp(AccessibleEvent e) {
+					getDescription(e);
+				}
+
+				public void getName(AccessibleEvent e) {
+					e.result = getToolTipText();
+				}
+			});
+			getAccessible().addAccessibleControlListener(
+					new AccessibleControlAdapter() {
+						public void getRole(AccessibleControlEvent e) {
+							e.detail = ACC.ROLE_PUSHBUTTON;
+						}
+					});
 		}
 
 		private class ArrowButton extends Button {
@@ -1403,31 +1409,25 @@ public class FlyoutPaletteComposite extends Composite {
 		}
 
 		private void provideAccSupport() {
-			// getAccessible().addAccessibleListener(new AccessibleAdapter()
-			// {
-			// public void getDescription(AccessibleEvent e)
-			// {
-			// e.result = PaletteMessages.ACC_DESC_PALETTE_TITLE;
-			// }
-			//
-			// public void getHelp(AccessibleEvent e)
-			// {
-			// getDescription(e);
-			// }
-			//
-			// public void getName(AccessibleEvent e)
-			// {
-			// e.result = GEFMessages.Palette_Label;
-			// }
-			// });
-			// getAccessible().addAccessibleControlListener(new
-			// AccessibleControlAdapter()
-			// {
-			// public void getRole(AccessibleControlEvent e)
-			// {
-			// e.detail = ACC.ROLE_LABEL;
-			// }
-			// });
+			getAccessible().addAccessibleListener(new AccessibleAdapter() {
+				public void getDescription(AccessibleEvent e) {
+					e.result = PaletteMessages.ACC_DESC_PALETTE_TITLE;
+				}
+
+				public void getHelp(AccessibleEvent e) {
+					getDescription(e);
+				}
+
+				public void getName(AccessibleEvent e) {
+					e.result = GEFMessages.Palette_Label;
+				}
+			});
+			getAccessible().addAccessibleControlListener(
+					new AccessibleControlAdapter() {
+						public void getRole(AccessibleControlEvent e) {
+							e.detail = ACC.ROLE_LABEL;
+						}
+					});
 		}
 
 		public void setFont(Font font) {
@@ -1611,6 +1611,7 @@ public class FlyoutPaletteComposite extends Composite {
 		 */
 		public static Cursor getCursor(int code) {
 			Display display = Display.getCurrent();
+			// UNSUPPORTED - custom cursors not available in RAP
 			// if (cursors[code] == null) {
 			// ImageDescriptor source = null;
 			// ImageDescriptor mask = null;
