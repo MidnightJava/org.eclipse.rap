@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.draw2d.parts;
@@ -260,6 +263,7 @@ public class Thumbnail extends Figure implements UpdateListener {
 		}
 
 		/**
+		 * 
 		 * @since 3.2
 		 */
 		private void resetThumbnailImage() {
@@ -267,6 +271,7 @@ public class Thumbnail extends Figure implements UpdateListener {
 				thumbnailImage.dispose();
 
 			if (!targetSize.isEmpty()) {
+				//Image creation as supported in RAP
 				thumbnailImage = new Image(Display.getDefault(), new ImageData(
 						targetSize.width, targetSize.height, 32,
 						new PaletteData(127, 127, 127)), targetSize.width,

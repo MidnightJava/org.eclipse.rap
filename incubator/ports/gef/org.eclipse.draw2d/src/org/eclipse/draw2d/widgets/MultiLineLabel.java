@@ -1,13 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
- * IBM Corporation - initial API and implementation
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.draw2d.widgets;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.accessibility.ACC;
+import org.eclipse.swt.accessibility.AccessibleAdapter;
+import org.eclipse.swt.accessibility.AccessibleControlAdapter;
+import org.eclipse.swt.accessibility.AccessibleControlEvent;
+import org.eclipse.swt.accessibility.AccessibleEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.graphics.Font;
@@ -85,22 +93,21 @@ public final class MultiLineLabel extends FigureCanvas {
 	}
 
 	private void addAccessibility() {
-	  //Accessability not supported in RAP
-		// getAccessible().addAccessibleControlListener(
-		// new AccessibleControlAdapter() {
-		// public void getRole(AccessibleControlEvent e) {
-		// e.detail = ACC.ROLE_LABEL;
-		// }
-		//
-		// public void getState(AccessibleControlEvent e) {
-		// e.detail = ACC.STATE_READONLY;
-		// }
-		// });
-		// getAccessible().addAccessibleListener(new AccessibleAdapter() {
-		// public void getName(AccessibleEvent e) {
-		// e.result = getText();
-		// }
-		// });
+		getAccessible().addAccessibleControlListener(
+				new AccessibleControlAdapter() {
+					public void getRole(AccessibleControlEvent e) {
+						e.detail = ACC.ROLE_LABEL;
+					}
+
+					public void getState(AccessibleControlEvent e) {
+						e.detail = ACC.STATE_READONLY;
+					}
+				});
+		getAccessible().addAccessibleListener(new AccessibleAdapter() {
+			public void getName(AccessibleEvent e) {
+				e.result = getText();
+			}
+		});
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				Point p = getViewport().getViewLocation();

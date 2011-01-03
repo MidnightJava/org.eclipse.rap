@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.draw2d;
@@ -86,18 +89,6 @@ public class LightweightSystem {
 	}
 
 	/**
-	 * Constructs a LightweightSystem on Canvas <i>c</i>.
-	 * 
-	 * @param c
-	 *            the canvas
-	 * @since 2.0
-	 */
-	public LightweightSystem(FigureCanvas c) {
-		this();
-		setControl(c.innerCanvas);
-	}
-
-	/**
 	 * Constructs a LightweightSystem <b>without</b> a Canvas.
 	 */
 	public LightweightSystem() {
@@ -114,11 +105,12 @@ public class LightweightSystem {
 	 */
 	protected void addListeners() {
 		final EventHandler handler = createEventHandler();
-		// canvas.getAccessible().addAccessibleListener(handler);
-		// canvas.getAccessible().addAccessibleControlListener(handler);
+		canvas.getAccessible().addAccessibleListener(handler);
+		canvas.getAccessible().addAccessibleControlListener(handler);
 		canvas.addMouseListener(handler);
-		canvas.addMouseMoveListener(handler);
-		canvas.addMouseTrackListener(handler);
+		// UNSUPPORTED - api not implemented in RAP
+		// canvas.addMouseMoveListener(handler);
+		// canvas.addMouseTrackListener(handler);
 		canvas.addKeyListener(handler);
 		canvas.addTraverseListener(handler);
 		canvas.addFocusListener(handler);
@@ -613,6 +605,7 @@ public class LightweightSystem {
 			// Mouse wheel events
 			if (event.type == SWT.MouseWheel)
 				getEventDispatcher().dispatchMouseWheelScrolled(event);
+			// HACK: for DND in RAP
 			else if (event.type == SWT.DragDetect) {
 				MouseEvent me = new MouseEvent(event);
 				me.stateMask = SWT.BUTTON1;

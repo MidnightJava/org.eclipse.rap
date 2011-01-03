@@ -1,10 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2010 IBM Corporation and others. All rights reserved. This
- * program and the accompanying materials are made available under the terms of
- * the Eclipse Public License v1.0 which accompanies this distribution, and is
- * available at http://www.eclipse.org/legal/epl-v10.html Contributors: Research
- * Group Software Construction, RWTH Aachen University, Germany - initial API
- * and implementation
+ * Copyright (c) 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Research Group Software Construction,
+ *     RWTH Aachen University, Germany - initial API and implementation
  */
 package org.eclipse.draw2d;
 
@@ -20,8 +23,9 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 /**
  * A figure used to render a partly transparent copy of an original source
- * figure. This class is pretty much based on a sample, posted within the GEF
- * newsgroup
+ * figure.
+ * 
+ * This class is pretty much based on a sample, posted within the GEF newsgroup
  * (http://dev.eclipse.org/newslists/news.eclipse.tools.gef/msg15158.html),
  * although we decided to not cache the ghost image itself (but only its image
  * data), so the figure does not have to be disposed (and may thus directly
@@ -29,6 +33,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * 
  * @author Alexander Nyssen
  * @author Philip Ritzkopf
+ * 
  * @since 3.6
  */
 public class GhostImageFigure extends Figure {
@@ -54,7 +59,7 @@ public class GhostImageFigure extends Figure {
 
 		Rectangle sourceFigureRelativePrecisionBounds = new PrecisionRectangle(
 				source.getBounds().getCopy());
-
+        // Create image using RAP constructors.
 		Image offscreenImage = new Image(Display.getCurrent(), new ImageData(
 				sourceFigureRelativePrecisionBounds.width,
 				sourceFigureRelativePrecisionBounds.height, 32,

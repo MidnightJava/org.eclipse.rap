@@ -14,7 +14,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 
@@ -132,15 +131,16 @@ public class ToolTipHelper extends PopUpHelper {
 	 */
 	protected void hookShellListeners() {
 		// Close the tooltip window if the mouse enters the tooltip
-		getShell().addMouseTrackListener(new MouseTrackAdapter() {
-			public void mouseEnter(org.eclipse.swt.events.MouseEvent e) {
-				hide();
-				currentTipSource = null;
-				if (timer != null) {
-					timer.cancel();
-				}
-			}
-		});
+		// UNSUPPORTED - api not implemented in RAP
+		// getShell().addMouseTrackListener(new MouseTrackAdapter() {
+		// public void mouseEnter(org.eclipse.swt.events.MouseEvent e) {
+		// hide();
+		// currentTipSource = null;
+		// if (timer != null) {
+		// timer.cancel();
+		// }
+		// }
+		// });
 	}
 
 	/**

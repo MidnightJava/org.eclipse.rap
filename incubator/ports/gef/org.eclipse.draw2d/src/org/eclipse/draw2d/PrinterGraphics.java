@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.draw2d;
@@ -116,7 +119,7 @@ public class PrinterGraphics extends ScaledGraphics {
 		 }
 		 // make a copy of attributes, we dont's want it changed on figure
 		 // (or display will be affected)
-		 //Certain attributes in RAP are unsupported
+			// UNSUPPORTED - certain line attributes in RAP are unsupported
 //		 super.setLineAttributes(new LineAttributes(attributes.width,
 //		 attributes.cap, attributes.join, attributes.style,
 //		 newDashes, attributes.dashOffset * printerDot,

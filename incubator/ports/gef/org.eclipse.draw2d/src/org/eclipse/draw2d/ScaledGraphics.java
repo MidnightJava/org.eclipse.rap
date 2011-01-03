@@ -276,7 +276,7 @@ public class ScaledGraphics extends Graphics {
 			popState();
 		}
 
-		// RAP does not allow the disposing of factory created fonts
+		// UNSUPPORTED - RAP does not allow the disposing of factory created fonts
 		// Dispose fonts
 		// Iterator iter = fontCache.values().iterator();
 		// while (iter.hasNext()) {
@@ -1003,6 +1003,7 @@ public class ScaledGraphics extends Graphics {
 					TextStyle zoomedStyle = new TextStyle(
 							zoomFont(lastStyle.font), lastStyle.foreground,
 							lastStyle.background);
+					// UNSUPPORTED - api is not implemented in RAP
 					// zoomedStyle.metrics = lastStyle.metrics;
 					zoomedStyle.rise = lastStyle.rise;
 					zoomedStyle.strikeout = lastStyle.strikeout;
@@ -1017,6 +1018,7 @@ public class ScaledGraphics extends Graphics {
 	}
 
 	private Point zoomTextPoint(int x, int y) {
+		// UNSUPPORTED - api is not implemented in RAP
 		// if (localCache.font != localFont) {
 		// // Font is different, re-calculate its height
 		// FontMetrics metric = FigureUtilities.getFontMetrics(localFont);

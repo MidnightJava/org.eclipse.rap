@@ -1,8 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2010 IBM Corporation and others. All rights reserved.
- * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
  * IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.draw2d;
@@ -141,6 +144,7 @@ public class SWTGraphics extends Graphics {
 		public void setOn(GC gc, int translateX, int translateY) {
 			int xInt = (int) Math.floor(left);
 			int yInt = (int) Math.floor(top);
+			// UNSUPPORTED - api is not implemented in RAP
 			// gc.setClipping(xInt + translateX, yInt + translateY,
 			// (int) Math.ceil(right) - xInt, (int) Math.ceil(bottom)
 			// - yInt);
@@ -309,10 +313,11 @@ public class SWTGraphics extends Graphics {
 				gc.setLineWidth((int) lineAttributes.width);
 				gc.setLineCap(lineAttributes.cap);
 				gc.setLineJoin(lineAttributes.join);
-				// gc.setLineStyle(lineAttributes.style);
-				// if (lineAttributes.dash != null) {
-				// gc.setLineDash(convertFloatArrayToInt(lineAttributes.dash));
-				// }
+				// UNSUPPORTED - api is not implemented in RAP
+//				gc.setLineStyle(lineAttributes.style);
+//				if (lineAttributes.dash != null) {
+//					gc.setLineDash(convertFloatArrayToInt(lineAttributes.dash));
+//				}
 			}
 			appliedState.lineAttributes = clone(lineAttributes);
 		}
@@ -441,6 +446,7 @@ public class SWTGraphics extends Graphics {
 	public void drawPath(Path path) {
 		checkPaint();
 		initTransform(false);
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.drawPath(path);
 	}
 
@@ -575,6 +581,7 @@ public class SWTGraphics extends Graphics {
 	public void fillPath(Path path) {
 		checkFill();
 		initTransform(false);
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.fillPath(path);
 	}
 
@@ -789,6 +796,7 @@ public class SWTGraphics extends Graphics {
 		currentState.font = appliedState.font = gc.getFont();
 		currentState.lineAttributes = gc.getLineAttributes();
 		appliedState.lineAttributes = clone(currentState.lineAttributes);
+		// UNSUPPORTED - api is not implemented in RAP
 		// currentState.graphicHints |= gc.getLineStyle();
 		// currentState.graphicHints |= gc.getAdvanced() ?
 		// ADVANCED_GRAPHICS_MASK
@@ -812,6 +820,7 @@ public class SWTGraphics extends Graphics {
 			transform.translate(translateX, translateY);
 			translateX = 0;
 			translateY = 0;
+			// UNSUPPORTED - api is not implemented in RAP
 			// gc.setTransform(transform);
 			currentState.graphicHints |= ADVANCED_GRAPHICS_MASK;
 		}
@@ -860,6 +869,7 @@ public class SWTGraphics extends Graphics {
 	private static void reconcileHints(GC gc, int applied, int hints) {
 		int changes = hints ^ applied;
 
+		// UNSUPPORTED - api is not implemented in RAP
 		// if ((changes & XOR_MASK) != 0) {
 		// gc.setXORMode((hints & XOR_MASK) != 0);
 		// }
@@ -867,6 +877,7 @@ public class SWTGraphics extends Graphics {
 		// Check to see if there is anything remaining
 		changes &= ~XOR_MASK;
 		if (changes != 0) {
+			// UNSUPPORTED - api is not implemented in RAP
 			// if ((changes & INTERPOLATION_MASK) != 0) {
 			// gc.setInterpolation(((hints & INTERPOLATION_MASK) >>
 			// INTERPOLATION_SHIFT)
@@ -891,6 +902,7 @@ public class SWTGraphics extends Graphics {
 			// If advanced was flagged, but none of the conditions which trigger
 			// advanced
 			// actually got applied, force advanced graphics on.
+			// UNSUPPORTED - api is not implemented in RAP
 			// if ((changes & ADVANCED_GRAPHICS_MASK) != 0) {
 			// if ((hints & ADVANCED_GRAPHICS_MASK) != 0 && !gc.getAdvanced()) {
 			// gc.setAdvanced(true);
@@ -923,6 +935,7 @@ public class SWTGraphics extends Graphics {
 		sharedClipping = true;
 
 		// If the GC is currently advanced, but it was not when pushed, revert
+		// UNSUPPORTED - api is not implemented in RAP
 		// if (gc.getAdvanced() && (s.graphicHints & ADVANCED_GRAPHICS_MASK) ==
 		// 0) {
 		// // Set applied clip to null to force a re-setting of the clipping.
@@ -962,6 +975,7 @@ public class SWTGraphics extends Graphics {
 		checkGC();
 		initTransform(true);
 		transform.rotate(degrees);
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setTransform(transform);
 		elementsNeedUpdate = true;
 
@@ -989,6 +1003,7 @@ public class SWTGraphics extends Graphics {
 
 		initTransform(true);
 		transform.scale(horizontal, vertical);
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setTransform(transform);
 		elementsNeedUpdate = true;
 
@@ -1008,6 +1023,7 @@ public class SWTGraphics extends Graphics {
 			transform = null;
 			elementsNeedUpdate = false;
 		}
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setTransform(transform);
 	}
 
@@ -1070,6 +1086,7 @@ public class SWTGraphics extends Graphics {
 		if (pattern != null) {
 			initTransform(true);
 		}
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setBackgroundPattern(pattern);
 	}
 
@@ -1084,6 +1101,7 @@ public class SWTGraphics extends Graphics {
 		initTransform(false);
 		if (((appliedState.graphicHints ^ currentState.graphicHints) & FILL_RULE_MASK) != 0) {
 			// If there is a pending change to the fill rule, apply it first.
+			// UNSUPPORTED - api is not implemented in RAP
 			// gc.setFillRule(((currentState.graphicHints & FILL_RULE_MASK) >>
 			// FILL_RULE_SHIFT)
 			// - FILL_RULE_WHOLE_NUMBER);
@@ -1091,6 +1109,7 @@ public class SWTGraphics extends Graphics {
 			// it works.
 			appliedState.graphicHints ^= FILL_RULE_MASK;
 		}
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setClipping(path);
 		appliedState.relativeClip = currentState.relativeClip = null;
 	}
@@ -1107,6 +1126,7 @@ public class SWTGraphics extends Graphics {
 		initTransform(false);
 		if (((appliedState.graphicHints ^ currentState.graphicHints) & FILL_RULE_MASK) != 0) {
 			// If there is a pending change to the fill rule, apply it first.
+			// UNSUPPORTED - api is not implemented in RAP
 			// gc.setFillRule(((currentState.graphicHints & FILL_RULE_MASK) >>
 			// FILL_RULE_SHIFT)
 			// - FILL_RULE_WHOLE_NUMBER);
@@ -1117,13 +1137,16 @@ public class SWTGraphics extends Graphics {
 		Rectangle clipping = currentState.relativeClip != null ? getClip(new Rectangle())
 				: new Rectangle();
 		if (!clipping.isEmpty()) {
+			// UNSUPPORTED - api is not implemented in RAP
 			// Path flatPath = new Path(path.getDevice(), path, 0.01f);
 			// PathData pathData = flatPath.getPathData();
 			// flatPath.dispose();
 			Region region = new Region(path.getDevice());
+			// UNSUPPORTED - api is not implemented in RAP
 			// loadPath(region, pathData.points, pathData.types);
 			region.intersect(new org.eclipse.swt.graphics.Rectangle(clipping.x,
 					clipping.y, clipping.width, clipping.height));
+			// UNSUPPORTED - api is not implemented in RAP
 			// gc.setClipping(region);
 			appliedState.relativeClip = currentState.relativeClip = null;
 			region.dispose();
@@ -1177,6 +1200,7 @@ public class SWTGraphics extends Graphics {
 		if (pattern != null) {
 			initTransform(true);
 		}
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setForegroundPattern(pattern);
 	}
 
@@ -1320,6 +1344,7 @@ public class SWTGraphics extends Graphics {
 				+ matrix[3] * vert, matrix[0] * horz + matrix[2], matrix[1]
 				* horz + matrix[3], matrix[4], matrix[5]);
 
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setTransform(transform);
 		elementsNeedUpdate = true;
 		// Can no longer track clipping changes
@@ -1342,6 +1367,7 @@ public class SWTGraphics extends Graphics {
 			checkGC();
 			transform.translate(dx, dy);
 			elementsNeedUpdate = true;
+			// UNSUPPORTED - api is not implemented in RAP
 			// gc.setTransform(transform);
 		} else {
 			translateX += dx;
@@ -1364,6 +1390,7 @@ public class SWTGraphics extends Graphics {
 		checkGC();
 		transform.translate(dx, dy);
 		elementsNeedUpdate = true;
+		// UNSUPPORTED - api is not implemented in RAP
 		// gc.setTransform(transform);
 		checkSharedClipping();
 		if (currentState.relativeClip != null)
@@ -1392,6 +1419,7 @@ public class SWTGraphics extends Graphics {
 			dashClone = new float[src.dash.length];
 			System.arraycopy(src.dash, 0, dashClone, 0, dashClone.length);
 		}
+		// UNSUPPORTED - api is not implemented in RAP
 		// return new LineAttributes(src.width, src.cap, src.join, src.style,
 		// dashClone, src.dashOffset, src.miterLimit);
 		return new LineAttributes(src.width, src.cap, src.join);
