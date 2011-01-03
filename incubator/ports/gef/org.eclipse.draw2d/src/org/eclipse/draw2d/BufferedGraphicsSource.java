@@ -14,14 +14,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.Caret;
 import org.eclipse.swt.widgets.Control;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
 class BufferedGraphicsSource implements GraphicsSource {
- 
+
 	private Image imageBuffer;
 	private GC imageGC;
 	private GC controlGC;
@@ -46,16 +44,17 @@ class BufferedGraphicsSource implements GraphicsSource {
 		if (inUse.isEmpty())
 			return;
 
-		boolean restoreCaret = false;
-		Canvas canvas = null;
-		if (control instanceof Canvas) {
-			canvas = (Canvas) control;
-			Caret caret = canvas.getCaret();
-			if (caret != null)
-				restoreCaret = caret.isVisible();
-			if (restoreCaret)
-				caret.setVisible(false);
-		}
+		// UNSUPPORTED - Caret is not implemented in the RAP API
+		// boolean restoreCaret = false;
+		// Canvas canvas = null;
+		// if (control instanceof Canvas) {
+		// canvas = (Canvas) control;
+		// Caret caret = canvas.getCaret();
+		// if (caret != null)
+		// restoreCaret = caret.isVisible();
+		// if (restoreCaret)
+		// caret.setVisible(false);
+		// }
 		/*
 		 * The imageBuffer may be null if double-buffering was not successful.
 		 */
@@ -72,8 +71,9 @@ class BufferedGraphicsSource implements GraphicsSource {
 		}
 		controlGC = null;
 
-		if (restoreCaret)
-			canvas.getCaret().setVisible(true);
+		// UNSUPPORTED - Caret is not implemented in the RAP API
+		// if (restoreCaret)
+		// canvas.getCaret().setVisible(true);
 	}
 
 	/**
@@ -89,14 +89,15 @@ class BufferedGraphicsSource implements GraphicsSource {
 		if (inUse.isEmpty())
 			return null;
 
-		  /*
-		   * Bugzilla 53632 - Attempts to create large images on some platforms
-		   * will fail. When this happens, do not use double-buffering for 
-		   * painting.
-		   */
+		/*
+		 * Bugzilla 53632 - Attempts to create large images on some platforms
+		 * will fail. When this happens, do not use double-buffering for
+		 * painting.
+		 */
 		try {
-            // UNSUPPORTED - bypass buffer creation since offscreen rendering is not possible in RAP
-//			imageBuffer = new Image(null, inUse.width, inUse.height);
+			// UNSUPPORTED - bypass buffer creation since offscreen rendering is
+			// not possible in RAP
+			// imageBuffer = new Image(null, inUse.width, inUse.height);
 		} catch (SWTError noMoreHandles) {
 			imageBuffer = null;
 		} catch (IllegalArgumentException tooBig) {
