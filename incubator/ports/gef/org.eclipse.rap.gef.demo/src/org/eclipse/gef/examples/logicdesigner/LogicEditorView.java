@@ -13,26 +13,21 @@
  *     Austin Riddle (Texas Center for Applied Technology) - 
  *                   initial demo implementation
  *****************************************************************************/
-package org.eclipse.gef.examples.flow.ui;
+package org.eclipse.gef.examples.logicdesigner;
 
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.gef.examples.flow.model.ActivityDiagram;
-import org.eclipse.rap.gef.demo.EditorView;
 import org.eclipse.rap.gef.demo.DirectEditorInput;
+import org.eclipse.rap.gef.demo.EditorView;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.osgi.framework.ServiceRegistration;
 
-public class FlowEditorView extends EditorView {
+public class LogicEditorView extends EditorView {
   
-  public FlowEditorView () {
+  public LogicEditorView () {
     super();
-    editor = new FlowEditor();
+    editor = new LogicEditor();
     init();
   }
   
@@ -40,8 +35,8 @@ public class FlowEditorView extends EditorView {
     try {
       IWorkbench workbench = PlatformUI.getWorkbench();
       DirectEditorInput input = new DirectEditorInput();
-      input.setName("Flow Example");
-      ((FlowEditor)editor).setInput(input);
+      input.setName("Logic Example");
+      ((LogicEditor)editor).setInput(input);
     } 
     catch (Exception e) {
       e.printStackTrace();

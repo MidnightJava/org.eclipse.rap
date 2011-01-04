@@ -40,6 +40,12 @@
             id="org.eclipse.rap.gef.demo.Application$FlowExampleView"
             name="Flow"
             restorable="true">
+      </view>
+      <view
+            class="org.eclipse.rap.gef.demo.Application$LogicExampleView"
+            id="org.eclipse.rap.gef.demo.Application$LogicExampleView"
+            name="Logic"
+            restorable="true">
       </view>      
    </extension>
    <extension
@@ -59,6 +65,16 @@
          <view
                closeable="false"
                id="org.eclipse.rap.gef.demo.Application$FlowExampleView"
+               minimized="false"
+               moveable="true"
+               relationship="stack"
+               relative="org.eclipse.rap.gef.demo.Application$Draw2DExampleView"
+               showTitle="true"
+               visible="true">
+         </view>
+         <view
+               closeable="false"
+               id="org.eclipse.rap.gef.demo.Application$LogicExampleView"
                minimized="false"
                moveable="true"
                relationship="stack"

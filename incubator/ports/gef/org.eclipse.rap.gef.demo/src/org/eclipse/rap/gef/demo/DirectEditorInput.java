@@ -24,7 +24,7 @@ import org.eclipse.ui.IPersistableElement;
  * @author Austin.Riddle
  *
  */
-public class TimelineEditorInput implements IEditorInput {
+public class DirectEditorInput implements IEditorInput {
 
     ActivityDiagram model = null;
     String name = "Activity Diagram Model";

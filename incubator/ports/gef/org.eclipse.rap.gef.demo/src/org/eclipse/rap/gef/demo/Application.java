@@ -30,6 +30,7 @@ import org.eclipse.draw2d.examples.scrollpane.ScrollPaneExample;
 import org.eclipse.draw2d.examples.tree.SimpleTreeExample;
 import org.eclipse.draw2d.examples.tree.TreeExample;
 import org.eclipse.gef.examples.flow.ui.FlowEditorView;
+import org.eclipse.gef.examples.logicdesigner.LogicEditorView;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -127,7 +128,12 @@ public class Application implements IEntryPoint
   
   public static class FlowExampleView extends FlowEditorView 
   {
-    
+    //further implementation coming    
+  }
+  
+  public static class LogicExampleView extends LogicEditorView 
+  {
+   //further implementation coming 
   }
   
 }
