@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.ScrollBar;
 
 import org.eclipse.core.runtime.Assert;
 
@@ -337,10 +338,16 @@ public class RulerComposite extends Composite {
 			}
 		};
 		addListener(SWT.Resize, layoutListener);
-		editor.getHorizontalBar().addListener(SWT.Show, layoutListener);
-		editor.getHorizontalBar().addListener(SWT.Hide, layoutListener);
-		editor.getVerticalBar().addListener(SWT.Show, layoutListener);
-		editor.getVerticalBar().addListener(SWT.Hide, layoutListener);
+		ScrollBar horizontalBar = editor.getHorizontalBar();
+		if (horizontalBar != null) {
+			horizontalBar.addListener(SWT.Show, layoutListener);
+			horizontalBar.addListener(SWT.Hide, layoutListener);
+		}
+		ScrollBar verticalBar = editor.getVerticalBar();
+		if (verticalBar != null) {
+			verticalBar.addListener(SWT.Show, layoutListener);
+			verticalBar.addListener(SWT.Hide, layoutListener);
+		}
 
 		propertyListener = new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
