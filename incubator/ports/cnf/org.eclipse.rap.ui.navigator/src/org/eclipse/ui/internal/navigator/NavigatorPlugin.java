@@ -105,7 +105,7 @@ public class NavigatorPlugin extends AbstractUIPlugin {
 	private static final LogJob logJob = new LogJob(); 
 
 	/** The id of the orge.eclipse.ui.navigator plugin. */
-	public static String PLUGIN_ID = "org.eclipse.ui.navigator"; //$NON-NLS-1$
+	public static String PLUGIN_ID = "org.eclipse.rap.ui.navigator"; //$NON-NLS-1$
 
 	private BundleListener bundleListener = new BundleListener() {
 		public void bundleChanged(BundleEvent event) {
