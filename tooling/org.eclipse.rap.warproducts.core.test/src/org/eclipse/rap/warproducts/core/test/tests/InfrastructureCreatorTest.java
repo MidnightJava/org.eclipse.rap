@@ -16,7 +16,7 @@ import junit.framework.TestCase;
 import org.eclipse.core.resources.*;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.rap.warproducts.core.InfrastructreCreator;
+import org.eclipse.rap.warproducts.core.InfrastructureCreator;
 
 
 public class InfrastructureCreatorTest extends TestCase {
@@ -56,20 +56,20 @@ public class InfrastructureCreatorTest extends TestCase {
   public void testRootPath() {    
     IProject project 
       = ResourcesPlugin.getWorkspace().getRoot().getProject( TEMP_PROJECT );
-    InfrastructreCreator icreator = new InfrastructreCreator( project );
+    InfrastructureCreator icreator = new InfrastructureCreator( project );
     IContainer root = icreator.getContainer();    
     assertEquals( tempDir.getParent(), root );
   }
   
   public void testCreateWebInf() throws CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir );
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir );
     icreator.createWebInf();    
     IFolder webInf = tempDir.getFolder( "WEB-INF" );
     assertTrue( webInf.exists() );
   }
   
   public void testCreateWebInfWithClosedProject() throws CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir );
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir );
     IProject project = ( IProject )tempDir.getParent();
     project.close( null );
     boolean exceptionThrown = false;
@@ -82,13 +82,13 @@ public class InfrastructureCreatorTest extends TestCase {
   }
   
   public void testCreateWebXml() throws IOException, CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir);
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir);
     icreator.createWebXml();
     IFolder webInf = tempDir.getFolder( "WEB-INF" );
     IFile webXml = webInf.getFile( "web.xml" );
     assertTrue( webXml.exists() );
     StringBuffer webxmlContent = readFile( webXml.getContents( true ) );
-    ClassLoader classLoader = InfrastructreCreator.class.getClassLoader();
+    ClassLoader classLoader = InfrastructureCreator.class.getClassLoader();
     InputStream resourceStream 
       = classLoader.getResourceAsStream( File.separator + "web.xml" );
     StringBuffer expectedContent = readFile( resourceStream );
@@ -96,7 +96,7 @@ public class InfrastructureCreatorTest extends TestCase {
   }
   
   public void testGetWebXmlPath() throws CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir);
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir);
     icreator.createWebXml();
     IFolder webInf = tempDir.getFolder( "WEB-INF" );
     IFile webXml = webInf.getFile( "web.xml" );
@@ -105,13 +105,13 @@ public class InfrastructureCreatorTest extends TestCase {
   }
   
   public void testCreateLaunchIni() throws IOException, CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir );
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir );
     icreator.createLaunchIni();
     IFolder webInf = tempDir.getFolder( "WEB-INF" );
     IFile launchIni = webInf.getFile( "launch.ini" );
     assertTrue( launchIni.exists() );
     StringBuffer actualLaunchIni = readFile( launchIni.getContents() );
-    ClassLoader classLoader = InfrastructreCreator.class.getClassLoader();
+    ClassLoader classLoader = InfrastructureCreator.class.getClassLoader();
     InputStream tempLaunchIni 
       = classLoader.getResourceAsStream( File.separator + "launch.ini" );
     StringBuffer expectedLaunchIni = readFile( tempLaunchIni );
@@ -119,7 +119,7 @@ public class InfrastructureCreatorTest extends TestCase {
   }
   
   public void testGetLaunchIniPath() throws CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir );
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir );
     icreator.createLaunchIni();
     IFolder webInf = tempDir.getFolder( "WEB-INF" );
     IFile launchIni = webInf.getFile( "launch.ini" );
@@ -128,7 +128,7 @@ public class InfrastructureCreatorTest extends TestCase {
   }
   
   public void testCreateLaunchIniWithDeletedFolder() throws CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir );
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir );
     tempDir.delete( true, null );
     boolean exceptionThrown = false;
     try {
@@ -140,7 +140,7 @@ public class InfrastructureCreatorTest extends TestCase {
   }
   
   public void testCreateWebXmlWithDeletedFolder() throws CoreException {
-    InfrastructreCreator icreator = new InfrastructreCreator( tempDir );
+    InfrastructureCreator icreator = new InfrastructureCreator( tempDir );
     tempDir.delete( true, null );
     boolean exceptionThrown = false;
     try {

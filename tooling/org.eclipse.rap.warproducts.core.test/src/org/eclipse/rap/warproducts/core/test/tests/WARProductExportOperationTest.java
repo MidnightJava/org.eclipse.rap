@@ -175,7 +175,7 @@ public class WARProductExportOperationTest extends TestCase {
     final IFolder folder )
     throws Exception
   {
-    InfrastructreCreator creator = new InfrastructreCreator( folder );
+    InfrastructureCreator creator = new InfrastructureCreator( folder );
     WARProductModel model = new WARProductModel();
     model.load( getTestWarProduct(), false );
     IWARProduct product = ( IWARProduct )model.getProduct();
