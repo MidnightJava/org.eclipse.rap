@@ -15,7 +15,7 @@ import org.eclipse.core.resources.*;
 import org.eclipse.core.runtime.*;
 
 
-public class InfrastructreCreator {
+public class InfrastructureCreator {
 
   private static final String WEB_INF_PATH = "WEB-INF"; //$NON-NLS-1$
   private static final String WEB_XML_TEMPLATE_PATH 
@@ -27,7 +27,7 @@ public class InfrastructreCreator {
   private IContainer rootFolder;
   private IFolder webInfDir;
 
-  public InfrastructreCreator( final IContainer tempDir ) {
+  public InfrastructureCreator( final IContainer tempDir ) {
     this.rootFolder = tempDir;
   }
 

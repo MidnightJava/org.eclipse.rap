@@ -11,38 +11,15 @@ package org.eclipse.rap.warproducts.core;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.pde.core.IModelChangeProvider;
-import org.eclipse.pde.core.IModelChangedEvent;
-import org.eclipse.pde.core.ModelChangedEvent;
-import org.eclipse.pde.core.plugin.IPluginModelBase;
-import org.eclipse.pde.core.plugin.ModelEntry;
-import org.eclipse.pde.core.plugin.PluginRegistry;
-import org.eclipse.pde.internal.core.iproduct.IAboutInfo;
-import org.eclipse.pde.internal.core.iproduct.IArgumentsInfo;
-import org.eclipse.pde.internal.core.iproduct.IConfigurationFileInfo;
-import org.eclipse.pde.internal.core.iproduct.IIntroInfo;
-import org.eclipse.pde.internal.core.iproduct.IJREInfo;
-import org.eclipse.pde.internal.core.iproduct.ILauncherInfo;
-import org.eclipse.pde.internal.core.iproduct.ILicenseInfo;
-import org.eclipse.pde.internal.core.iproduct.IPluginConfiguration;
-import org.eclipse.pde.internal.core.iproduct.IProduct;
-import org.eclipse.pde.internal.core.iproduct.IProductFeature;
-import org.eclipse.pde.internal.core.iproduct.IProductModel;
-import org.eclipse.pde.internal.core.iproduct.IProductPlugin;
-import org.eclipse.pde.internal.core.iproduct.ISplashInfo;
-import org.eclipse.pde.internal.core.iproduct.IWindowImages;
+import org.eclipse.pde.core.*;
+import org.eclipse.pde.core.plugin.*;
+import org.eclipse.pde.internal.core.iproduct.*;
 import org.eclipse.pde.internal.core.util.PDEXMLHelper;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 
 public class WARProduct implements IWARProduct {
@@ -569,6 +546,20 @@ public class WARProduct implements IWARProduct {
 
   public IProduct getProduct() {
     return delegate.getProduct();
+  }
+
+  public void addConfigurationProperties( IConfigurationProperty[] properties )
+  {
+    delegate.addConfigurationProperties( properties );
+  }
+
+  public void removeConfigurationProperties( IConfigurationProperty[] properties )
+  {
+    delegate.removeConfigurationProperties( properties );
+  }
+
+  public IConfigurationProperty[] getConfigurationProperties() {
+    return delegate.getConfigurationProperties();
   }
 
 }
