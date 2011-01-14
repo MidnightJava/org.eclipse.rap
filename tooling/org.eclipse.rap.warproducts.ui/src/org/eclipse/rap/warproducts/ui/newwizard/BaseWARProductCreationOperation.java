@@ -47,7 +47,7 @@ public class BaseWARProductCreationOperation
   
   protected void initializeProduct( final IProduct product ) {
     super.initializeProduct( product );
-    InfrastructreCreator creator = new InfrastructreCreator( productParent );
+    InfrastructureCreator creator = new InfrastructureCreator( productParent );
     createWebInfContent( creator );
     if( product instanceof WARProduct ) {
       WARProduct warProduct = ( WARProduct )product;
@@ -59,7 +59,7 @@ public class BaseWARProductCreationOperation
     }
   }
 
-  protected void createWebInfContent( final InfrastructreCreator creator )
+  protected void createWebInfContent( final InfrastructureCreator creator )
   {
     try {
       creator.createWebInf();

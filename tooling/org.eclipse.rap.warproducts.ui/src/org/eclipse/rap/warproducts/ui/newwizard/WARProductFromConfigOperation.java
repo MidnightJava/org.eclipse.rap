@@ -42,7 +42,7 @@ public class WARProductFromConfigOperation
   
   protected void initializeProduct( final IProduct product ) {
     internalInitializeProduct( product );
-    InfrastructreCreator creator = new InfrastructreCreator( productParent );
+    InfrastructureCreator creator = new InfrastructureCreator( productParent );
     createWebInfContent( creator );
     if( product instanceof WARProduct ) {
       WARProduct warProduct = ( WARProduct )product;
