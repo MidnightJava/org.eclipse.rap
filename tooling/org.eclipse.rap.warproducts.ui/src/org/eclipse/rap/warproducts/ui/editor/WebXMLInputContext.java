@@ -50,6 +50,7 @@ public class WebXMLInputContext extends XMLInputContext {
     IDocument document = getDocumentProvider().getDocument( input );
     boolean isReconciling = input instanceof IFileEditorInput;
     WebXMLModel model = new WebXMLModel( document, isReconciling );
+    model.load();
     if( isReconciling ) {
       IFile file = ( ( IFileEditorInput ) input ).getFile();
       model.setUnderlyingResource( file );
@@ -57,5 +58,4 @@ public class WebXMLInputContext extends XMLInputContext {
     }
     return model;
   }
-  
 }

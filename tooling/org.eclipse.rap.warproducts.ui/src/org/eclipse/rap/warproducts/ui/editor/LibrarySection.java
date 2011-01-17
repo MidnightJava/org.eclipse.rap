@@ -72,8 +72,8 @@ public class LibrarySection extends TableSection
     public Image getImage( final Object element ) {
       Image result = null;
       if( element instanceof IPath ) {
-        PDELabelProvider pdeLabelProvider 
-          = PDEPlugin.getDefault().getLabelProvider();
+        PDEPlugin pdePlugin = PDEPlugin.getDefault();
+        PDELabelProvider pdeLabelProvider = pdePlugin.getLabelProvider();
         result = pdeLabelProvider.get( PDEPluginImages.DESC_JAR_LIB_OBJ );
       } else {
         result = super.getImage( element );
@@ -243,13 +243,11 @@ public class LibrarySection extends TableSection
     }
   }
 
-
-
   private void handleRemoveLibrary() {
-    IStructuredSelection sel 
+    IStructuredSelection selection 
       = ( IStructuredSelection )libraryTable.getSelection();
-    if( sel.size() > 0 ) {
-      Object[] objects = sel.toArray();
+    if( selection.size() > 0 ) {
+      Object[] objects = selection.toArray();
       IPath[] pathes = new IPath[ objects.length ];
       System.arraycopy( objects, 0, pathes, 0, objects.length );
       getProduct().removeLibraries( pathes );
@@ -327,5 +325,18 @@ public class LibrarySection extends TableSection
     }
     super.dispose();
   }
-  
+
+  public boolean selectReveal( final Object object ) {
+    boolean result = false;
+    IPath[] libraries = getProduct().getLibraries();
+    for( int i = 0; i < libraries.length; i++ ) {
+      if( libraries[ i ] == object ) {
+        result = true;
+      }
+    }
+    if( result ) {
+      libraryTable.setSelection( new StructuredSelection( object ), true );
+    }
+    return result;
+  }
 }

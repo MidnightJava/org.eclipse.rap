@@ -48,6 +48,7 @@ public class Messages extends NLS {
   public static String SelectionPageTitle;
   public static String NewWARProductError;
   public static String LoadWARProductError;
+  public static String OutlinePluginsTitle;
   static {
     // initialize resource bundle
     NLS.initializeMessages( BUNDLE_NAME, Messages.class );

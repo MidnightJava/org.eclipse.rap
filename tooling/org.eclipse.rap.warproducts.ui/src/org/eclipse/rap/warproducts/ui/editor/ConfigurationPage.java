@@ -7,6 +7,7 @@
  ******************************************************************************/
 package org.eclipse.rap.warproducts.ui.editor;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.pde.internal.ui.PDELabelProvider;
 import org.eclipse.pde.internal.ui.PDEPlugin;
 import org.eclipse.pde.internal.ui.PDEPluginImages;
@@ -28,6 +29,7 @@ public class ConfigurationPage extends PDEFormPage {
   public static final String PLUGIN_ID = "plugin-dependencies"; //$NON-NLS-1$
   public static final String FEATURE_ID = "feature-dependencies"; //$NON-NLS-1$
   private PluginSection pluginSection = null;
+  private LibrarySection librarySection = null;
 
   public ConfigurationPage( final FormEditor editor, final boolean useFeatures )
   {
@@ -58,7 +60,8 @@ public class ConfigurationPage extends PDEFormPage {
     body.setLayout( FormLayoutFactory.createFormGridLayout( false, 1 ) );
     pluginSection = new PluginSectionExtended( this, body );
     managedForm.addPart( pluginSection );
-    managedForm.addPart( new LibrarySection( this, body ) );
+    librarySection = new LibrarySection( this, body );
+    managedForm.addPart( librarySection );
   }
 
   public boolean includeOptionalDependencies() {
@@ -69,4 +72,13 @@ public class ConfigurationPage extends PDEFormPage {
     return result;
   }
   
+  public boolean selectReveal( final Object object ) {
+    boolean result = false;
+    if( object instanceof IPath ) {
+      result = librarySection.selectReveal( object );
+    } else {
+      result = super.selectReveal( object );
+    }
+    return result;
+  }
 }

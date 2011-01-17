@@ -7,47 +7,114 @@
  *******************************************************************************/
 package org.eclipse.rap.warproducts.ui.editor;
 
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.ViewerComparator;
-import org.eclipse.pde.internal.ui.editor.ISortableContentOutlinePage;
+import org.eclipse.jface.viewers.*;
+import org.eclipse.pde.internal.core.text.plugin.DocumentGenericNode;
+import org.eclipse.pde.internal.ui.*;
 import org.eclipse.pde.internal.ui.editor.PDEFormEditor;
 import org.eclipse.pde.internal.ui.editor.XMLSourcePage;
-import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.pde.internal.ui.elements.DefaultContentProvider;
+import org.eclipse.swt.graphics.Image;
 
 public class WebXMLSourcePage extends XMLSourcePage {
 
-  public WebXMLSourcePage( final PDEFormEditor editor, 
-                           final String id, 
-                           final String title ) {
+  private ITreeContentProvider contentProvider;
+  private ILabelProvider labelProvider;
+
+  public WebXMLSourcePage( final PDEFormEditor editor,
+                           final String id,
+                           final String title )
+  {
     super( editor, id, title );
   }
 
   public boolean isQuickOutlineEnabled() {
-    return false;
+    return true;
   }
 
   public ILabelProvider createOutlineLabelProvider() {
-    return null;
+    if( labelProvider == null ) {
+      labelProvider = new WebXmlLabelProvider();
+    }
+    return labelProvider;
   }
 
   public ITreeContentProvider createOutlineContentProvider() {
-    return null;
+    if( contentProvider == null ) {
+      contentProvider = new WebXmlContentProvider();
+    }
+    return contentProvider;
   }
 
   public ViewerComparator createOutlineComparator() {
-    return null;
+    return new ViewerComparator();
   }
 
   public void updateSelection( final Object object ) {
-  }
-
-  public IContentOutlinePage createContentOutlinePage() {
-    return null;
-  }
-
-  protected ISortableContentOutlinePage createOutlinePage() {
-    return new WARProductOutlinePage( ( PDEFormEditor )getEditor() );
+    if( object instanceof DocumentGenericNode ) {
+      DocumentGenericNode node = ( DocumentGenericNode )object;
+      selectAndReveal( node.getOffset(), node.getLength() );
+    }
   }
   
+  private static final class WebXmlLabelProvider extends LabelProvider {
+
+    private PDELabelProvider pdeLabelProvider = PDEPlugin.getDefault()
+      .getLabelProvider();
+
+    public String getText( final Object element ) {
+      String result = "";//$NON-NLS-1$
+      if( element instanceof DocumentGenericNode ) {
+        DocumentGenericNode node = ( DocumentGenericNode )element;
+        result = node.getXMLTagName();
+      } else {
+        result = super.getText( element );
+      }
+      return result;
+    }
+
+    public Image getImage( final Object element ) {
+      Image result = null;
+      if( element instanceof DocumentGenericNode ) {
+        result = pdeLabelProvider.get( PDEPluginImages.DESC_XML_ELEMENT_OBJ );
+      }
+      return result;
+    }
+  }
+  private class WebXmlContentProvider extends DefaultContentProvider 
+    implements ITreeContentProvider
+  {
+
+    public Object[] getElements( final Object inputElement ) {
+      Object[] result = new Object[ 0 ];
+      if( inputElement instanceof WebXMLModel ) {
+        WebXMLModel model = ( WebXMLModel )inputElement;
+        Object documentRoot = model.getDocumentRoot();
+        result = new Object[ 1 ];
+        result[ 0 ] = documentRoot;
+      }
+      return result;
+    }
+
+    public Object[] getChildren( final Object element ) {
+      Object[] result = new Object[ 0 ];
+      if( element instanceof DocumentGenericNode ) {
+        DocumentGenericNode node = ( DocumentGenericNode )element;
+        result = node.getChildNodes();
+      }
+      return result;
+    }
+
+    public Object getParent( final Object element ) {
+      Object result = null;
+      if( element instanceof DocumentGenericNode ) {
+        DocumentGenericNode node = ( DocumentGenericNode )element;
+        result = node.getParentNode();
+      }
+      return result;
+    }
+
+    public boolean hasChildren( final Object element ) {
+      return getChildren( element ).length > 0;
+    }
+  }
 }
