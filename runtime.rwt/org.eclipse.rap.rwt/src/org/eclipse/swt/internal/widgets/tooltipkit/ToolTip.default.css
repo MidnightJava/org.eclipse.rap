@@ -11,7 +11,7 @@
 
 /* ToolTip default theme */
 
-ToolTipWidget {
+ToolTip {
   cursor: default;
   border: 1px solid #a4a4a4;
   border-radius: 5px 5px 5px 5px;
@@ -24,24 +24,24 @@ ToolTipWidget {
   animation: fadeIn 200ms linear, fadeOut 600ms ease-out;
 }
 
-ToolTipWidget-Image[ICON_ERROR] {
+ToolTip-Image[ICON_ERROR] {
   background-image: url( resource/widget/rap/tooltip/error.png );
 }
 
-ToolTipWidget-Image[ICON_INFORMATION] {
+ToolTip-Image[ICON_INFORMATION] {
   background-image: url( resource/widget/rap/tooltip/information.png );
 }
 
-ToolTipWidget-Image[ICON_WARNING] {
+ToolTip-Image[ICON_WARNING] {
   background-image: url( resource/widget/rap/tooltip/warning.png );
 }
 
-ToolTipWidget-Text {
+ToolTip-Text {
   color: #a7a6aa;
   font: bold 14px Verdana, "Lucida Sans", Arial, Helvetica, sans-serif;
 }
 
-ToolTipWidget-Message {
+ToolTip-Message {
   color: #a7a6aa;
   font: 12px Verdana, "Lucida Sans", Arial, Helvetica, sans-serif;
 }
