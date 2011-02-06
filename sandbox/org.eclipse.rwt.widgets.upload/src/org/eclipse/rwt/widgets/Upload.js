@@ -155,7 +155,7 @@ qx.Class.define( "org.eclipse.rwt.widgets.Upload", {
             }                
             
             this.setLastFileUploaded(filename);
-            // Stefan Röck: The field shouldn't be cleaned automatically, this can
+            // Stefan RÃ¶ck: The field shouldn't be cleaned automatically, this can
             // still be achvied by calling reset()
             //this._uploadField.setValue("");
             //if( this._showProgress ) {
