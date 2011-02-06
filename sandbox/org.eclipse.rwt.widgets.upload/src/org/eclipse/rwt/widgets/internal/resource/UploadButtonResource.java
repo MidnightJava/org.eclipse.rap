@@ -27,7 +27,7 @@ public class UploadButtonResource implements IResource {
    * @return Resource <code>Charset</code>.
    */
   public final String getCharset() {
-    return "ISO-8859-1";
+    return "UTF-8";
   }
 
   /**

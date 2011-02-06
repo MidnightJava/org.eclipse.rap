@@ -18,7 +18,7 @@ import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
 public class UploadFormResource implements IResource {
 
   public String getCharset() {
-    return "ISO-8859-1";
+    return "UTF-8";
   }
 
   public ClassLoader getLoader() {
