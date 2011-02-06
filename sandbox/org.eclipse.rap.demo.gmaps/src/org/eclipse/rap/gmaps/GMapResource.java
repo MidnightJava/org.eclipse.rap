@@ -1,6 +1,6 @@
 package org.eclipse.rap.gmaps;
 /*******************************************************************************
- * Copyright (c) 2002-2008 Innoopract Informationssysteme GmbH.
+ * Copyright (c) 2002, 2011 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@ package org.eclipse.rap.gmaps;
  * 
  * Contributors:
  *     Innoopract Informationssysteme GmbH - initial API and implementation
+ *     EclipseSource - ongoing implementation
  ******************************************************************************/
 import org.eclipse.rwt.resources.IResource;
 import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
@@ -15,7 +16,7 @@ import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
 public final class GMapResource implements IResource {
 
   public String getCharset() {
-    return "ISO-8859-1";
+    return "UTF-8";
   }
 
   public ClassLoader getLoader() {

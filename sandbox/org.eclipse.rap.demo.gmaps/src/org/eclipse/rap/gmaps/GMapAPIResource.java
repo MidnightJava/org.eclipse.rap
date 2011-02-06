@@ -1,16 +1,19 @@
-package org.eclipse.rap.gmaps;
 /*******************************************************************************
- * Copyright (c) 2002-2008 Innoopract Informationssysteme GmbH.
+ * Copyright (c) 2002, 2011 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Innoopract Informationssysteme GmbH - initial API and implementation
+ *     EclipseSource - ongoing development
  ******************************************************************************/
+package org.eclipse.rap.gmaps;
+
 import org.eclipse.rwt.resources.IResource;
 import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
+
 
 public final class GMapAPIResource implements IResource {
 
@@ -19,11 +22,11 @@ public final class GMapAPIResource implements IResource {
   private static final String KEY_LOCALHOST
     = "ABQIAAAAjE6itH-9WA-8yJZ7sZwmpRQz5JJ2zPi3YI9JDWBFF"
     + "6NSsxhe4BSfeni5VUSx3dQc8mIEknSiG9EwaQ";
-  
+
   private String location;
 
   public String getCharset() {
-    return "ISO-8859-1";
+    return "UTF-8";
   }
 
   public ClassLoader getLoader() {
