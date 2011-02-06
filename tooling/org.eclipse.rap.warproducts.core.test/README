@@ -1,8 +1,8 @@
-The WAR Product bundles has moved to the Eclipse Libra Project. With this
-movement the bundle namespaces has also changed from org.eclipse.rap* to
-org.eclipse.libra*.
+The WAR Product bundles have moved to the Eclipse Libra Project.
+With this move the bundle namespaces have also changed from org.eclipse.rap.*
+to org.eclipse.libra.*.
 
 Please clone the Libra git repository to get the new sources:
 git://git.eclipse.org/gitroot/libra/org.eclipse.libra.git
 ssh://git.eclipse.org/gitroot/libra/org.eclipse.libra.git
-http://git.eclipse.org/gitroot/libra/org.eclipse.libra.git 
+http://git.eclipse.org/gitroot/libra/org.eclipse.libra.git
