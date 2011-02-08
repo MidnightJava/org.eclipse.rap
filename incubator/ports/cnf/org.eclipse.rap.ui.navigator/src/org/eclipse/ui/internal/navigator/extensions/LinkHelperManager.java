@@ -24,7 +24,7 @@ import org.eclipse.ui.navigator.INavigatorContentService;
 
 /**
  * @since 3.2
- * 
+ *
  */
 public class LinkHelperManager {
 
@@ -48,7 +48,7 @@ public class LinkHelperManager {
 	/**
 	 * Return the link helper descriptors for a given selection and content
 	 * service.
-	 * 
+	 *
 	 * @param anObject
 	 *            An object from the viewer.
 	 * @param aContentService
@@ -82,7 +82,7 @@ public class LinkHelperManager {
 	/**
 	 * Return the link helper descriptors for a given selection and content
 	 * service.
-	 * 
+	 *
 	 * @param anInput
 	 *            The input of the active viewer.
 	 * @param aContentService
@@ -123,7 +123,7 @@ public class LinkHelperManager {
 			ILinkHelperExtPtConstants {
 
 		private LinkHelperRegistry() {
-			super(NavigatorPlugin.PLUGIN_ID, LINK_HELPER);
+			super(NavigatorPlugin.NAVIGATOR_PLUGIN_ID, LINK_HELPER);
 		}
 
 		public boolean readElement(final IConfigurationElement element) {

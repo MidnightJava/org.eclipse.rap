@@ -29,7 +29,7 @@ public class NavigatorViewerDescriptorManager {
 	private static final NavigatorViewerDescriptorManager INSTANCE = new NavigatorViewerDescriptorManager();
 
 	private final Map viewerDescriptors = new HashMap();
-	
+
 	/**
 	 * @return The intialized singleton instance of the viewer descriptor
 	 *         registry.
@@ -40,7 +40,7 @@ public class NavigatorViewerDescriptorManager {
 
 	protected NavigatorViewerDescriptorManager() {
 		new NavigatorViewerDescriptorRegistry().readRegistry();
-		
+
 		Iterator it = viewerDescriptors.values().iterator();
 		while (it.hasNext()) {
 			NavigatorViewerDescriptor desc = (NavigatorViewerDescriptor) it.next();
@@ -52,7 +52,7 @@ public class NavigatorViewerDescriptorManager {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param aViewerId
 	 *            The viewer id for the viewer configuration
 	 * @return The viewer descriptor for the given viewer id.
@@ -83,7 +83,7 @@ public class NavigatorViewerDescriptorManager {
 			implements IViewerExtPtConstants {
 
 		protected NavigatorViewerDescriptorRegistry() {
-			super(NavigatorPlugin.PLUGIN_ID, TAG_VIEWER);
+			super(NavigatorPlugin.NAVIGATOR_PLUGIN_ID, TAG_VIEWER);
 		}
 
 		protected boolean readElement(IConfigurationElement element) {
@@ -94,11 +94,11 @@ public class NavigatorViewerDescriptorManager {
 				String inherit = element.getAttribute(ATT_INHERIT_BINDINGS_FROM_VIEWER);
 				if (inherit != null)
 					descriptor.setInheritBindingsFromViewer(inherit);
-				
+
 				String helpContext = element.getAttribute(ATT_HELP_CONTEXT);
 				if (helpContext != null)
 					descriptor.setHelpContext(helpContext);
-				
+
 				String attPopupMenuId = element.getAttribute(ATT_POPUP_MENU_ID);
 				IConfigurationElement[] tagPopupMenu = element
 						.getChildren(TAG_POPUP_MENU);
@@ -196,10 +196,10 @@ public class NavigatorViewerDescriptorManager {
 			}
 			return false;
 		}
-		
+
 		public void readRegistry() {
 			IExtensionRegistry registry = Platform.getExtensionRegistry();
-			IExtensionPoint point = registry.getExtensionPoint(NavigatorPlugin.PLUGIN_ID, TAG_VIEWER);
+			IExtensionPoint point = registry.getExtensionPoint(NavigatorPlugin.NAVIGATOR_PLUGIN_ID, TAG_VIEWER);
 			if (point == null) {
 				return;
 			}

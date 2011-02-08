@@ -16,9 +16,9 @@ import org.eclipse.ui.internal.navigator.NavigatorPlugin;
 /**
  * Provides a common superclass for all consumers of the
  * <b>org.eclipse.ui.navigator.navigatorContent</b> extension point.
- * 
+ *
  * @since 3.2
- * 
+ *
  */
 public class NavigatorContentRegistryReader extends RegistryReader implements
 		INavigatorContentExtPtConstants {
@@ -27,7 +27,7 @@ public class NavigatorContentRegistryReader extends RegistryReader implements
 			.getInstance();
 
 	protected NavigatorContentRegistryReader() {
-		super(NavigatorPlugin.PLUGIN_ID, TAG_NAVIGATOR_CONTENT);
+		super(NavigatorPlugin.NAVIGATOR_PLUGIN_ID, TAG_NAVIGATOR_CONTENT);
 	}
 
 	protected boolean readElement(IConfigurationElement element) {
