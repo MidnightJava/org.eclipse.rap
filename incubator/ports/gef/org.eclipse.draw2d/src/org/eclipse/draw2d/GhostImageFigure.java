@@ -63,9 +63,7 @@ public class GhostImageFigure extends Figure {
 		Image offscreenImage = new Image(Display.getCurrent(), new ImageData(
 				sourceFigureRelativePrecisionBounds.width,
 				sourceFigureRelativePrecisionBounds.height, 32,
-				new PaletteData(127, 127, 127)),
-				sourceFigureRelativePrecisionBounds.width,
-				sourceFigureRelativePrecisionBounds.height);
+				new PaletteData(127, 127, 127)));
 
 		// UNSUPPORTED - image constructor not implemented in RAP
 		// GC gc = new GC(offScreenImage);
