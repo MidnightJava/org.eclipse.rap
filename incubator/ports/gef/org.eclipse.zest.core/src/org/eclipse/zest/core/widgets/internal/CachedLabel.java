@@ -198,8 +198,9 @@ public abstract class CachedLabel extends Label {
 
 			// @tag TODO : Dispose of the image properly
 			//ZestPlugin.getDefault().addImage(cachedImage.toString(), cachedImage);
-
-			GC gc = new GC(cachedImage);
+//			   UNSUPPORTED - image constructor not implemented in RAP
+//			GC gc = new GC(cachedImage);
+			GC gc = new GC(cachedImage.getDevice());
 
 			Graphics graphics2 = new SWTGraphics(gc);
 			graphics2.setBackgroundColor(getBackgroundTextColor());
