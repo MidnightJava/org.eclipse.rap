@@ -59,7 +59,7 @@ public class GhostImageFigure extends Figure {
 
 		Rectangle sourceFigureRelativePrecisionBounds = new PrecisionRectangle(
 				source.getBounds().getCopy());
-        // Create image using RAP constructors.
+		// Create image using RAP constructors.
 		Image offscreenImage = new Image(Display.getCurrent(), new ImageData(
 				sourceFigureRelativePrecisionBounds.width,
 				sourceFigureRelativePrecisionBounds.height, 32,
@@ -67,7 +67,9 @@ public class GhostImageFigure extends Figure {
 				sourceFigureRelativePrecisionBounds.width,
 				sourceFigureRelativePrecisionBounds.height);
 
-		GC gc = new GC(offscreenImage);
+		// UNSUPPORTED - image constructor not implemented in RAP
+		// GC gc = new GC(offScreenImage);
+		GC gc = new GC(offscreenImage.getDevice());
 		SWTGraphics swtGraphics = new SWTGraphics(gc);
 		swtGraphics.translate(-sourceFigureRelativePrecisionBounds.x,
 				-sourceFigureRelativePrecisionBounds.y);

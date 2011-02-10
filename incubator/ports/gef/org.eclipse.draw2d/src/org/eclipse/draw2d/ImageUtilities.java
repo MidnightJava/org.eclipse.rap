@@ -55,7 +55,9 @@ public class ImageUtilities {
 		FontMetrics metrics = FigureUtilities.getFontMetrics(font);
 		Dimension strSize = FigureUtilities.getStringExtents(string, font);
 		Image srcImage = new Image(display, strSize.width, metrics.getAscent());
-		GC gc = new GC(srcImage);
+		// UNSUPPORTED - image constructor not implemented in RAP
+		// GC gc = new GC(srcImage);
+		GC gc = new GC(srcImage.getDevice());
 		gc.setFont(font);
 		gc.setForeground(foreground);
 		gc.setBackground(background);

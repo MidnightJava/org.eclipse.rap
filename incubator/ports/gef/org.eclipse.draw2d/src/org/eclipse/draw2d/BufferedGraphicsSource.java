@@ -11,7 +11,6 @@
 package org.eclipse.draw2d;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.SWTError;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
@@ -20,7 +19,9 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 class BufferedGraphicsSource implements GraphicsSource {
 
-	private Image imageBuffer;
+	// UNSUPPORTED - bypass buffer handling since offscreen rendering is
+	// not possible in RAP
+	// private Image imageBuffer;
 	private GC imageGC;
 	private GC controlGC;
 	private Control control;
@@ -58,14 +59,16 @@ class BufferedGraphicsSource implements GraphicsSource {
 		/*
 		 * The imageBuffer may be null if double-buffering was not successful.
 		 */
-		if (imageBuffer != null) {
-			imageGC.dispose();
-			controlGC.drawImage(getImage(), 0, 0, inUse.width, inUse.height,
-					inUse.x, inUse.y, inUse.width, inUse.height);
-			imageBuffer.dispose();
-			imageBuffer = null;
-			imageGC = null;
-		}
+		// UNSUPPORTED - bypass buffer handling since offscreen rendering is
+		// not possible in RAP
+		// if (imageBuffer != null) {
+		// imageGC.dispose();
+		// controlGC.drawImage(getImage(), 0, 0, inUse.width, inUse.height,
+		// inUse.x, inUse.y, inUse.width, inUse.height);
+		// imageBuffer.dispose();
+		// imageBuffer = null;
+		// imageGC = null;
+		// }
 		if (controlGC != null) {
 			controlGC.dispose();
 		}
@@ -94,33 +97,35 @@ class BufferedGraphicsSource implements GraphicsSource {
 		 * will fail. When this happens, do not use double-buffering for
 		 * painting.
 		 */
-		try {
-			// UNSUPPORTED - bypass buffer creation since offscreen rendering is
-			// not possible in RAP
-			// imageBuffer = new Image(null, inUse.width, inUse.height);
-		} catch (SWTError noMoreHandles) {
-			imageBuffer = null;
-		} catch (IllegalArgumentException tooBig) {
-			imageBuffer = null;
-		}
+		// UNSUPPORTED - bypass buffer creation since offscreen rendering is
+		// not possible in RAP
+		// try {
+		// imageBuffer = new Image(null, inUse.width, inUse.height);
+		// } catch (SWTError noMoreHandles) {
+		// imageBuffer = null;
+		// } catch (IllegalArgumentException tooBig) {
+		// imageBuffer = null;
+		// }
 
 		controlGC = new GC(control, control.getStyle()
 				& (SWT.RIGHT_TO_LEFT | SWT.LEFT_TO_RIGHT));
 		Graphics graphics;
-		if (imageBuffer != null) {
-			imageGC = new GC(imageBuffer, control.getStyle()
-					& (SWT.RIGHT_TO_LEFT | SWT.LEFT_TO_RIGHT));
-			imageGC.setBackground(controlGC.getBackground());
-			imageGC.setForeground(controlGC.getForeground());
-			imageGC.setFont(controlGC.getFont());
-			imageGC.setLineStyle(controlGC.getLineStyle());
-			imageGC.setLineWidth(controlGC.getLineWidth());
-			imageGC.setXORMode(controlGC.getXORMode());
-			graphics = new SWTGraphics(imageGC);
-			graphics.translate(inUse.getLocation().negate());
-		} else {
-			graphics = new SWTGraphics(controlGC);
-		}
+		// UNSUPPORTED - bypass buffer handling since offscreen rendering is
+		// not possible in RAP
+		// if (imageBuffer != null) {
+		// imageGC = new GC(imageBuffer, control.getStyle()
+		// & (SWT.RIGHT_TO_LEFT | SWT.LEFT_TO_RIGHT));
+		// imageGC.setBackground(controlGC.getBackground());
+		// imageGC.setForeground(controlGC.getForeground());
+		// imageGC.setFont(controlGC.getFont());
+		// imageGC.setLineStyle(controlGC.getLineStyle());
+		// imageGC.setLineWidth(controlGC.getLineWidth());
+		// imageGC.setXORMode(controlGC.getXORMode());
+		// graphics = new SWTGraphics(imageGC);
+		// graphics.translate(inUse.getLocation().negate());
+		// } else {
+		graphics = new SWTGraphics(controlGC);
+		// }
 
 		graphics.setClip(inUse);
 		return graphics;
@@ -133,7 +138,10 @@ class BufferedGraphicsSource implements GraphicsSource {
 	 * @return the current image buffer
 	 */
 	protected Image getImage() {
-		return imageBuffer;
+		// UNSUPPORTED - bypass buffer handling since offscreen rendering is
+		// not possible in RAP
+		// return imageBuffer;
+		return null;
 	}
 
 	/**

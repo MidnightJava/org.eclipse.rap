@@ -314,10 +314,10 @@ public class SWTGraphics extends Graphics {
 				gc.setLineCap(lineAttributes.cap);
 				gc.setLineJoin(lineAttributes.join);
 				// UNSUPPORTED - api is not implemented in RAP
-//				gc.setLineStyle(lineAttributes.style);
-//				if (lineAttributes.dash != null) {
-//					gc.setLineDash(convertFloatArrayToInt(lineAttributes.dash));
-//				}
+				// gc.setLineStyle(lineAttributes.style);
+				// if (lineAttributes.dash != null) {
+				// gc.setLineDash(convertFloatArrayToInt(lineAttributes.dash));
+				// }
 			}
 			appliedState.lineAttributes = clone(lineAttributes);
 		}
@@ -889,25 +889,24 @@ public class SWTGraphics extends Graphics {
 			// - FILL_RULE_WHOLE_NUMBER);
 			// }
 
-			if ((changes & AA_MASK) != 0) {
-				gc.setAntialias(((hints & AA_MASK) >> AA_SHIFT)
-						- AA_WHOLE_NUMBER);
-			}
+			// if ((changes & AA_MASK) != 0) {
+			// gc.setAntialias(((hints & AA_MASK) >> AA_SHIFT)
+			// - AA_WHOLE_NUMBER);
+			// }
 
-			if ((changes & TEXT_AA_MASK) != 0) {
-				gc.setTextAntialias(((hints & TEXT_AA_MASK) >> TEXT_AA_SHIFT)
-						- AA_WHOLE_NUMBER);
-			}
+			// if ((changes & TEXT_AA_MASK) != 0) {
+			// gc.setTextAntialias(((hints & TEXT_AA_MASK) >> TEXT_AA_SHIFT)
+			// - AA_WHOLE_NUMBER);
+			// }
 
 			// If advanced was flagged, but none of the conditions which trigger
 			// advanced
 			// actually got applied, force advanced graphics on.
-			// UNSUPPORTED - api is not implemented in RAP
-			// if ((changes & ADVANCED_GRAPHICS_MASK) != 0) {
-			// if ((hints & ADVANCED_GRAPHICS_MASK) != 0 && !gc.getAdvanced()) {
-			// gc.setAdvanced(true);
-			// }
-			// }
+			if ((changes & ADVANCED_GRAPHICS_MASK) != 0) {
+				if ((hints & ADVANCED_GRAPHICS_MASK) != 0 && !gc.getAdvanced()) {
+					gc.setAdvanced(true);
+				}
+			}
 		}
 	}
 

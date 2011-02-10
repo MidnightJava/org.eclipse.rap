@@ -240,8 +240,10 @@ public class Thumbnail extends Figure implements UpdateListener {
 
 			if (targetSize.isEmpty())
 				return;
-
-			thumbnailGC = new GC(thumbnailImage,
+			// UNSUPPORTED - image constructor not implemented in RAP
+			// thumbnailGC = new GC(thumbnailImage,
+			// sourceFigure.isMirrored() ? SWT.RIGHT_TO_LEFT : SWT.NONE);
+			thumbnailGC = new GC(thumbnailImage.getDevice(),
 					sourceFigure.isMirrored() ? SWT.RIGHT_TO_LEFT : SWT.NONE);
 			thumbnailGraphics = new ScaledGraphics(new SWTGraphics(thumbnailGC));
 			thumbnailGraphics.scale(getScaleX());
@@ -271,11 +273,12 @@ public class Thumbnail extends Figure implements UpdateListener {
 				thumbnailImage.dispose();
 
 			if (!targetSize.isEmpty()) {
-				//Image creation as supported in RAP
+				// UNSUPPORTED - original image constructor not implemented in
+				// RAP
+				// Image creation as supported in RAP
 				thumbnailImage = new Image(Display.getDefault(), new ImageData(
 						targetSize.width, targetSize.height, 32,
-						new PaletteData(127, 127, 127)), targetSize.width,
-						targetSize.height);
+						new PaletteData(127, 127, 127)));
 				thumbnailImageSize = new Dimension(targetSize);
 			} else {
 				thumbnailImage = null;
