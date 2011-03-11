@@ -6,29 +6,35 @@
 		<display-name>Equinox Bridge Servlet</display-name>
 		<description>Equinox Bridge Servlet</description>
 		<servlet-class>org.eclipse.equinox.servletbridge.BridgeServlet</servlet-class>
-    
-    <!-- the OSGi console is useful for trouble shooting but will fill up your 
+
+    <!-- the OSGi console is useful for trouble shooting but will fill up your
              appserver log quickly, so deactivate on production use -->
     <!--
 		<init-param>
 			<param-name>commandline</param-name>
-			<param-value>-console</param-value>			
-		</init-param>		
+			<param-value>-console</param-value>
+		</init-param>
 		-->
-    
+
+    <!-- Set the windowing system for RAP -->
+    <init-param>
+      <param-name>commandline</param-name>
+      <param-value>-ws rap</param-value>
+    </init-param>
+
     <!-- Enable multi-language support for the extension registry -->
     <init-param>
       <param-name>commandline</param-name>
-      <param-value>-registryMultiLanguage</param-value>     
+      <param-value>-registryMultiLanguage</param-value>
     </init-param>
-    
+
     <!-- Framework Controls could be useful for testing purpose, but
          we disable it in RAP environment per default -->
 		<init-param>
 			<param-name>enableFrameworkControls</param-name>
-			<param-value>false</param-value>			
+			<param-value>false</param-value>
 		</init-param>
-		
+
 		<!--
 		  org.eclipse.equinox.servletbridge and the Servlet API are exported automatically to the underlying OSGi framework.
 		  The extendedFrameworkExports parameter allows the specification of additional java package exports.
@@ -37,17 +43,17 @@
 		  -->
 		<init-param>
 			<param-name>extendedFrameworkExports</param-name>
-			<param-value></param-value>			
+			<param-value></param-value>
 		</init-param>
 
-		<!-- 
+		<!--
 		  You can specify your own framework launcher here.
 		  The default is: org.eclipse.equinox.servletbridge.FrameworkLauncher
 		<init-param>
 			<param-name>frameworkLauncherClass</param-name>
 			<param-value>org.eclipse.equinox.servletbridge.FrameworkLauncher</param-value>
-		</init-param>	
-		-->		
+		</init-param>
+		-->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
@@ -55,10 +61,10 @@
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	<!--
-	  This is required if your application bundles expose JSPs. 
-	-->	
+	  This is required if your application bundles expose JSPs.
+	-->
 	<servlet-mapping>
 		<servlet-name>equinoxbridgeservlet</servlet-name>
 		<url-pattern>*.jsp</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 </web-app>
