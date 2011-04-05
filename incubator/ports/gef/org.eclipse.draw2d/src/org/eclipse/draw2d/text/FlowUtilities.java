@@ -12,7 +12,6 @@ package org.eclipse.draw2d.text;
 
 import com.ibm.icu.text.BreakIterator;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.graphics.TextLayout;
@@ -20,6 +19,7 @@ import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.TextUtilities;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * Utility class for FlowFigures.

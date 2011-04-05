@@ -13,22 +13,21 @@ package org.eclipse.draw2d;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.draw2d.rap.swt.graphics.LineAttributes;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontMetrics;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.LineAttributes;
 import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.graphics.Pattern;
 import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.graphics.TextLayout;
 import org.eclipse.swt.graphics.Transform;
 import org.eclipse.swt.widgets.Display;
-
-import org.eclipse.draw2d.geometry.PointList;
-import org.eclipse.draw2d.geometry.Rectangle;
 
 /**
  * A concrete implementation of <code>Graphics</code> using an SWT
@@ -794,7 +793,8 @@ public class SWTGraphics extends Graphics {
 		currentState.bgColor = appliedState.bgColor = gc.getBackground();
 		currentState.fgColor = appliedState.fgColor = gc.getForeground();
 		currentState.font = appliedState.font = gc.getFont();
-		currentState.lineAttributes = gc.getLineAttributes();
+		org.eclipse.swt.graphics.LineAttributes lineAttributes = gc.getLineAttributes();
+        currentState.lineAttributes = new LineAttributes(lineAttributes.width,lineAttributes.cap,lineAttributes.join);
 		appliedState.lineAttributes = clone(currentState.lineAttributes);
 		// UNSUPPORTED - api is not implemented in RAP
 		// currentState.graphicHints |= gc.getLineStyle();

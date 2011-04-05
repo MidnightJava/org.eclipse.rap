@@ -65,7 +65,9 @@ public class TextUtilities {
 	 */
 	public int getAscent(Font font) {
 		FontMetrics fm = FigureUtilities.getFontMetrics(font);
-		return fm.getHeight() - fm.getDescent();
+	    // UNSUPPORTED - getDescent() not implemented in RAP
+//		return fm.getHeight() - fm.getDescent();
+		return fm.getHeight();
 	}
 
 	/**
@@ -75,7 +77,9 @@ public class TextUtilities {
 	 * @return the font's descent
 	 */
 	public int getDescent(Font font) {
-		return FigureUtilities.getFontMetrics(font).getDescent();
+	     // UNSUPPORTED - getDescent() not implemented in RAP
+//		return FigureUtilities.getFontMetrics(font).getDescent();
+		return 0;
 	}
 
 	/**

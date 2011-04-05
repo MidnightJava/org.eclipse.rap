@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * Layer designed specifically to handle the presence of connections. This is

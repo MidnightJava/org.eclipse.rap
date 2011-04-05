@@ -11,12 +11,12 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.printing.Printer;
 import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * Class responsible for printing Figures.

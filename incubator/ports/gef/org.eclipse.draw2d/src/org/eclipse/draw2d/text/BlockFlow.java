@@ -12,14 +12,13 @@ package org.eclipse.draw2d.text;
 
 import java.util.List;
 
-import org.eclipse.swt.SWT;
-
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * A <code>FlowFigure</code> represented by a single {@link BlockBox} containing

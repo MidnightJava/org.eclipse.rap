@@ -13,7 +13,6 @@ package org.eclipse.draw2d.parts;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -29,6 +28,7 @@ import org.eclipse.draw2d.ScaledGraphics;
 import org.eclipse.draw2d.UpdateListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * A Thumbnail is a Figure that displays an image of its source Figure at a

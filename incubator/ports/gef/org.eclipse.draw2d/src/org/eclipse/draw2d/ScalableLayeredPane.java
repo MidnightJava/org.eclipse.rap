@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Translatable;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * A non-freeform, scalable layered pane.

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.accessibility.AccessibleControlEvent;
 import org.eclipse.swt.accessibility.AccessibleControlListener;
 import org.eclipse.swt.accessibility.AccessibleEvent;

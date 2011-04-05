@@ -11,9 +11,9 @@
 
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.widgets.Control;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.widgets.Control;
 
 /**
  * A graphics source that posts a paint request to the control rather than

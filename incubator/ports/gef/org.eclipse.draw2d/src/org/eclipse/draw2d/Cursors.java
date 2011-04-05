@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 
 /**
@@ -192,8 +192,11 @@ public class Cursors {
 		IBEAM = new Cursor(null, SWT.CURSOR_IBEAM);
 		NO = new Cursor(null, SWT.CURSOR_NO);
 		SIZEALL = new Cursor(null, SWT.CURSOR_SIZEALL);
-		SIZENESW = new Cursor(null, SWT.CURSOR_SIZENESW);
-		SIZENWSE = new Cursor(null, SWT.CURSOR_SIZENWSE);
+		//UNSUPPORTED - these constants are not implemented yet in RAP
+//		SIZENESW = new Cursor(null, SWT.CURSOR_SIZENESW);
+//		SIZENWSE = new Cursor(null, SWT.CURSOR_SIZENWSE);
+		SIZENESW = new Cursor(null, SWT.CURSOR_SIZEALL);
+        SIZENWSE = new Cursor(null, SWT.CURSOR_SIZEALL);
 		UPARROW = new Cursor(null, SWT.CURSOR_UPARROW);
 		WAIT = new Cursor(null, SWT.CURSOR_WAIT);
 	}

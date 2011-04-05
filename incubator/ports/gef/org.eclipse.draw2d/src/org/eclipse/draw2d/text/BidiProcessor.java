@@ -15,7 +15,7 @@ package org.eclipse.draw2d.text;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.graphics.TextLayout;
 
 /**

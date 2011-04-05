@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * The base class for Draw2d events.

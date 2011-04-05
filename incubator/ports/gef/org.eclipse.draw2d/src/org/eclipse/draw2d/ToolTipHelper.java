@@ -13,11 +13,11 @@ package org.eclipse.draw2d;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * This class is used by SWTEventDispatcher as support to display Figure

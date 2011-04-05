@@ -10,7 +10,8 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.graphics.LineAttributes;
+import org.eclipse.draw2d.rap.swt.graphics.LineAttributes;
+
 
 /**
  * Provides abstract support for a variety of shapes.

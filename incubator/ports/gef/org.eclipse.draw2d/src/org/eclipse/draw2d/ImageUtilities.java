@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.draw2d;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontMetrics;
@@ -22,6 +21,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * @author Pratik Shah
@@ -54,7 +54,9 @@ public class ImageUtilities {
 
 		FontMetrics metrics = FigureUtilities.getFontMetrics(font);
 		Dimension strSize = FigureUtilities.getStringExtents(string, font);
-		Image srcImage = new Image(display, strSize.width, metrics.getAscent());
+	    // UNSUPPORTED - getAscent() not implemented in RAP
+//		Image srcImage = new Image(display, strSize.width, metrics.getAscent());
+		Image srcImage = new Image(display, strSize.width, metrics.getHeight());
 		// UNSUPPORTED - image constructor not implemented in RAP
 		// GC gc = new GC(srcImage);
 		GC gc = new GC(srcImage.getDevice());
@@ -62,7 +64,9 @@ public class ImageUtilities {
 		gc.setForeground(foreground);
 		gc.setBackground(background);
 		gc.fillRectangle(srcImage.getBounds());
-		gc.drawString(string, 0, 0 - metrics.getLeading());
+		// UNSUPPORTED - getLeading() not implemented in RAP
+//		gc.drawString(string, 0, 0 - metrics.getLeading());
+		gc.drawString(string, 0, 0);
 		Image result = createRotatedImage(srcImage);
 		gc.dispose();
 		srcImage.dispose();

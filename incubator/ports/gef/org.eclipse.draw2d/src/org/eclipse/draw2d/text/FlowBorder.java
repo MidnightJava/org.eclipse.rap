@@ -71,9 +71,9 @@ public interface FlowBorder extends Border {
 	 * is used to indicate whether the left and right sides should be rendered.
 	 * This parameter will contain the following bit flags:
 	 * <UL>
-	 * <LI>{@link org.eclipse.swt.SWT#LEAD}
-	 * <LI>{@link org.eclipse.swt.SWT#TRAIL}
-	 * <LI>{@link org.eclipse.swt.SWT#RIGHT_TO_LEFT}
+	 * <LI>{@link org.eclipse.draw2d.rap.swt.SWT#LEAD}
+	 * <LI>{@link org.eclipse.draw2d.rap.swt.SWT#TRAIL}
+	 * <LI>{@link org.eclipse.draw2d.rap.swt.SWT#RIGHT_TO_LEFT}
 	 * </UL>
 	 * 
 	 * @param figure

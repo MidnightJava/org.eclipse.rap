@@ -12,11 +12,11 @@ package org.eclipse.draw2d.text;
 
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * The layout for {@link BlockFlow} figures.
