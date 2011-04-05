@@ -10,11 +10,11 @@
 package org.eclipse.zest.core.viewers.internal;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.zest.core.viewers.IConnectionStyleProvider;

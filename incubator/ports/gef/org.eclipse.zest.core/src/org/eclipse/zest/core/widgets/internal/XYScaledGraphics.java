@@ -1,12 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2007 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- * University of Victoria - Adapted for XY Scaled Graphics
+ * Copyright (c) 2000, 2007 IBM Corporation and others. All rights reserved.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: University of Victoria - Adapted for XY Scaled Graphics
  *******************************************************************************/
 package org.eclipse.zest.core.widgets.internal;
 
@@ -819,13 +817,17 @@ public class XYScaledGraphics extends ScaledGraphics {
 		if (localCache.font != localFont) {
 			//Font is different, re-calculate its height
 			FontMetrics metric = FigureUtilities.getFontMetrics(localFont);
-			localCache.height = metric.getHeight() - metric.getDescent();
+			// UNSUPPORTED - getDescent() not implemented in RAP
+//			localCache.height = metric.getHeight() - metric.getDescent();
+			localCache.height = metric.getHeight();
 			localCache.font = localFont;
 		}
 		if (targetCache.font != graphics.getFont()) {
 			FontMetrics metric = graphics.getFontMetrics();
 			targetCache.font = graphics.getFont();
-			targetCache.height = metric.getHeight() - metric.getDescent();
+			// UNSUPPORTED - getDescent() not implemented in RAP
+//			targetCache.height = metric.getHeight() - metric.getDescent();
+			targetCache.height = metric.getHeight();
 		}
 		return new Point(((int) (Math.floor((x * xZoom) + fractionalX))), (int) (Math.floor((y + localCache.height - 1) * yZoom - targetCache.height + 1 + fractionalY)));
 	}

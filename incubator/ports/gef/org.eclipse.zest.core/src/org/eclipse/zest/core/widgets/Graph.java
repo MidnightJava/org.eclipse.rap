@@ -42,6 +42,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.ControlPaintHandler;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Item;
@@ -181,7 +182,8 @@ public class Graph extends FigureCanvas implements IContainer {
 		this.figure2ItemMap = new HashMap();
 
 		revealListeners = new ArrayList(1);
-		this.addPaintListener(new PaintListener() {
+		ControlPaintHandler helper = new ControlPaintHandler(this);
+		helper.addPaintListener(new PaintListener() {
 			public void paintControl(PaintEvent e) {
 				if (!revealListeners.isEmpty()) {
 					// Go through the reveal list and let everyone know that the
