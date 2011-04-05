@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.draw2d.examples;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -20,6 +19,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * A baseclass for draw2d examples.

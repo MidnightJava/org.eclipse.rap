@@ -22,6 +22,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.rwt.lifecycle.UICallBack;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionBars;
@@ -77,6 +78,7 @@ public class EditorView extends ViewPart {
   }
   
   public void createPartControl(Composite parent) {
+    UICallBack.activate(getSite().getId()+getViewSite().getSecondaryId());
     if (editor != null) 
       editor.createPartControl(parent); 
   }
@@ -90,6 +92,7 @@ public class EditorView extends ViewPart {
   
   public void dispose() {
     if (editor != null) deactivateOutlineHooks();
+    UICallBack.deactivate(getSite().getId()+getViewSite().getSecondaryId());
     super.dispose();
   }
   

@@ -11,6 +11,7 @@
 package org.eclipse.draw2d.examples.text;
 
 import org.eclipse.draw2d.*;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.draw2d.text.*;
 
 import org.eclipse.swt.graphics.Font;
@@ -20,7 +21,6 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.SWT;
 
 /**
  * The example is used to build large draw2d.text flow documents to benchmark the layout

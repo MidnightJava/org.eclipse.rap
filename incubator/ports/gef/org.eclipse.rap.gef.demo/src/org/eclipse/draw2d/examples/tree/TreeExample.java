@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.draw2d.examples.tree;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.FontData;
@@ -28,6 +27,7 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.examples.AbstractExample;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * @author hudsonr

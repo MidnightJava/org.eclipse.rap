@@ -29,7 +29,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.graph.Edge;
 import org.eclipse.draw2d.graph.Node;
 import org.eclipse.draw2d.graph.NodeList;
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;

@@ -27,7 +27,7 @@ static void addFontSizes(Figure parent, int min, int max){
 		TextFlow tf = new TextFlow(Integer.toString(i) + " pt. Font ");
 //		tf.setBackgroundColor(ColorConstants.lightGray);
 //		tf.setForegroundColor(ColorConstants.yellow);
-		tf.setFont(new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getDefault(), "Helvetica", i, org.eclipse.swt.SWT.NORMAL));
+		tf.setFont(new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getDefault(), "Helvetica", i, org.eclipse.draw2d.rap.swt.SWT.NORMAL));
 		parent.add(tf);
 	}
 }

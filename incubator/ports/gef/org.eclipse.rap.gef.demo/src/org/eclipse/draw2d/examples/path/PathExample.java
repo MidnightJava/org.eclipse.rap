@@ -23,7 +23,7 @@ import org.eclipse.draw2d.SchemeBorder;
 import org.eclipse.draw2d.ScrollBar;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 

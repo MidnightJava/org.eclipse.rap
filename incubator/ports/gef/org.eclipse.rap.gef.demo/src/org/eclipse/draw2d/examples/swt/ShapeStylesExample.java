@@ -20,7 +20,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;

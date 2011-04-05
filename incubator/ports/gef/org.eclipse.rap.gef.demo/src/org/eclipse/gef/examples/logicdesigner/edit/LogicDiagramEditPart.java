@@ -14,7 +14,6 @@ import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.AccessibleEvent;
 
 import org.eclipse.draw2d.Animation;
@@ -31,6 +30,7 @@ import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.ShortestPathConnectionRouter;
 import org.eclipse.draw2d.XYLayout;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.AccessibleEditPart;
 import org.eclipse.gef.CompoundSnapToHelper;

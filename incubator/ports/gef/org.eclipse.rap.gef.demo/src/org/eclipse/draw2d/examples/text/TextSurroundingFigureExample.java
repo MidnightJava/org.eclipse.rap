@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.draw2d.examples.text;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -24,6 +23,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.draw2d.text.FlowAdapter;
 import org.eclipse.draw2d.text.FlowPage;
 import org.eclipse.draw2d.text.TextFlow;

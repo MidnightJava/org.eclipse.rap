@@ -16,7 +16,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.swt.SWT;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.widgets.Display;
 
