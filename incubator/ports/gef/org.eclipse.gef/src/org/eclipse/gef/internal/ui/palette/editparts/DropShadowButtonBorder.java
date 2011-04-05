@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.gef.internal.ui.palette.editparts;
 
-import org.eclipse.swt.custom.ViewForm;
 import org.eclipse.swt.graphics.Color;
 
 import org.eclipse.draw2d.AbstractBorder;
@@ -21,6 +20,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.rap.swt.custom.ViewForm;
 
 class DropShadowButtonBorder extends AbstractBorder {
 

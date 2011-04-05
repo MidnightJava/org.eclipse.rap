@@ -12,8 +12,9 @@ package org.eclipse.gef.tools;
 
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
+
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;

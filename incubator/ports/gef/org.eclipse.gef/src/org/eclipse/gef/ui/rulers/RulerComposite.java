@@ -14,7 +14,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.KeyEvent;
@@ -40,6 +39,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditDomain;

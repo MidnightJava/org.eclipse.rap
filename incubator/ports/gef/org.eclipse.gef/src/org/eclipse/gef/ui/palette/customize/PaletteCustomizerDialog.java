@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.DisposeEvent;
@@ -37,6 +36,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.ControlPaintHandler;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -74,6 +74,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.PageBook;
 
 import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.rap.swt.SWT;
 import org.eclipse.draw2d.widgets.MultiLineLabel;
 
 import org.eclipse.gef.internal.Internal;
@@ -528,7 +529,8 @@ public class PaletteCustomizerDialog extends Dialog implements
 		composite.setLayout(new FillLayout());
 
 		// A paint listener that draws an etched border around the toolbar
-		composite.addPaintListener(new PaintListener() {
+		ControlPaintHandler helper = new ControlPaintHandler(composite);
+		helper.addPaintListener(new PaintListener() {
 			public void paintControl(PaintEvent e) {
 				Rectangle area = composite.getBounds();
 				GC gc = e.gc;

@@ -96,11 +96,15 @@ public class RulerFigure extends Figure {
 	public Dimension getPreferredSize(int wHint, int hHint) {
 		Dimension prefSize = new Dimension();
 		if (isHorizontal()) {
+			// UNSUPPORTED - getAscent() not implemented in RAP
 			prefSize.height = (textMargin * 2) + BORDER_WIDTH
-					+ FigureUtilities.getFontMetrics(getFont()).getAscent();
+			// + FigureUtilities.getFontMetrics(getFont()).getAscent();
+					+ FigureUtilities.getFontMetrics(getFont()).getHeight();
 		} else {
+			// UNSUPPORTED - getLeading() not implemented in RAP
 			prefSize.width = (textMargin * 2) + BORDER_WIDTH
-					+ FigureUtilities.getFontMetrics(getFont()).getAscent();
+			// + FigureUtilities.getFontMetrics(getFont()).getAscent();
+					+ FigureUtilities.getFontMetrics(getFont()).getHeight();
 		}
 		return prefSize;
 	}
@@ -293,7 +297,9 @@ public class RulerFigure extends Figure {
 		// mark) that is
 		// beyond the end of the clip region
 		int endMark = (int) (((clippedBounds.y + clippedBounds.height) / dotsPerDivision)) + 1;
-		int leading = FigureUtilities.getFontMetrics(getFont()).getLeading();
+		// UNSUPPORTED - getLeading() not implemented in RAP
+		// int leading = FigureUtilities.getFontMetrics(getFont()).getLeading();
+		int leading = 0;
 		Rectangle forbiddenZone = new Rectangle();
 		for (int div = startMark; div <= endMark; div++) {
 			// y is the vertical position of the mark

@@ -13,7 +13,6 @@ package org.eclipse.gef.ui.console;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
@@ -21,6 +20,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.part.ViewPart;
+
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.GEF;
 

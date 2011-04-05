@@ -12,12 +12,12 @@ package org.eclipse.gef.tools;
 
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Event;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.AccessibleAnchorProvider;
 import org.eclipse.gef.EditPart;

@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyEvent;
@@ -40,6 +39,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditDomain;
@@ -1442,7 +1442,7 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 	}
 
 	void setMouseCapture(boolean value) {
-	  // UNSUPPORTED - capture api not implemented in RAP
+		// UNSUPPORTED - capture api not implemented in RAP
 		// if (getCurrentViewer() != null
 		// && getCurrentViewer().getControl() != null
 		// && !getCurrentViewer().getControl().isDisposed())

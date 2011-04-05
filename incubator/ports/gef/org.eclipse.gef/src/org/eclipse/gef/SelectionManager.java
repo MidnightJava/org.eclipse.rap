@@ -18,9 +18,11 @@ import java.util.List;
 
 import org.eclipse.swt.widgets.Control;
 
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 
 /**
  * Manages a viewer's selection model. Selection management includes

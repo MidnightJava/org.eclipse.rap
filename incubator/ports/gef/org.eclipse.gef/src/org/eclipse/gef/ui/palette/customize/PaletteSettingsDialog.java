@@ -12,7 +12,6 @@ package org.eclipse.gef.ui.palette.customize;
 
 import java.util.HashMap;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -37,6 +36,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.ui.part.PageBook;
+
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.ui.palette.PaletteMessages;
 import org.eclipse.gef.ui.palette.PaletteViewerPreferences;

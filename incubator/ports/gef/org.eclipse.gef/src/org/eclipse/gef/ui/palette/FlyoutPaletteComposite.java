@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.ACC;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
 import org.eclipse.swt.accessibility.AccessibleControlAdapter;
@@ -40,6 +39,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.ControlPaintHandler;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -87,6 +87,7 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.SharedCursors;
@@ -736,9 +737,11 @@ public class FlyoutPaletteComposite extends Composite {
 
 	private class Sash extends Composite {
 		private Control button;
+		private ControlPaintHandler helper;
 
 		public Sash(Composite parent, int style) {
 			super(parent, style);
+			helper = new ControlPaintHandler(this);
 			button = createFlyoutControlButton(this);
 			new SashDragManager();
 			// UNSUPPORTED - api not implemented in RAP
@@ -751,7 +754,7 @@ public class FlyoutPaletteComposite extends Composite {
 			// }
 			// });
 
-			addPaintListener(new PaintListener() {
+			helper.addPaintListener(new PaintListener() {
 				public void paintControl(org.eclipse.swt.events.PaintEvent event) {
 					paintSash(event.gc);
 				};
