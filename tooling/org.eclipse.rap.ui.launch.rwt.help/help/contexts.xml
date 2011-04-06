@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="launch_configuration_dialog_main_tab">
+      <topic href="help/html/create-launch-config.html" label="Creating an RWT Application launch configuration"/>
+   </context>
+</contexts>

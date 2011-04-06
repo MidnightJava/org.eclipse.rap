@@ -1,0 +1,12 @@
+<toc label="RAP Developer Guide">
+  <topic label="Getting Started">
+    <topic href="help/html/create-launch-config.html" label="Creating an RWT Application launch configuration">
+    </topic>
+    <topic
+      label="Launching an RWT Application"
+      href="help/html/launch.html"/>
+  </topic>
+
+  <topic label="Legal" href="help/html/legal.html" />
+
+</toc>

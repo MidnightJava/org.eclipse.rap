@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension point="org.eclipse.help.toc">
+      <toc file="help/toc.xml" primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="help/contexts.xml"
+            plugin="org.eclipse.rap.ui.launch.rwt">
+      </contexts>
+   </extension>
+</plugin>

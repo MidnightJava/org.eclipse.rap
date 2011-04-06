@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.rap.ui.launch.rwt.help;singleton:=true
+Bundle-Version: 1.4.0.qualifier
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.help;bundle-version="[3.5.0,4.0.0)"
