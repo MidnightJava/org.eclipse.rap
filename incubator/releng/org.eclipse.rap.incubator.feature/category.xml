@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.eclipse.rap.incubator.feature_1.4.0.qualifier.jar" id="org.eclipse.rap.incubator.feature" version="1.4.0.qualifier">
+      <category name="org.eclipse.rap.incubator.feature.category"/>
+   </feature>
+   <category-def name="org.eclipse.rap.incubator.feature.category" label="Rich Ajax Platform (RAP) Incubator"/>
+</site>
