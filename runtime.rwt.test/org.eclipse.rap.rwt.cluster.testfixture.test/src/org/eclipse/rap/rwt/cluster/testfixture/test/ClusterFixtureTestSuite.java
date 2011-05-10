@@ -14,19 +14,19 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.eclipse.rap.rwt.cluster.testfixture.client.*;
-import org.eclipse.rap.rwt.cluster.testfixture.db.DatabaseServerTest;
-import org.eclipse.rap.rwt.cluster.testfixture.server.ServletEngineTest;
+import org.eclipse.rap.rwt.cluster.testfixture.db.DatabaseServer_Test;
+import org.eclipse.rap.rwt.cluster.testfixture.server.ServletEngine_Test;
 
 
-public class AllClusterFixtureTests {
+public class ClusterFixtureTestSuite {
 
   public static Test suite() {
-    TestSuite suite = new TestSuite( AllClusterFixtureTests.class.getName() );
-    suite.addTestSuite( RWTClientTest.class );
-    suite.addTestSuite( HttpUrlBuilderTest.class );
-    suite.addTestSuite( ResponseTest.class );
-    suite.addTestSuite( ServletEngineTest.class );
-    suite.addTestSuite( DatabaseServerTest.class );
+    TestSuite suite = new TestSuite( ClusterFixtureTestSuite.class.getName() );
+    suite.addTestSuite( RWTClient_Test.class );
+    suite.addTestSuite( HttpUrlBuilder_Test.class );
+    suite.addTestSuite( Response_Test.class );
+    suite.addTestSuite( ServletEngine_Test.class );
+    suite.addTestSuite( DatabaseServer_Test.class );
     return suite;
   }
 }
