@@ -14,13 +14,13 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 
-public class AllClusterTests {
+public class ClusterTestSuite {
 
   public static Test suite() {
-    TestSuite suite = new TestSuite( AllClusterTests.class.getName() );
-    suite.addTestSuite( SessionFailoverTest.class );
-    suite.addTestSuite( SessionSerializationTest.class );
-    suite.addTestSuite( SingleServerTest.class );
+    TestSuite suite = new TestSuite( ClusterTestSuite.class.getName() );
+    suite.addTestSuite( SessionFailover_Test.class );
+    suite.addTestSuite( SessionSerialization_Test.class );
+    suite.addTestSuite( SingleServer_Test.class );
     return suite;
   }
 }
