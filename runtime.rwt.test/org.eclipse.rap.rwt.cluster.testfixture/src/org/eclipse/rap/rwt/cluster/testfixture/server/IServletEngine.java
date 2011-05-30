@@ -16,14 +16,11 @@ import java.net.URL;
 import java.util.Map;
 
 public interface IServletEngine {
-  void start() throws Exception;
+  void start( Class entryPointClass ) throws Exception;
   void stop() throws Exception;
   int getPort();
   
-  void addEntryPoint( Class entryPointClass );
-
   Map getSessions();
 
   HttpURLConnection createConnection( URL url ) throws IOException;
-  
 }
