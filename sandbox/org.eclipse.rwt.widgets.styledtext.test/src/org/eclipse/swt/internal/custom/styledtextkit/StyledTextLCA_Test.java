@@ -94,6 +94,7 @@ public class StyledTextLCA_Test extends TestCase {
     Fixture.preserveWidgets();
     adapter = WidgetUtil.getAdapter( styledText );
     assertEquals( Boolean.FALSE, adapter.getPreserved( Props.ENABLED ) );
+    styledText.setEnabled( true );
     Fixture.clearPreserved();
     // visible
     Fixture.preserveWidgets();
