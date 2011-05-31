@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Innoopract Informationssysteme GmbH.
+ * Copyright (c) 2009, 2011 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *     Innoopract Informationssysteme GmbH - initial API and implementation
+ *     EclipseSource - ongoing development
  ******************************************************************************/
-
 package org.eclipse.swt.internal.custom.styledtextkit;
 
 import junit.framework.TestCase;
@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+@SuppressWarnings("restriction")
 public class StyledTextLCA_Test extends TestCase {
 
   public void testPreserveValues() {
