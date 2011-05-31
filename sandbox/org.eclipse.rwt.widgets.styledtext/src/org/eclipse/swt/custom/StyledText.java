@@ -927,6 +927,7 @@ public class StyledText extends Canvas {
     return hex.length() == 1 ? "0" + hex : hex;
   }
 
+  @SuppressWarnings("rawtypes")
   public Object getAdapter( final Class adapter ) {
     Object result;
     if( adapter == IStyledTextAdapter.class ) {
