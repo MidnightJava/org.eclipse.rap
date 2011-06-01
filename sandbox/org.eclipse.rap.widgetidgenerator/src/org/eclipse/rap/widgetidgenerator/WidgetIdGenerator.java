@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 Innoopract Informationssysteme GmbH.
+ * Copyright (c) 2008, 2011 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *     Innoopract Informationssysteme GmbH - initial API and implementation
+ *     EclipseSource - ongoing development
  ******************************************************************************/
 package org.eclipse.rap.widgetidgenerator;
 
@@ -34,6 +35,7 @@ import org.eclipse.swt.widgets.*;
  * 
  * @see WidgetIdGenerator#calculateAttributeHash(Object[])
  */
+@SuppressWarnings("restriction")
 public class WidgetIdGenerator implements PhaseListener {
   
   private static final String WIDGET_IDS
@@ -236,7 +238,7 @@ public class WidgetIdGenerator implements PhaseListener {
   }
 
   private static Widget[] collectNewWidgets( final Display display ) {
-    final List newWidgets = new ArrayList();
+    final List<Widget> newWidgets = new ArrayList<Widget>();
     AllWidgetTreeVisitor visitor = new AllWidgetTreeVisitor() {
       public boolean doVisit( final Widget widget ) {
         Object adapter = widget.getAdapter( IWidgetAdapter.class );
