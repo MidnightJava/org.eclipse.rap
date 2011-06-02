@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Innoopract Informationssysteme GmbH.
+ * Copyright (c) 2009, 2011 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *     Innoopract Informationssysteme GmbH - initial API and implementation
+ *     EclipseSource - ongoing development
  ******************************************************************************/
 package org.eclipse.swt.custom;
 
@@ -42,10 +43,10 @@ import org.eclipse.swt.widgets.Composite;
  * IMPORTANT: This class is <em>not</em> intended to be subclassed.
  * </p>
  */
+@SuppressWarnings("all")
 public class StyledText extends Canvas {
 
   private final class StyledTextAdapter implements IStyledTextAdapter {
-
     public String getHtml() {
       return StyledText.this.html;
     }
