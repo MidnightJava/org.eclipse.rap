@@ -65,8 +65,7 @@ public class WidgetIdGenerator implements PhaseListener {
   // helping methods
 
   private void setWidgetId( final Widget widget ) {
-    // TODO [fappel]: read the following from a configuration file,
-    //                extension point or whatever...
+    // TODO [fappel]: read the following from a configuration file, extension point or whatever...
     if( widget instanceof Tree ) {
       Object[] attributes = new Object[] {
         Tree.class.getName()
@@ -206,7 +205,7 @@ public class WidgetIdGenerator implements PhaseListener {
    *                   is done automatically.</p> 
    */
   private Integer calculateAttributeHash( final Object[] attributes ) {
-    Set hashs = getUsedIds();
+    Set<Integer> hashs = getUsedIds();
     Integer result = new Integer( generateHash( attributes ) );
     while( hashs.contains( result ) ) {
       result = new Integer( generateHash( new Object[]{ result } ) );
@@ -227,11 +226,12 @@ public class WidgetIdGenerator implements PhaseListener {
     return hash;
   }
 
-  private Set getUsedIds() {
+  @SuppressWarnings("unchecked")
+  private Set<Integer> getUsedIds() {
     ISessionStore sessionStore = RWT.getSessionStore();
-    Set result = ( Set )sessionStore.getAttribute( WIDGET_IDS );
+    Set<Integer> result = ( Set<Integer> )sessionStore.getAttribute( WIDGET_IDS );
     if( result == null ) {
-      result = new HashSet();
+      result = new HashSet<Integer>();
       sessionStore.setAttribute( WIDGET_IDS, result );
     }
     return result;
