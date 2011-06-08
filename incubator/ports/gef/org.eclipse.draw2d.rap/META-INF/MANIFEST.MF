@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Draw2d RAP Suppliment (Incubation)
 Bundle-SymbolicName: org.eclipse.draw2d.rap
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: intrinsic.flash.text,
  org.eclipse.draw2d.rap.swt,
  org.eclipse.draw2d.rap.swt.custom,
