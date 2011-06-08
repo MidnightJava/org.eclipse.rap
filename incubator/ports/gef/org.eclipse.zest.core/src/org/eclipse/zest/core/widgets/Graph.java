@@ -131,13 +131,13 @@ public class Graph extends FigureCanvas implements IContainer {
 
 		this.setViewport(new FreeformViewport());
 
-		this.getVerticalBar().addSelectionListener(new SelectionAdapter() {
+		this.getVerticalSlider().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				Graph.this.redraw();
 			}
 
 		});
-		this.getHorizontalBar().addSelectionListener(new SelectionAdapter() {
+		this.getHorizontalSlider().addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				Graph.this.redraw();
 			}
