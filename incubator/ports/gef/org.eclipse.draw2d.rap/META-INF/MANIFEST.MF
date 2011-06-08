@@ -13,5 +13,5 @@ Export-Package: intrinsic.flash.text,
  org.eclipse.swt.printing,
  org.eclipse.swt.widgets,
  org.eclipse.ui.presentations
-Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.4.0",
- org.eclipse.rap.jface;bundle-version="1.4.0"
+Require-Bundle: org.eclipse.rap.rwt;bundle-version="[1.4.0,2.0.0)",
+ org.eclipse.rap.jface;bundle-version="[1.4.0,2.0.0)"
