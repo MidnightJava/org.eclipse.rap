@@ -13,5 +13,6 @@ package org.eclipse.rap.rwt.cluster.testfixture.server;
 
 public interface IServletEngineFactory {
   IServletEngine createServletEngine();
+  IServletEngine createServletEngine( int port );
   IServletEngineCluster createServletEngineCluster();
 }
