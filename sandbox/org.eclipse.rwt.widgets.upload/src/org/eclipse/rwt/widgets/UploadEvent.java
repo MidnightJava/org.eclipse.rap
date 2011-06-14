@@ -19,7 +19,8 @@ import org.eclipse.swt.widgets.Widget;
  * Represents an Upload Event.
  *
  * @author tjarodrigues
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
+ * @deprecated Use FileDialog or FileUpload implementation instead.
  */
 public class UploadEvent extends TypedEvent {
   

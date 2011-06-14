@@ -11,7 +11,7 @@
  ******************************************************************************/
 package org.eclipse.rwt.widgets;
 
-import java.util.EventListener;
+import org.eclipse.swt.internal.SWTEventListener;
 
 
 /**
@@ -19,9 +19,11 @@ import java.util.EventListener;
  * finished.
  * 
  * @author tjarodrigues
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
+ * @deprecated Use FileDialog or FileUpload implementation instead.
  */
-public interface UploadListener extends EventListener{
+//[ar] This is distasteful, but what else to do?
+public interface UploadListener extends SWTEventListener {
 
   /**
    * Is called, when uploading a file has been finished sucessfully.

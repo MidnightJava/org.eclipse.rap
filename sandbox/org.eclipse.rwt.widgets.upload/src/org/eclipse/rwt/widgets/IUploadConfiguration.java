@@ -8,13 +8,13 @@
  ******************************************************************************/
 package org.eclipse.rwt.widgets;
 
-import org.apache.commons.fileupload.FileUploadBase;
 
 /**
  * Provides a configuration mechanism for the file upload. Note that this
  * configuration is shared for all upload widgets.
  * 
  * @author Stefan.Roeck
+ * @deprecated Use FileDialog or FileUpload implementation instead.
  */
 public interface IUploadConfiguration {
 
@@ -28,13 +28,4 @@ public interface IUploadConfiguration {
    */
   public long getFileSizeMax();
 
-  /**
-   *@see FileUploadBase#setSizeMax(long)
-   */
-  public void setSizeMax( long sizeMax );
-
-  /**
-   *@see FileUploadBase#getSizeMax()
-   */
-  public long getSizeMax();
 }

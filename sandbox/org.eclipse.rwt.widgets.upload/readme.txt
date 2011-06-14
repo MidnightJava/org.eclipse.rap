@@ -11,6 +11,7 @@ The project set file will add these projects to your workspace:
 
 org.apache.commons.fileupload (v1_2)
 org.apache.commons.io (v_1_3_2)
+org.eclipse.rwt.supplemental.fileupload (contains back-end upload handler)
 org.eclipse.rwt.widgets.uploads.demo (optional, contains an example)
 
 If you have further questions, post to the RAP newsgroup:

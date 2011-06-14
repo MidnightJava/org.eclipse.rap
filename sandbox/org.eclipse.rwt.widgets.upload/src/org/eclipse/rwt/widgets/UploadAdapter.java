@@ -12,7 +12,9 @@ package org.eclipse.rwt.widgets;
 
 /**
  * Listener adaptor with empty implementations of all listener methods.
- * @author stefan.roeck */
+ * @author stefan.roeck
+ * @deprecated Use FileDialog or FileUpload implementation instead. 
+ */
 public class UploadAdapter implements UploadListener {
 
   public void uploadFinished( final UploadEvent uploadEvent ) {

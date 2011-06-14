@@ -18,6 +18,7 @@ import java.io.InputStream;
  * available meta information.
  * 
  * @author Stefan.Roeck
+ * @deprecated Use FileDialog or FileUpload implementation instead.
  */
 public class UploadItem {
 

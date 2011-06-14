@@ -1,25 +1,28 @@
 /*******************************************************************************
- * Copyright (c) 2002-2007 Critical Software S.A. All rights reserved. This
- * program and the accompanying materials are made available under the terms of
+ * Copyright (c) 2002-2007 Critical Software S.A. and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made available under the terms of
  * the Eclipse Public License v1.0 which accompanies this distribution, and is
- * available at http://www.eclipse.org/legal/epl-v10.html Contributors: Tiago
- * Rodrigues (Critical Software S.A.) - initial implementation Joel Oliveira
- * (Critical Software S.A.) - initial commit
+ * available at http://www.eclipse.org/legal/epl-v10.html 
+ * 
+ * Contributors: Tiago Rodrigues (Critical Software S.A.) - initial implementation 
+ *               Joel Oliveira (Critical Software S.A.) - initial commit
+ *               Austin Riddle (Texas Center for Applied Technology) - migration to new FileUpload 
+ *                  implementation
  ******************************************************************************/
 package org.eclipse.rwt.widgets;
 
-import java.io.File;
+import java.io.*;
 
+import org.eclipse.rap.rwt.supplemental.fileupload.*;
 import org.eclipse.rwt.graphics.Graphics;
-import org.eclipse.rwt.internal.theme.IThemeAdapter;
-import org.eclipse.rwt.widgets.internal.uploadkit.IUploadAdapter;
-import org.eclipse.rwt.widgets.internal.uploadkit.UploadThemeAdapter;
-import org.eclipse.rwt.widgets.upload.servlet.*;
+import org.eclipse.rwt.lifecycle.UICallBack;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.events.*;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
 /**
@@ -27,8 +30,9 @@ import org.eclipse.swt.widgets.*;
  *
  * @author tjarodrigues
  * @author stefan.roeck
+ * @deprecated Use FileDialog or FileUpload implementation instead.
  */
-public class Upload extends Control {
+public class Upload extends Composite {
   /**
    * Displays a progress bar inside the widget.
    */
@@ -41,136 +45,23 @@ public class Upload extends Control {
    * @see UploadListener#uploadInProgress(UploadEvent)
    */
   public final static int FIRE_PROGRESS_EVENTS = 4;
+  
   /**
    * Displays a upload button next to the browse button.
    */
   public final static int SHOW_UPLOAD_BUTTON = 2;
 
-  static {
-    // TODO: [sr] move to extension point if existent
-    // Register FileUploadServiceHandler
-    FileUploadServiceHandler.register();
-  }
-
-  private String lastFileUploaded;
-  private final String servlet;
-  private String path;
-  private boolean performUpload = false;
-  private boolean resetUpload = false;
   private int flags;
-  private UploadLCAAdapter uploadLCAAdapter;
-  private String browseButtonText = "Browse";
-  private String uploadButtonText = "Upload";
   private boolean[] uploadInProgresses = { false };
-
-  // avoid exposure of upload internal stuff
-  private final class UploadLCAAdapter implements IUploadAdapter {
-    public boolean performUpload() {
-      boolean result = Upload.this.performUpload;
-      Upload.this.performUpload = false;
-      return result;
-    }
-
-    public int getFlags() {
-      return flags;
-    }
-
-    public void setPath( final String path ) {
-      // TODO: [sr] Frank, why not throw this event within readData of the LCA?
-      // Its quite hidden here :-)
-      if( path != null ) {
-        if( !path.equals( Upload.this.path ) ) {
-          Upload.this.path = path;
-          ModifyEvent modifyEvent = new ModifyEvent( Upload.this );
-          modifyEvent.processEvent();
-        }
-      }
-    }
-
-    public void setLastFileUploaded( final String lastFileUploaded ) {
-      Upload.this.lastFileUploaded = lastFileUploaded;
-    }
-
-    public String getServletPath() {
-      return Upload.this.servlet;
-    }
-
-    public boolean isResetUpload() {
-      return Upload.this.resetUpload;
-    }
-
-    public void setResetUpload( boolean resetUpload ) {
-      Upload.this.resetUpload = resetUpload;
-    }
-
-    public long getBytesRead() {
-      final FileUploadStorageItem uploadStorageItem = FileUploadStorage.getInstance().getUploadStorageItem( getWidgetId());
-      return uploadStorageItem != null ? uploadStorageItem.getBytesRead() : 0L;
-    }
-
-    public FileUploadStorageItem getStorageItem() {
-      return Upload.this.getUploadStorageItem();
-    }
-
-    public long getContentLength() {
-      final FileUploadStorageItem uploadStorageItem = FileUploadStorage.getInstance().getUploadStorageItem( getWidgetId());
-      return uploadStorageItem != null ? uploadStorageItem.getContentLength() : 0L;
-    }
-  }
-
-
-  /**
-   * Initializes the Upload.
-   *
-   * @param parent Parent container.
-   * @param style Widget style.
-   * @param servlet The upload servlet name.
-   * @param showProgress Indicates if the progress bar should be visible.
-   * @deprecated use Upload(Composite, int, int) instead
-   */
-  public Upload( final Composite parent,
-                 final int style,
-                 final String servlet,
-                 final boolean showProgress )
-  {
-    this( parent,
-          style,
-          servlet,
-          ( showProgress ? SHOW_PROGRESS : 0 ) | SHOW_UPLOAD_BUTTON );
-  }
-
-  /**
-   * @deprecated use Upload(Composite, int, int) instead
-   */
-  public Upload( final Composite parent,
-                 final int style,
-                 final String servlet )
-  {
-    this( parent, style, servlet, 0 );
-  }
-
-  /**
-   * @deprecated use Upload(Composite, int, int) instead
-   */
-  public Upload( final Composite parent,
-                 final int style,
-                 final String servlet,
-                 final int flags )
-  {
-    super( parent, style );
-    this.servlet = ( ( servlet == null ) ? FileUploadServiceHandler.getUrl(getWidgetId()) : servlet );
-    this.flags = flags;
-
-    if ((this.flags & SHOW_PROGRESS) > 0) {
-      this.flags |= FIRE_PROGRESS_EVENTS;
-    }
-
-    this.lastFileUploaded = "";
-    this.path = "";
-
-    // Add a fileStorage item which is used for transfering the uploaded file
-    FileUploadStorage.getInstance().setUploadStorageItem( getWidgetId(), new FileUploadStorageItem() );
-  }
+  private FileUploadHandler handler;
+  private InternalUploadListener listener;
+  private Text fileText;
+  private FileUpload browseBtn;
+  private Button uploadBtn;
+  private ProgressBar progressBar;
+  private String processId;
+  private File uploadedFile;
+  private String uploadContentType;
 
   /**
    * Constructs a upload widget.
@@ -186,7 +77,14 @@ public class Upload extends Control {
                  final int style,
                  final int flags )
   {
-    this (parent, style, null, flags);
+    super( parent, style );
+    this.flags = flags;
+
+    if ((this.flags & SHOW_PROGRESS) > 0) {
+      this.flags |= FIRE_PROGRESS_EVENTS;
+    }
+    initHandler();
+    createChildren();
   }
 
   /**
@@ -197,20 +95,7 @@ public class Upload extends Control {
   public Upload( final Composite parent,
                  final int style )
   {
-    this( parent, style, null, 0 );
-  }
-
-
-  /**
-   * Gets the servlet.
-   *
-   * @return Servlet name.
-   * @deprecated This method will be removed in a future version as the servlet
-   * is only used internally and cannot be set from outside anymore.
-   */
-  public String getServlet() {
-    checkWidget();
-    return servlet;
+    this( parent, style, 0 );
   }
 
   /**
@@ -226,7 +111,7 @@ public class Upload extends Control {
    */
   public String getPath() {
     checkWidget();
-    return path;
+    return browseBtn.getFileName();
   }
 
   /**
@@ -243,15 +128,11 @@ public class Upload extends Control {
   public boolean performUpload() {
     checkWidget();
 
-    // Clean state (from previous uploads)
-    resetStorageItem();
-
     final boolean uploadSuccessful[] = {false};
     // Always check if user selected a file because otherwise the UploadWidget itself doesn't trigger a POST and therefore, the
     // subsequent loop never terminates.
     if (getPath() != null && !"".equals( getPath() )) {
       if( isEnabled() && !uploadInProgresses[ 0 ] ) {
-        performUpload = true;
         UploadListener listener =  new UploadAdapter() {
           public void uploadFinished(UploadEvent event) {
             uploadInProgresses[ 0 ] = false;
@@ -264,6 +145,7 @@ public class Upload extends Control {
         };
         addUploadListener( listener );
         uploadInProgresses[ 0 ] = true;
+        startUpload();
         try {
           while( uploadInProgresses[ 0 ] && !isDisposed()) {
             if( !getDisplay().readAndDispatch() ) {
@@ -272,7 +154,6 @@ public class Upload extends Control {
           }
         } finally {
           uploadInProgresses[ 0 ] = false;
-          performUpload = false;
           // 324732: [upload] Widget is disposed if widget is disposed while upload is in progress
           // https://bugs.eclipse.org/bugs/show_bug.cgi?id=324732
           if (!isDisposed()) {
@@ -282,115 +163,29 @@ public class Upload extends Control {
     }
 
     }
+    
     return uploadSuccessful[ 0 ];
   }
+  
+  private void startUpload () {
+    StringBuffer sb = new StringBuffer();
+    sb.append( getWidgetId() );
+    sb.append( System.currentTimeMillis() );
+    processId = sb.toString();
+    UICallBack.activate( processId );
+    String url = handler.getUploadUrl();
+    browseBtn.submit( url );
+  }
 
-  public Object getAdapter( final Class adapter ) {
-    Object result;
-    if( adapter == IUploadAdapter.class ) {
-      if( uploadLCAAdapter == null ) {
-        uploadLCAAdapter = new UploadLCAAdapter();
-      }
-      result = uploadLCAAdapter;
-    } else {
-      result = super.getAdapter( adapter );
+  private void initHandler() {
+    if (handler == null) {
+      FileUploadReceiver receiver = new DiskFileUploadReceiver();
+      handler = new FileUploadHandler(receiver);
+      listener = new InternalUploadListener();
+      handler.addUploadListener( listener );
     }
-    return result;
   }
-
-  // TODO [fappel]: improve this preliminary compute size implementation
-  public Point computeSize( final int wHint,
-                            final int hHint,
-                            final boolean changed )
-  {
-    Point browseButtonSize = computeBrowseButtonSize();
-
-    int browseButtonHeight = browseButtonSize.y;
-    int progressHeight = 20;
-
-    int height = 0, width = 0;
-    if( wHint == SWT.DEFAULT || hHint == SWT.DEFAULT ) {
-      if( ( ( flags & SHOW_PROGRESS ) > 0 )
-          && ( ( flags & SHOW_UPLOAD_BUTTON ) > 0 ) )
-      {
-        // progress bar and upload button visible
-        width = computeBaseWidth();
-        final Point textExtent = Graphics.stringExtent( getFont(), getUploadButtonText());
-        width += textExtent.x;
-
-        height = Math.max( computeBaseHeight(),
-                           Math.max( textExtent.y, browseButtonHeight ) );
-
-        height += progressHeight;
-
-      } else if( ( flags & SHOW_PROGRESS ) > 0 ) {
-        // progress bar visible
-        width = computeBaseWidth();
-        height = Math.max( computeBaseHeight(), browseButtonHeight );
-        height += progressHeight;
-
-      } else if( ( flags & SHOW_UPLOAD_BUTTON ) > 0 ) {
-        // upload button visible
-        width = computeBaseWidth();
-
-        final Point textExtent = Graphics.stringExtent( getFont(), getUploadButtonText());
-        width += textExtent.x;
-
-        height = Math.max( computeBaseHeight(),
-                           Math.max( textExtent.y, browseButtonHeight ) );
-
-      } else {
-        // no progress bar and no upload button visible
-        width = computeBaseWidth();
-        height = Math.max( computeBaseHeight(), browseButtonHeight );
-      }
-    }
-
-    if( wHint != SWT.DEFAULT ) {
-      width = wHint;
-    }
-
-    if( hHint != SWT.DEFAULT ) {
-      height = hHint;
-    }
-
-    return new Point( width, height +2);
-  }
-
-  private int computeBaseHeight() {
-    return Graphics.getCharHeight( getFont() );
-  }
-
-  /**
-   * These lines are copied from {@link Button#computeSize(int, int)}.
-   * TODO: [sr] Find a better solution to avoid this code duplication...
-   */
-  private Point computeBrowseButtonSize() {
-    final int border = getButtonBorder();
-    int width = 0, height = 0;
-
-    final Point extent = Graphics.stringExtent( getFont(), getBrowseButtonText() );
-    height = Math.max( height, extent.y );
-    width += extent.x;
-
-    width += 12;
-    height += 10;
-
-    width += border * 2;
-    height += border * 2;
-    return new Point( width, height );
-  }
-
-  private int getButtonBorder() {
-    UploadThemeAdapter themeAdapter
-      = ( UploadThemeAdapter )getAdapter( IThemeAdapter.class );
-    return themeAdapter.getButtonBorderWidth( this );
-  }
-
-  private int computeBaseWidth() {
-    float avgCharWidth = Graphics.getAvgCharWidth( getFont() );
-    return ( int )( avgCharWidth * 50 );
-  }
+  
 
   /**
    * Set the text of the browse button.
@@ -400,7 +195,7 @@ public class Upload extends Control {
     if( browseButtonText == null ) {
       SWT.error( SWT.ERROR_NULL_ARGUMENT );
     }
-    this.browseButtonText = browseButtonText;
+    browseBtn.setText( browseButtonText );
   }
 
   /**
@@ -408,7 +203,7 @@ public class Upload extends Control {
    */
   public String getBrowseButtonText() {
     checkWidget();
-    return browseButtonText;
+    return browseBtn.getText();
   }
 
   /**
@@ -422,7 +217,8 @@ public class Upload extends Control {
     if( uploadButtonText == null ) {
       SWT.error( SWT.ERROR_NULL_ARGUMENT );
     }
-    this.uploadButtonText = uploadButtonText;
+    if (uploadBtn != null)
+      uploadBtn.setText( uploadButtonText );
   }
 
   /**
@@ -430,7 +226,7 @@ public class Upload extends Control {
    */
   public String getUploadButtonText() {
     checkWidget();
-    return uploadButtonText;
+    return uploadBtn.getText();
   }
 
   /**
@@ -488,31 +284,8 @@ public class Upload extends Control {
    */
   public String getLastFileUploaded() {
     checkWidget();
-    return lastFileUploaded;
+    return browseBtn.getFileName();
   }
-
-  /**
-   * Returns the <code>java.io.File<code> that represents the absolute
-   * path to the last uploaded file disk.
-   *
-   * @return The <code>java.io.File<code> that represents the absolute
-   * path to the last uploaded file disk or null if no file was uploaded. The
-   * latter may be the case if the path entered by the user doesn't exist.
-   * @deprecated This method is no longer supported and always returns null.
-   * Please use {@link Upload#getUploadItem()} instead.
-   */
-  public File getLastUploadedFile() {
-    checkWidget();
-    return null;
-//    HttpSession session = RWT.getSessionStore().getHttpSession();
-//    File tmpDir = FileUploadServlet.getUploadTempDir( session );
-//    File result = new File( tmpDir, lastFileUploaded );
-//    if( !result.exists() ) {
-//      result = null;
-//    }
-//    return result;
-  }
-
 
   /**
    * After uploading has finished this method returns the uploaded file
@@ -527,29 +300,35 @@ public class Upload extends Control {
       SWT.error( SWT.ERROR_WIDGET_DISPOSED );
     }
 
-    final FileUploadStorageItem uploadedFile = getUploadStorageItem();
-    final UploadItem uploadItem = new UploadItem( uploadedFile.getFileInputStream(),
-                                                  uploadedFile.getContentType(),
-                                                  getLastFileUploaded(),
-                                                  getPath(),
-                                                  uploadedFile.getContentLength());
+    FileInputStream fileInputStream = null;
+    String canonicalPath = null;
+    long length = 0;
+    String name = null;
+    if (uploadedFile != null) {
+      try {
+        fileInputStream = new FileInputStream( uploadedFile );
+      } catch( FileNotFoundException e ) {
+        e.printStackTrace();
+      }
+      try {
+        canonicalPath = uploadedFile.getCanonicalPath();
+      } catch( IOException e ) {
+        e.printStackTrace();
+      }
+      name = uploadedFile.getName();
+      length = uploadedFile.length();
+    }
+    
+    final UploadItem uploadItem = new UploadItem( fileInputStream,
+                                                  uploadContentType,
+                                                  name,
+                                                  canonicalPath,
+                                                  length);
     return uploadItem;
   }
 
   private String getWidgetId() {
     return String.valueOf(this.hashCode());
-  }
-
-  /**
-   * Sets the name of the last uploaded file.
-   *
-   * @param lastFileUploaded The name of the last uploaded file.
-   * @deprecated This method should not be used and will be removed
-   * in a future version because the semantics don't make sense.
-   */
-  public void setLastFileUploaded( final String lastFileUploaded ) {
-    checkWidget();
-    this.lastFileUploaded = lastFileUploaded;
   }
 
   /**
@@ -577,7 +356,9 @@ public class Upload extends Control {
    * {@inheritDoc}
    */
   public void dispose() {
-    FileUploadStorage.getInstance().setUploadStorageItem( getWidgetId(), null );
+    if (handler != null) {
+      handler.dispose();
+    }
     super.dispose();
   }
 
@@ -588,36 +369,192 @@ public class Upload extends Control {
    */
   public void reset() {
     checkWidget();
-
-    this.lastFileUploaded = "";
-    this.path = "";
-
-    resetStorageItem();
-
-    resetUpload = true;
+    if (handler != null) {
+      handler.dispose();
+      handler = null;
+    }
+    initHandler();
+    uploadInProgresses = new boolean[]{ false };
+    fileText.setText( "" );
+    if (progressBar != null) {
+      progressBar.setSelection( 0 );
+      progressBar.setState( SWT.NORMAL );
+    }
   }
 
   /**
-   * Resets the internal storage item that is used to transfer the file content
-   * and progress between widget and ServiceHandler.
-   */
-  private void resetStorageItem() {
-    final FileUploadStorageItem storageItem = FileUploadStorage.getInstance().getUploadStorageItem( getWidgetId() );
-    storageItem.reset();
-  }
-
-  /**
-   * Returns a configuration facade. Note that this configuration
-   * is shared for all update widgets.
+   * Returns a configuration facade for this update widget.
    */
   public IUploadConfiguration getConfiguration() {
-    return FileUploadServiceHandler.getConfiguration();
+    return new UploadConfigAdapter(handler);
+  }
+  
+  public void setEnabled( boolean enabled ) {
+    super.setEnabled( enabled );
+    browseBtn.setEnabled( enabled );
+    fileText.setEnabled( enabled );
+    
+    if( uploadBtn != null ) {
+      uploadBtn.setEnabled( enabled );
+    }
+    if ( progressBar != null ) {
+      progressBar.setEnabled( enabled );
+    }
   }
 
-  protected FileUploadStorageItem getUploadStorageItem() {
-    final FileUploadStorage storage = FileUploadStorage.getInstance();
-    final FileUploadStorageItem uploadedFile = storage.getUploadStorageItem( getWidgetId() );
-    return uploadedFile;
-  }
 
+  private boolean hasStyle( int testStyle ) {
+    return ( flags & ( testStyle ) ) != 0;
+  }
+  
+  private int computeBaseWidth() {
+    float avgCharWidth = Graphics.getAvgCharWidth( getFont() );
+    return ( int )( avgCharWidth * 25 );
+  }
+  
+  private void createChildren() {
+    GridLayout layout = new GridLayout( 3, false );
+    layout.marginWidth = 0;
+    layout.marginHeight = 0;
+    layout.horizontalSpacing = 1;
+    layout.verticalSpacing = 1;
+    setLayout( layout );
+    
+    fileText = new Text( this, SWT.BORDER );
+    fileText.setToolTipText( "Selected file" );
+    fileText.setEditable( false );
+    
+    browseBtn = new FileUpload( this, SWT.NONE );
+    browseBtn.setLayoutData( new GridData( SWT.FILL, SWT.FILL, false, false ) );
+    browseBtn.setText( "Browse" );
+    browseBtn.setToolTipText( "Browse to select a single file" );
+    browseBtn.addSelectionListener( new SelectionAdapter() {
+      
+      public void widgetSelected( SelectionEvent event ) {
+        String filename = browseBtn.getFileName();
+        if( !filename.equals( fileText.getText() ) ) {
+          ModifyEvent modifyEvent = new ModifyEvent( Upload.this );
+          modifyEvent.processEvent();
+          if( progressBar != null && !progressBar.isDisposed() ) {
+            progressBar.setSelection( 0 );
+            progressBar.setToolTipText( "Upload progress: 0%" );
+          }
+          fileText.setText( filename );
+        }
+      }
+    } );
+    
+    GridData textLayoutData = new GridData( SWT.FILL, SWT.FILL, false, false );
+    textLayoutData.widthHint = computeBaseWidth();
+    if( hasStyle( SHOW_UPLOAD_BUTTON ) ) {
+      fileText.setLayoutData( textLayoutData );
+      uploadBtn = new Button( this, SWT.PUSH );
+      uploadBtn.setLayoutData( new GridData( SWT.FILL, SWT.FILL, false, false ) );
+      uploadBtn.setText( "Upload" );
+      uploadBtn.setToolTipText( "Upload selected file" );
+      uploadBtn.addSelectionListener( new SelectionAdapter() {
+        
+        public void widgetSelected( SelectionEvent event ) {
+          startUpload();
+        }
+      } );
+    }
+    else {
+      textLayoutData.horizontalSpan = 2;
+      fileText.setLayoutData( textLayoutData );
+    }
+    
+    if( hasStyle( SHOW_PROGRESS ) ) {
+      progressBar = new ProgressBar( this, SWT.HORIZONTAL | SWT.SMOOTH );
+      GridData layoutData = new GridData( SWT.FILL, SWT.FILL, true, false );
+      layoutData.horizontalSpan = 3;
+      progressBar.setLayoutData( layoutData );
+      progressBar.setToolTipText( "Upload progress" );
+      progressBar.setMinimum( 0 );
+      progressBar.setMaximum( 100 );
+    }
+  }
+  
+  private class InternalUploadListener implements IFileUploadListener {
+    
+    public void uploadFinished( final FileUploadEvent uploadEvent ) {
+      browseBtn.getDisplay().asyncExec( new Runnable() {
+        public void run() {
+          handler.removeUploadListener( listener );
+          int percent = 100;
+          UploadEvent evt = null;
+          try {
+            DiskFileUploadReceiver receiver = ( DiskFileUploadReceiver )handler.getReceiver();
+            uploadedFile = receiver.getTargetFile();
+            evt = new UploadEvent( Upload.this, true, (int)uploadEvent.getBytesRead(), (int)uploadEvent.getContentLength() );
+          } catch( Exception e ) {
+            evt = new UploadEvent( Upload.this, e );
+            percent = 0;
+          }
+          finally {
+            if( progressBar != null && !progressBar.isDisposed() ) {
+              progressBar.setSelection( percent );
+              progressBar.setToolTipText( "Upload progress: " + percent + "%" );
+            }
+            evt.processEvent();
+          }
+          UICallBack.deactivate( processId );
+        }
+      } );
+    }
+    
+    public void uploadProgress( final FileUploadEvent uploadEvent ) {
+      browseBtn.getDisplay().asyncExec( new Runnable() {
+        public void run() {
+          long bytesRead = uploadEvent.getBytesRead();
+          long totalBytes = uploadEvent.getContentLength();
+          
+          double fraction = bytesRead / ( double )totalBytes;
+          int percent = ( int )Math.floor( fraction * 100 );
+          if( progressBar != null && !progressBar.isDisposed() ) {
+            progressBar.setSelection( percent );
+            progressBar.setToolTipText( "Upload progress: " + percent + "%" );
+          }
+          uploadContentType = uploadEvent.getContentType();
+          if (hasStyle( FIRE_PROGRESS_EVENTS )) {
+            UploadEvent evt = new UploadEvent( Upload.this, false, (int)bytesRead, (int)totalBytes );
+            evt.processEvent();
+          }
+        }
+      } );
+    }
+    
+    public void uploadFailed( final FileUploadEvent uploadEvent ) {
+      browseBtn.getDisplay().asyncExec( new Runnable() {
+        public void run() {
+          if( progressBar != null && !progressBar.isDisposed() ) {
+            progressBar.setState( SWT.ERROR );
+            progressBar.setSelection( 100 );
+            progressBar.setToolTipText( uploadEvent.getException().getMessage() );
+          }
+          UploadEvent evt = new UploadEvent( Upload.this, uploadEvent.getException() );
+          evt.processEvent();
+          UICallBack.deactivate( processId );
+        }
+      } );
+    }
+
+  }
+  
+  private class UploadConfigAdapter implements IUploadConfiguration {
+    
+    private final FileUploadHandler handler;
+    
+    public UploadConfigAdapter( FileUploadHandler handler ) {
+      this.handler = handler;
+    }
+    
+    public void setFileMaxSize( long maxFileSize ) {
+      handler.setMaxFileSize( maxFileSize );
+    }
+    
+    public long getFileSizeMax() {
+      return handler.getMaxFileSize();
+    }
+  }
 }
