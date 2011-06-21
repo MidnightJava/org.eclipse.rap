@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002-2008 Innoopract Informationssysteme GmbH.
+ * Copyright (c) 2002,2011 Innoopract Informationssysteme GmbH.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Innoopract Informationssysteme GmbH - initial API and implementation
+ *     EclipseSource - ongoing development
  ******************************************************************************/
 package org.eclipse.rap.gmaps;
 
@@ -14,19 +15,21 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
 public class GMap extends Composite {
+  private static final long serialVersionUID = 1L;
 
-  private String address = "";
+  private String address;
   private String centerLocation;
 
-  public GMap( final Composite parent, final int style ) {
+  public GMap( Composite parent, int style ) {
     super( parent, style );
+    address = "";
   }
 
   public String getAddress() {
     return address;
   }
 
-  public void setAddress( final String address ) {
+  public void setAddress( String address ) {
     if( address == null ) {
       this.address = "";
     } else {
@@ -45,6 +48,6 @@ public class GMap extends Composite {
   /*
    * Intentionally commented out as a map cannot have a layout
    */
-  public void setLayout( final Layout layout ) {
+  public void setLayout( Layout layout ) {
   }
 }
