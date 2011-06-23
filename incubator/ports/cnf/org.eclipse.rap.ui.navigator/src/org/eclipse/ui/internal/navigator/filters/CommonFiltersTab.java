@@ -51,7 +51,9 @@ import org.eclipse.ui.navigator.INavigatorFilterService;
  * 
  */
 public class CommonFiltersTab extends CustomizationTab { 
- 
+
+	private static final long serialVersionUID = 1L;
+
 	private static final String ALL = "*"; //$NON-NLS-1$
 
 	private String initialFilterTextValue = CommonNavigatorMessages.CommonFilterSelectionDialog_enter_name_of_filte_;

@@ -22,6 +22,8 @@ import org.eclipse.ui.navigator.INavigatorContentService;
  */
 public class ContentExtensionsTab extends CustomizationTab {
 
+	private static final long serialVersionUID = 1L;
+
 	protected ContentExtensionsTab(Composite parent,
 			INavigatorContentService aContentService) {
 		super(parent, aContentService);

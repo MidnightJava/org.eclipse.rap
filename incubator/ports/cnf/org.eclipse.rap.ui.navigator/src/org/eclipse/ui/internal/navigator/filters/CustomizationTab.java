@@ -31,8 +31,9 @@ import org.eclipse.ui.navigator.INavigatorContentService;
  * 
  */
 public class CustomizationTab extends Composite { 
- 
- 
+
+	private static final long serialVersionUID = 1L;
+
 	private final INavigatorContentService contentService;
 
 	private CheckboxTableViewer tableViewer;
