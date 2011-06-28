@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Tomcat
+Bundle-SymbolicName: org.apache.tomcat
+Bundle-Version: 7.0.12.qualifier
+Bundle-Vendor: Apache Software Foundation
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: javax.servlet;version="3.0.0",
+ javax.servlet.annotation;version="3.0.0",
+ javax.servlet.descriptor;version="3.0.0",
+ javax.servlet.http;version="3.0.0",
+ javax.servlet.resources;version="3.0.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: org.apache.catalina;version="7.0.12.qualifier",
+ org.apache.catalina.connector;version="7.0.12.qualifier",
+ org.apache.catalina.deploy;version="7.0.12.qualifier",
+ org.apache.catalina.ha.session;version="7.0.12.qualifier",
+ org.apache.catalina.ha.tcp;version="7.0.12.qualifier",
+ org.apache.catalina.servlets;version="7.0.12.qualifier",
+ org.apache.catalina.session;version="7.0.12.qualifier",
+ org.apache.catalina.startup;version="7.0.12.qualifier",
+ org.apache.catalina.tribes;version="7.0.12.qualifier",
+ org.apache.catalina.tribes.group;version="7.0.12.qualifier",
+ org.apache.catalina.tribes.group.interceptors;version="7.0.12.qualifier",
+ org.apache.catalina.tribes.membership;version="7.0.12.qualifier",
+ org.apache.catalina.tribes.transport;version="7.0.12.qualifier",
+ org.apache.catalina.tribes.transport.nio;version="7.0.12.qualifier"
