@@ -53,7 +53,7 @@ public class Ellipse extends Shape {
 	 * @see org.eclipse.draw2d.Shape#fillShape(org.eclipse.draw2d.Graphics)
 	 */
 	protected void fillShape(Graphics graphics) {
-		graphics.fillOval(getBounds());
+		graphics.fillOval(getOptimizedBounds());
 	}
 
 	/**
@@ -62,6 +62,10 @@ public class Ellipse extends Shape {
 	 * @see org.eclipse.draw2d.Shape#outlineShape(org.eclipse.draw2d.Graphics)
 	 */
 	protected void outlineShape(Graphics graphics) {
+		graphics.drawOval(getOptimizedBounds());
+	}
+
+	private Rectangle getOptimizedBounds() {
 		float lineInset = Math.max(1.0f, getLineWidthFloat()) / 2.0f;
 		int inset1 = (int) Math.floor(lineInset);
 		int inset2 = (int) Math.ceil(lineInset);
@@ -71,7 +75,6 @@ public class Ellipse extends Shape {
 		r.y += inset1;
 		r.width -= inset1 + inset2;
 		r.height -= inset1 + inset2;
-
-		graphics.drawOval(r);
+		return r;
 	}
 }

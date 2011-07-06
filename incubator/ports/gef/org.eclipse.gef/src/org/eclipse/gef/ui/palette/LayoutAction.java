@@ -23,7 +23,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.resource.ImageDescriptor;
 
-
 import org.eclipse.gef.internal.Internal;
 
 /**

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -140,6 +141,8 @@ public class RulerComposite extends Composite {
 	 * @since 3.6
 	 */
 	public static Rectangle calculateRulerTrim(Composite canvas) {
+		// IMPORTANT: As stated in bug #314750, this is a Mac Carbon related
+		// workaround that is not needed on Cocoa.
 		if ("carbon".equals(SWT.getPlatform())) { //$NON-NLS-1$
 			Rectangle trim = canvas.computeTrim(0, 0, 0, 0);
 			trim.width = 0 - trim.x * 2;
@@ -555,11 +558,25 @@ public class RulerComposite extends Composite {
 		}
 
 		/**
-		 * @see org.eclipse.gef.EditPartViewer#setContents(org.eclipse.gef.EditPart)
+		 * 
+		 * @see org.eclipse.gef.ui.parts.GraphicalViewerImpl#handleFocusGained(org.eclipse.swt.events.FocusEvent)
 		 */
-		public void setContents(EditPart editpart) {
-			super.setContents(editpart);
-			setFocus(getContents());
+		protected void handleFocusGained(FocusEvent fe) {
+			if (focusPart == null) {
+				setFocus(getContents());
+			}
+			super.handleFocusGained(fe);
+		}
+
+		/**
+		 * 
+		 * @see org.eclipse.gef.ui.parts.GraphicalViewerImpl#handleFocusLost(org.eclipse.swt.events.FocusEvent)
+		 */
+		protected void handleFocusLost(FocusEvent fe) {
+			super.handleFocusLost(fe);
+			if (focusPart == getContents()) {
+				focusPart = null;
+			}
 		}
 
 		/**

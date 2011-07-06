@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.gef.requests;
 
-import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.rap.swt.SWT;
 
 /**
  * A request to select an edit part.
@@ -32,12 +32,22 @@ public class SelectionRequest extends LocationRequest {
 	}
 
 	/**
+	 * Returns the statemask for this request.
+	 * 
+	 * @return the statemask
+	 * @since 3.7
+	 */
+	public int getModifiers() {
+		return statemask;
+	}
+
+	/**
 	 * Returns <code>true</code> if the ALT key is currently pressed.
 	 * 
 	 * @return whether the ALT key is pressed
 	 */
 	public boolean isAltKeyPressed() {
-		return ((statemask & MouseEvent.ALT) != 0);
+		return ((statemask & SWT.ALT) != 0);
 	}
 
 	/**
@@ -46,7 +56,17 @@ public class SelectionRequest extends LocationRequest {
 	 * @return whether any mouse button is pressed
 	 */
 	public boolean isAnyMouseButtonPressed() {
-		return ((statemask & MouseEvent.ANY_BUTTON) != 0);
+		return ((statemask & SWT.BUTTON_MASK) != 0);
+	}
+
+	/**
+	 * Returns <code>true</code> if the COMMAND key is currently pressed.
+	 * 
+	 * @return whether the COMMAND key is pressed
+	 * @since 3.7
+	 */
+	public boolean isCommandKeyPressed() {
+		return ((statemask & SWT.COMMAND) != 0);
 	}
 
 	/**
@@ -55,7 +75,7 @@ public class SelectionRequest extends LocationRequest {
 	 * @return whether the CTRL key is pressed
 	 */
 	public boolean isControlKeyPressed() {
-		return ((statemask & MouseEvent.CONTROL) != 0);
+		return ((statemask & SWT.CTRL) != 0);
 	}
 
 	/**
@@ -64,7 +84,7 @@ public class SelectionRequest extends LocationRequest {
 	 * @return whether the left mouse button is pressed
 	 */
 	public boolean isLeftMouseButtonPressed() {
-		return ((statemask & MouseEvent.BUTTON1) != 0);
+		return ((statemask & SWT.BUTTON1) != 0);
 	}
 
 	/**
@@ -73,7 +93,7 @@ public class SelectionRequest extends LocationRequest {
 	 * @return whether the right mouse button is pressed
 	 */
 	public boolean isRightMouseButtonPressed() {
-		return ((statemask & MouseEvent.BUTTON3) != 0);
+		return ((statemask & SWT.BUTTON3) != 0);
 	}
 
 	/**
@@ -82,7 +102,7 @@ public class SelectionRequest extends LocationRequest {
 	 * @return whether the SHIFT key is pressed
 	 */
 	public boolean isShiftKeyPressed() {
-		return ((statemask & MouseEvent.SHIFT) != 0);
+		return ((statemask & SWT.SHIFT) != 0);
 	}
 
 	/**

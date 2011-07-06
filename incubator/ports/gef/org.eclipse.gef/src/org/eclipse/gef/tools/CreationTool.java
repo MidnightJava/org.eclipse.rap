@@ -351,15 +351,16 @@ public class CreationTool extends TargetingTool {
 			constraint.setSize(Dimension.min(constraint.getSize(),
 					getMaximumSizeFor(createRequest)));
 			((GraphicalEditPart) getTargetEditPart()).getContentPane()
-					.translateToRelative(constraint);
+					.translateToAbsolute(constraint);
 			createRequest.setSize(constraint.getSize());
 		}
 	}
 
 	/**
 	 * Determines the <em>maximum</em> size for CreateRequest's size on drop. It
-	 * is called from {@link #enforceConstraintsForSizeOnDropCreate(CreateRequest)}
-	 * during creation. By default, a large <code>Dimension</code> is returned.
+	 * is called from
+	 * {@link #enforceConstraintsForSizeOnDropCreate(CreateRequest)} during
+	 * creation. By default, a large <code>Dimension</code> is returned.
 	 * 
 	 * @param request
 	 *            the request.
@@ -372,8 +373,9 @@ public class CreationTool extends TargetingTool {
 
 	/**
 	 * Determines the <em>minimum</em> size for CreateRequest's size on drop. It
-	 * is called from {@link #enforceConstraintsForSizeOnDropCreate(CreateRequest)}
-	 * during creation. By default, a small <code>Dimension</code> is returned.
+	 * is called from
+	 * {@link #enforceConstraintsForSizeOnDropCreate(CreateRequest)} during
+	 * creation. By default, a small <code>Dimension</code> is returned.
 	 * 
 	 * @param request
 	 *            the request.

@@ -697,12 +697,12 @@ public abstract class AbstractEditPart implements EditPart, RequestConstants,
 	}
 
 	/**
-	 * By default, an EditPart is selectable, if it is active.
+	 * By default, an EditPart is regarded to be selectable.
 	 * 
 	 * @see org.eclipse.gef.EditPart#isSelectable()
 	 */
 	public boolean isSelectable() {
-		return isActive();
+		return true;
 	}
 
 	/**
@@ -1019,8 +1019,6 @@ public abstract class AbstractEditPart implements EditPart, RequestConstants,
 	 * @see EditPart#setModel(Object)
 	 */
 	public void setModel(Object model) {
-		if (getModel() == model)
-			return;
 		this.model = model;
 	}
 
@@ -1030,8 +1028,6 @@ public abstract class AbstractEditPart implements EditPart, RequestConstants,
 	 * @see EditPart#setParent(EditPart)
 	 */
 	public void setParent(EditPart parent) {
-		if (this.parent == parent)
-			return;
 		this.parent = parent;
 	}
 

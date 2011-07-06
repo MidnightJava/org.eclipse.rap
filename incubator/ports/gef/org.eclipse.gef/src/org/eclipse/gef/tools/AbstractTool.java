@@ -1303,9 +1303,15 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 			p.y = rect.y + rect.height - 1;
 		else if (p.y < rect.y)
 			p.y = rect.y;
-		org.eclipse.swt.graphics.Point swt = new org.eclipse.swt.graphics.Point(
+
+		// place the mouse cursor at the calculated position within the viewer
+		org.eclipse.swt.graphics.Point cursorLocation = new org.eclipse.swt.graphics.Point(
 				p.x, p.y);
-		swt = c.toDisplay(swt);
+		cursorLocation = c.toDisplay(cursorLocation);
+      // calling Display#setCursorLocation(Point) will cause an SWT.MouseMove
+      // event to be dispatched as a result, so that mouseMove(MouseEvent,
+      // EditPartViewer) will be triggered as a result, which will react to
+      // the movement by delegating to handleMove() or handleDragInProgress().
 		// UNSUPPORTED - api not supported in RAP
 		// c.getDisplay().setCursorLocation(swt);
 	}

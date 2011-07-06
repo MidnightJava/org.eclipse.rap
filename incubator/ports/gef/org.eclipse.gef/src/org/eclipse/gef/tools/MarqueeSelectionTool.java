@@ -92,16 +92,9 @@ public class MarqueeSelectionTool extends AbstractTool {
 			Rectangle bounds = getBounds().getCopy();
 			graphics.translate(getLocation());
 
-			if (Platform.WS_COCOA.equals(Platform.getWS())) {
-				// Bugzilla 303659 setXORMode(true) broken on MAC COCOA
-				graphics.setForegroundColor(ColorConstants.black);
-				graphics.setBackgroundColor(ColorConstants.black);
-			} else {
-				graphics.setXORMode(true);
-				graphics.setForegroundColor(ColorConstants.white);
-				graphics.setBackgroundColor(ColorConstants.black);
-			}
-
+		   graphics.setXORMode(true);
+			graphics.setForegroundColor(ColorConstants.white);
+			graphics.setBackgroundColor(ColorConstants.black);
 			graphics.setLineStyle(Graphics.LINE_DOT);
 
 			int[] points = new int[6];

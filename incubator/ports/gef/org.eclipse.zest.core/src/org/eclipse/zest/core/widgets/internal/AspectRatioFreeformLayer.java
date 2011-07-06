@@ -110,11 +110,10 @@ public class AspectRatioFreeformLayer extends FreeformLayer implements ScalableF
 
 		if (t instanceof PrecisionRectangle) {
 			PrecisionRectangle r = (PrecisionRectangle) t;
-			r.setPreciseX(r.preciseX() * 1 / widthScale);
-			r.setPreciseY(r.preciseY() * 1 / heigthScale);
-			r.setPreciseWidth(r.preciseWidth() * 1 / widthScale);
-			r.setPreciseHeight(r.preciseHeight() * 1 / heigthScale);
-//			r.updateInts();
+			r.setPreciseX(r.preciseX() * (1 / widthScale));
+			r.setPreciseY(r.preciseY() * (1 / heigthScale));
+			r.setPreciseWidth(r.preciseWidth() * (1 / widthScale));
+			r.setPreciseHeight(r.preciseHeight() * (1 / heigthScale));
 		} else if (t instanceof Rectangle) {
 			Rectangle r = (Rectangle) t;
 			r.scale(1 / widthScale, 1 / heigthScale);
@@ -123,17 +122,15 @@ public class AspectRatioFreeformLayer extends FreeformLayer implements ScalableF
 			c.performScale(1 / heigthScale);
 		} else if (t instanceof PrecisionDimension) {
 			PrecisionDimension d = (PrecisionDimension) t;
-			d.setPreciseWidth(d.preciseWidth() * 1 / widthScale);
-			d.setPreciseHeight(d.preciseHeight() * 1 / heigthScale);
-//			d.updateInts();
+			d.setPreciseWidth(d.preciseWidth() * (1 / widthScale));
+			d.setPreciseHeight(d.preciseHeight() * (1 / heigthScale));
 		} else if (t instanceof Dimension) {
 			Dimension d = (Dimension) t;
 			d.scale(1 / widthScale, 1 / heigthScale);
 		} else if (t instanceof PrecisionPoint) {
 			PrecisionPoint p = (PrecisionPoint) t;
-			p.setPreciseX(p.preciseX() * 1 / widthScale);
-			p.setPreciseY(p.preciseY() * 1 / heigthScale);
-//			p.updateInts();
+			p.setPreciseX(p.preciseX() * (1 / widthScale));
+			p.setPreciseY(p.preciseY() * (1 / heigthScale));
 		} else if (t instanceof Point) {
 			Point p = (Point) t;
 			p.scale(1 / widthScale, 1 / heigthScale);
@@ -155,7 +152,6 @@ public class AspectRatioFreeformLayer extends FreeformLayer implements ScalableF
 			r.setPreciseY(r.preciseY() * heigthScale);
 			r.setPreciseWidth(r.preciseWidth() * widthScale);
 			r.setPreciseHeight(r.preciseHeight() * heigthScale);
-//			r.updateInts();
 		} else if (t instanceof Rectangle) {
 			Rectangle r = (Rectangle) t;
 			//r.performScale(widthScale);
@@ -167,7 +163,6 @@ public class AspectRatioFreeformLayer extends FreeformLayer implements ScalableF
 			PrecisionDimension d = (PrecisionDimension) t;
 			d.setPreciseWidth(d.preciseWidth() * widthScale);
 			d.setPreciseHeight(d.preciseHeight() * heigthScale);
-//			d.updateInts();
 		} else if (t instanceof Dimension) {
 			Dimension d = (Dimension) t;
 			d.scale(widthScale, heigthScale);
@@ -175,7 +170,6 @@ public class AspectRatioFreeformLayer extends FreeformLayer implements ScalableF
 			PrecisionPoint p = (PrecisionPoint) t;
 			p.setPreciseX(p.preciseX() * widthScale);
 			p.setPreciseY(p.preciseY() * heigthScale);
-//			p.updateInts();
 		} else if (t instanceof Point) {
 			Point p = (Point) t;
 			p.scale(widthScale, heigthScale);

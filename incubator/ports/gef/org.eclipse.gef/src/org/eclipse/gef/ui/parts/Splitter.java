@@ -6,28 +6,25 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * IBM Corporation - initial API and implementation
+ *     IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.gef.ui.parts;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.ControlPaintHandler;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Sash;
 
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.rap.swt.SWT;
 
 class Splitter extends Composite {
 
@@ -204,13 +201,7 @@ class Splitter extends Composite {
 			for (int i = sashes.length; i < newSashes.length; i++) {
 				newSashes[i] = new Sash(this, sashOrientation);
 				newSashes[i].setBackground(ColorConstants.button);
-				ControlPaintHandler helper = new ControlPaintHandler(
-						newSashes[i]);
-				helper.addPaintListener(new PaintListener() {
-					public void paintControl(PaintEvent e) {
-						paint((Sash) e.widget, e.gc);
-					}
-				});
+				newSashes[i].addListener(SWT.Paint, new SashPainter());
 				newSashes[i].addListener(SWT.Selection, sashListener);
 			}
 			sashes = newSashes;
