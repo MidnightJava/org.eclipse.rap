@@ -60,7 +60,7 @@ public class StyledText extends Canvas {
   private int selectionAnchor;
   private boolean editable;
   private StyledTextRenderer renderer;
-  private final IStyledTextAdapter styledTextAdapter;
+  private transient IStyledTextAdapter styledTextAdapter;
 
   /**
    * Constructs a new instance of this class given its parent and a style value
@@ -93,7 +93,6 @@ public class StyledText extends Canvas {
     charStyle = "";
     selection = new Point( 0, 0 );
     renderer = new StyledTextRenderer( this );
-    styledTextAdapter = new StyledTextAdapter();
   }
 
   /**
@@ -932,6 +931,9 @@ public class StyledText extends Canvas {
   public Object getAdapter( final Class adapter ) {
     Object result;
     if( adapter == IStyledTextAdapter.class ) {
+      if( styledTextAdapter == null ) {
+        styledTextAdapter = new StyledTextAdapter();
+      }
       result = styledTextAdapter;
     } else {
       result = super.getAdapter( adapter );
