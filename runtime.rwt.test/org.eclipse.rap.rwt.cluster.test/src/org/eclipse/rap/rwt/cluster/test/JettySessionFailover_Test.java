@@ -14,7 +14,7 @@ import org.eclipse.rap.rwt.cluster.testfixture.server.IServletEngineFactory;
 import org.eclipse.rap.rwt.cluster.testfixture.server.JettyFactory;
 
 
-public class JettySessionFailover_Test extends SessionFailover_Test {
+public class JettySessionFailover_Test extends SessionFailoverTestBase {
   IServletEngineFactory getServletEngineFactory() {
     return new JettyFactory();
   }
