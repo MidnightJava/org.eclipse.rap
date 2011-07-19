@@ -20,7 +20,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -53,11 +53,11 @@ public class ShapeStylesExample {
 		new StyleAxis(
 			"Line Style",
 			new StyleItem[] {
-				new StyleItem("SWT.LINE_SOLID", SWT.LINE_SOLID),
-				new StyleItem("SWT.LINE_DASH", SWT.LINE_DASH),
-				new StyleItem("SWT.LINE_DASHDOT", SWT.LINE_DASHDOT),
-				new StyleItem("SWT.LINE_DASHDOTDOT", SWT.LINE_DASHDOTDOT),
-				new StyleItem("SWT.LINE_DOT", SWT.LINE_DOT),
+				new StyleItem("SWT.LINE_SOLID", org.eclipse.draw2d.rap.swt.SWT.LINE_SOLID),
+				new StyleItem("SWT.LINE_DASH", org.eclipse.draw2d.rap.swt.SWT.LINE_DASH),
+				new StyleItem("SWT.LINE_DASHDOT", org.eclipse.draw2d.rap.swt.SWT.LINE_DASHDOT),
+				new StyleItem("SWT.LINE_DASHDOTDOT", org.eclipse.draw2d.rap.swt.SWT.LINE_DASHDOTDOT),
+				new StyleItem("SWT.LINE_DOT", org.eclipse.draw2d.rap.swt.SWT.LINE_DOT),
 			}) {
 				public void applyTo(Shape shape, int i) {
 					shape.setLineStyle((int)elements[i].getValue());					

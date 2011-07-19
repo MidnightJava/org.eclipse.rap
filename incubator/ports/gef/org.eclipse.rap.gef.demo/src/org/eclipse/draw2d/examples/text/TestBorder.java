@@ -20,7 +20,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.text.AbstractFlowBorder;
 import org.eclipse.draw2d.text.FlowFigure;
 

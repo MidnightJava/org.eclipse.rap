@@ -29,7 +29,7 @@ import org.eclipse.draw2d.examples.layouts.ToolbarLayoutExample;
 import org.eclipse.draw2d.examples.scrollpane.ScrollPaneExample;
 import org.eclipse.draw2d.examples.tree.SimpleTreeExample;
 import org.eclipse.draw2d.examples.tree.TreeExample;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.gef.examples.flow.ui.FlowEditorView;
 import org.eclipse.gef.examples.logicdesigner.LogicEditorView;
 import org.eclipse.jface.viewers.ArrayContentProvider;

@@ -11,7 +11,7 @@
 package org.eclipse.gef.examples.logicdesigner.actions;
 
 import org.eclipse.draw2d.PrintFigureOperation;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.gef.examples.logicdesigner.LogicMessages;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.widgets.Button;

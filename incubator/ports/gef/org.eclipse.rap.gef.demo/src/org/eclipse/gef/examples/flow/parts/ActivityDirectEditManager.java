@@ -13,7 +13,7 @@ package org.eclipse.gef.examples.flow.parts;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.tools.CellEditorLocator;
 import org.eclipse.gef.tools.DirectEditManager;

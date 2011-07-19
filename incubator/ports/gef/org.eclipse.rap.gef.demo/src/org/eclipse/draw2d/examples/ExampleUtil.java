@@ -18,7 +18,7 @@ import org.eclipse.draw2d.GroupBoxBorder;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * A factory for figures.

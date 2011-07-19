@@ -16,7 +16,7 @@ import org.eclipse.swt.graphics.*;
 import org.eclipse.draw2d.*;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 public class UMLClassFigure extends Figure {
 

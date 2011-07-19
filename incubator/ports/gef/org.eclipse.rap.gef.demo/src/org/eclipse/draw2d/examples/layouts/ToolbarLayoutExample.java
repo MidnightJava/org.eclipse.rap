@@ -32,7 +32,7 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.examples.AbstractExample;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * @author hudsonr

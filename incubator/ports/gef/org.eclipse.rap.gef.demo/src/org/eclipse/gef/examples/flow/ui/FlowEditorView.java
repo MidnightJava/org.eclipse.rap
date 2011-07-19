@@ -16,7 +16,7 @@
 package org.eclipse.gef.examples.flow.ui;
 
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.gef.examples.flow.model.ActivityDiagram;
 import org.eclipse.rap.gef.demo.EditorView;
 import org.eclipse.rap.gef.demo.DirectEditorInput;

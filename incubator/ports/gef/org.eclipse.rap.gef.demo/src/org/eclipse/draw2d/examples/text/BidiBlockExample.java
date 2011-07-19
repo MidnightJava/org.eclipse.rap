@@ -13,7 +13,7 @@ import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.examples.AbstractExample;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.text.BlockFlow;
 import org.eclipse.draw2d.text.FlowPage;
 import org.eclipse.draw2d.text.TextFlow;
@@ -66,31 +66,31 @@ protected IFigure getContents() {
 
 	para = new BlockFlow();
 	page.add(para);
-	para.setOrientation(SWT.RIGHT_TO_LEFT);
+	para.setOrientation(org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 	para.setHorizontalAligment(PositionConstants.LEFT);
 	para.add(new TextFlow(s));
 
 	para = new BlockFlow();
 	page.add(para);
-	para.setOrientation(SWT.RIGHT_TO_LEFT);
+	para.setOrientation(org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 	para.setHorizontalAligment(PositionConstants.RIGHT);
 	para.add(new TextFlow(s));
 
 	para = new BlockFlow();
 	page.add(para);
-	para.setOrientation(SWT.RIGHT_TO_LEFT);
+	para.setOrientation(org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 	para.setHorizontalAligment(PositionConstants.ALWAYS_LEFT);
 	para.add(new TextFlow(s));
 
 	para = new BlockFlow();
 	page.add(para);
-	para.setOrientation(SWT.RIGHT_TO_LEFT);
+	para.setOrientation(org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 	para.setHorizontalAligment(PositionConstants.ALWAYS_RIGHT);
 	para.add(new TextFlow(s));
 
 	para = new BlockFlow();
 	page.add(para);
-	para.setOrientation(SWT.RIGHT_TO_LEFT);
+	para.setOrientation(org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 	para.add(new TextFlow(s));
 
 	return page;
@@ -106,7 +106,7 @@ protected void run() {
 
 	fc = new FigureCanvas(shell);
 	fc.setContents(getContents());
-	cf = new FigureCanvas(shell, SWT.RIGHT_TO_LEFT);
+	cf = new FigureCanvas(shell, org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 	cf.setContents(getContents());
 	
 	fc.getViewport().setContentsTracksWidth(true);

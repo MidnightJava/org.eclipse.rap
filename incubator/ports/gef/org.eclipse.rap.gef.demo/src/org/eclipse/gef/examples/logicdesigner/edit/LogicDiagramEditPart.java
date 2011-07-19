@@ -30,7 +30,7 @@ import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.ShortestPathConnectionRouter;
 import org.eclipse.draw2d.XYLayout;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 import org.eclipse.gef.AccessibleEditPart;
 import org.eclipse.gef.CompoundSnapToHelper;
@@ -186,7 +186,7 @@ public class LogicDiagramEditPart extends LogicContainerEditPart implements
 	protected void refreshVisuals() {
 		Animation.markBegin();
 		ConnectionLayer cLayer = (ConnectionLayer) getLayer(CONNECTION_LAYER);
-		if ((getViewer().getControl().getStyle() & SWT.MIRRORED) == 0)
+		if ((getViewer().getControl().getStyle() & org.eclipse.draw2d.rap.swt.SWT.MIRRORED) == 0)
 			cLayer.setAntialias(SWT.ON);
 
 		if (getLogicDiagram().getConnectionRouter().equals(

@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.util.EventObject;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.KeyHandler;

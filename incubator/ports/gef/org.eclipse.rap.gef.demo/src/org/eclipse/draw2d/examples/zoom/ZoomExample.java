@@ -30,7 +30,7 @@ import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.parts.Thumbnail;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * This class demonstrates Draw2d's zoom capabilities.
@@ -52,7 +52,7 @@ public static void main(String args[]){
 	fig.setLayoutManager(new ToolbarLayout());
 
 	final ScrollBar bar = new ScrollBar();
-	final Label l = new Label("«Zoom»");
+	final Label l = new Label("ï¿½Zoomï¿½");
 
 	l.setBorder(new SchemeBorder(ButtonBorder.SCHEMES.BUTTON_SCROLLBAR));
 	bar.setThumb(l);

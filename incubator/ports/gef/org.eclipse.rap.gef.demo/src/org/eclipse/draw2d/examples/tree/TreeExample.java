@@ -27,7 +27,7 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.examples.AbstractExample;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * @author hudsonr

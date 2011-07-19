@@ -11,7 +11,7 @@
 package org.eclipse.draw2d.examples.text;
 
 import org.eclipse.draw2d.*;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.text.*;
 
 import org.eclipse.swt.graphics.Font;

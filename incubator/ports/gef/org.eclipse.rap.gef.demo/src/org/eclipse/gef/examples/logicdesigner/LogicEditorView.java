@@ -15,7 +15,7 @@
  *****************************************************************************/
 package org.eclipse.gef.examples.logicdesigner;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.rap.gef.demo.DirectEditorInput;
 import org.eclipse.rap.gef.demo.EditorView;
 import org.eclipse.swt.layout.FillLayout;
