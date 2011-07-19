@@ -17,7 +17,7 @@ import org.eclipse.swt.printing.PrinterData;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.ActionFactory;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.internal.GEFMessages;

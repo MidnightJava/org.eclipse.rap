@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.gef.requests;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * A request to select an edit part.

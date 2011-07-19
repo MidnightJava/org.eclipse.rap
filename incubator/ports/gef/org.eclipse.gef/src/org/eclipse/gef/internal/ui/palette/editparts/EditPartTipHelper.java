@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 class EditPartTipHelper extends org.eclipse.draw2d.PopUpHelper {
 

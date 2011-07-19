@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.gef.editparts;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
 
 import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.MouseWheelHelper;
@@ -79,7 +79,7 @@ public class ViewportMouseWheelHelper extends ViewportHelper implements
 		if (rModel.getExtent() < (rModel.getMaximum() - rModel.getMinimum())) {
 			int currentPos = rModel.getValue();
 			int scrollHeight = lineHeight;
-			if (event.detail == SWT.SCROLL_PAGE)
+			if (event.detail == org.eclipse.draw2d.rap.swt.SWT.SCROLL_PAGE)
 				scrollHeight = pageHeight > lineHeight ? pageHeight
 						: Math.max(
 								lineHeight,

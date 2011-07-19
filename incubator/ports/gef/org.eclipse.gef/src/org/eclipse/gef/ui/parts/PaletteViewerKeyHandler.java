@@ -17,7 +17,7 @@ import org.eclipse.swt.events.KeyEvent;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.internal.ui.palette.editparts.DrawerEditPart;

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.ACC;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
 import org.eclipse.swt.accessibility.AccessibleControlAdapter;
@@ -87,7 +88,6 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.SharedCursors;
@@ -337,7 +337,7 @@ public class FlyoutPaletteComposite extends Composite {
 	}
 
 	private boolean isMirrored() {
-		return (getStyle() & SWT.MIRRORED) != 0;
+		return (getStyle() & org.eclipse.draw2d.rap.swt.SWT.MIRRORED) != 0;
 	}
 
 	/**

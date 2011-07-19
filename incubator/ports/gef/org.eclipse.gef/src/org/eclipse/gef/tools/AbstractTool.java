@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyEvent;
@@ -39,7 +40,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditDomain;
@@ -944,7 +944,7 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 	}
 
 	boolean isCurrentViewerMirrored() {
-		return (getCurrentViewer().getControl().getStyle() & SWT.MIRRORED) != 0;
+		return (getCurrentViewer().getControl().getStyle() & org.eclipse.draw2d.rap.swt.SWT.MIRRORED) != 0;
 	}
 
 	/**
@@ -1308,10 +1308,10 @@ public abstract class AbstractTool extends org.eclipse.gef.util.FlagSupport
 		org.eclipse.swt.graphics.Point cursorLocation = new org.eclipse.swt.graphics.Point(
 				p.x, p.y);
 		cursorLocation = c.toDisplay(cursorLocation);
-      // calling Display#setCursorLocation(Point) will cause an SWT.MouseMove
-      // event to be dispatched as a result, so that mouseMove(MouseEvent,
-      // EditPartViewer) will be triggered as a result, which will react to
-      // the movement by delegating to handleMove() or handleDragInProgress().
+		// calling Display#setCursorLocation(Point) will cause an SWT.MouseMove
+		// event to be dispatched as a result, so that mouseMove(MouseEvent,
+		// EditPartViewer) will be triggered as a result, which will react to
+		// the movement by delegating to handleMove() or handleDragInProgress().
 		// UNSUPPORTED - api not supported in RAP
 		// c.getDisplay().setCursorLocation(swt);
 	}

@@ -201,7 +201,8 @@ class Splitter extends Composite {
 			for (int i = sashes.length; i < newSashes.length; i++) {
 				newSashes[i] = new Sash(this, sashOrientation);
 				newSashes[i].setBackground(ColorConstants.button);
-				newSashes[i].addListener(SWT.Paint, new SashPainter());
+				newSashes[i].addListener(org.eclipse.draw2d.rap.swt.SWT.Paint,
+						new SashPainter());
 				newSashes[i].addListener(SWT.Selection, sashListener);
 			}
 			sashes = newSashes;

@@ -13,6 +13,7 @@ package org.eclipse.gef.ui.console;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
@@ -20,8 +21,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.part.ViewPart;
-
-import org.eclipse.draw2d.rap.swt.SWT;
 
 import org.eclipse.gef.GEF;
 
@@ -51,7 +50,7 @@ public class DebugGEF extends ViewPart {
 		text = new Text(parent, SWT.V_SCROLL | SWT.MULTI | SWT.BORDER);
 		text.setFont(new org.eclipse.swt.graphics.Font(parent.getDisplay(),
 				"Arial", 7, //$NON-NLS-1$
-				SWT.NATIVE));
+				org.eclipse.draw2d.rap.swt.SWT.NATIVE));
 		text.setText("GEF Debug"); //$NON-NLS-1$
 		GEF.setConsole(text);
 		makeActions();

@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Event;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 import org.eclipse.gef.AccessibleAnchorProvider;
 import org.eclipse.gef.EditPart;
