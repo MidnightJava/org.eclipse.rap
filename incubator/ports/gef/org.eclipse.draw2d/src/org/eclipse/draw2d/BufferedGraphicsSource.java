@@ -15,7 +15,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 class BufferedGraphicsSource implements GraphicsSource {
 
@@ -108,7 +108,7 @@ class BufferedGraphicsSource implements GraphicsSource {
 		// }
 
 		controlGC = new GC(control, control.getStyle()
-				& (SWT.RIGHT_TO_LEFT | SWT.LEFT_TO_RIGHT));
+				& (org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT | SWT.LEFT_TO_RIGHT));
 		Graphics graphics;
 		// UNSUPPORTED - bypass buffer handling since offscreen rendering is
 		// not possible in RAP

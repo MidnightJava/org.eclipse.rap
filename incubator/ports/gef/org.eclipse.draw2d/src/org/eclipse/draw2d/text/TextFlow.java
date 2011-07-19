@@ -21,7 +21,7 @@ import org.eclipse.draw2d.TextUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * An inline flow figure that renders a string of text across one or more lines.
@@ -635,7 +635,7 @@ public class TextFlow extends InlineFlow {
 		} else {
 			TextLayout tl = FlowUtilities.getTextLayout();
 			if (isMirrored())
-				tl.setOrientation(SWT.RIGHT_TO_LEFT);
+				tl.setOrientation(org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT);
 			tl.setFont(g.getFont());
 			tl.setText(draw);
 			g.drawTextLayout(tl, x, y);

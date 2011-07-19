@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Slider;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * A scrolling Canvas that contains {@link Figure Figures} viewed through a
@@ -51,7 +51,7 @@ import org.eclipse.draw2d.rap.swt.SWT;
  */
 public class FigureCanvas extends Composite {
 
-	private static final int ACCEPTED_STYLES = SWT.RIGHT_TO_LEFT
+	private static final int ACCEPTED_STYLES = org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT
 			| SWT.LEFT_TO_RIGHT | SWT.V_SCROLL | SWT.H_SCROLL
 			| SWT.NO_BACKGROUND | SWT.NO_REDRAW_RESIZE | SWT.DOUBLE_BUFFERED
 			| SWT.BORDER;

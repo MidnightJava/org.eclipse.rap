@@ -18,7 +18,7 @@ import java.util.Map;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.rap.swt.graphics.LineAttributes;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -241,26 +241,26 @@ public class ScaledGraphics extends Graphics {
 		for (int i = 0; i < p.types.length; i++) {
 			byte type = p.types[i];
 			switch (type) {
-			case SWT.PATH_MOVE_TO:
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_MOVE_TO:
 				scaledPath.moveTo(p.points[index], p.points[index + 1]);
 				index += 2;
 				break;
-			case SWT.PATH_LINE_TO:
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_LINE_TO:
 				scaledPath.lineTo(p.points[index], p.points[index + 1]);
 				index += 2;
 				break;
-			case SWT.PATH_CUBIC_TO:
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_CUBIC_TO:
 				scaledPath.cubicTo(p.points[index], p.points[index + 1],
 						p.points[index + 2], p.points[index + 3],
 						p.points[index + 4], p.points[index + 5]);
 				index += 6;
 				break;
-			case SWT.PATH_QUAD_TO:
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_QUAD_TO:
 				scaledPath.quadTo(p.points[index], p.points[index + 1],
 						p.points[index + 2], p.points[index + 3]);
 				index += 4;
 				break;
-			case SWT.PATH_CLOSE:
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_CLOSE:
 				scaledPath.close();
 				break;
 			}

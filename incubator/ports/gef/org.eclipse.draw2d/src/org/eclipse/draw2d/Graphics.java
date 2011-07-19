@@ -13,7 +13,7 @@ package org.eclipse.draw2d;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.rap.swt.graphics.LineAttributes;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -36,32 +36,32 @@ public abstract class Graphics {
 	/**
 	 * @see SWT#LINE_CUSTOM
 	 */
-	public static final int LINE_CUSTOM = SWT.LINE_CUSTOM;
+	public static final int LINE_CUSTOM = org.eclipse.draw2d.rap.swt.SWT.LINE_CUSTOM;
 
 	/**
 	 * @see SWT#LINE_DASH
 	 */
-	public static final int LINE_DASH = SWT.LINE_DASH;
+	public static final int LINE_DASH = org.eclipse.draw2d.rap.swt.SWT.LINE_DASH;
 
 	/**
 	 * @see SWT#LINE_DASHDOT
 	 */
-	public static final int LINE_DASHDOT = SWT.LINE_DASHDOT;
+	public static final int LINE_DASHDOT = org.eclipse.draw2d.rap.swt.SWT.LINE_DASHDOT;
 
 	/**
 	 * @see SWT#LINE_DASHDOTDOT
 	 */
-	public static final int LINE_DASHDOTDOT = SWT.LINE_DASHDOTDOT;
+	public static final int LINE_DASHDOTDOT = org.eclipse.draw2d.rap.swt.SWT.LINE_DASHDOTDOT;
 
 	/**
 	 * @see SWT#LINE_DOT
 	 */
-	public static final int LINE_DOT = SWT.LINE_DOT;
+	public static final int LINE_DOT = org.eclipse.draw2d.rap.swt.SWT.LINE_DOT;
 
 	/**
 	 * @see SWT#LINE_SOLID
 	 */
-	public static final int LINE_SOLID = SWT.LINE_SOLID;
+	public static final int LINE_SOLID = org.eclipse.draw2d.rap.swt.SWT.LINE_SOLID;
 
 	/**
 	 * Sets the clip region to the given rectangle. Anything outside this

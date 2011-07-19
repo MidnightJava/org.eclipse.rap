@@ -28,7 +28,7 @@ import org.eclipse.draw2d.ScaledGraphics;
 import org.eclipse.draw2d.UpdateListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * A Thumbnail is a Figure that displays an image of its source Figure at a
@@ -244,7 +244,7 @@ public class Thumbnail extends Figure implements UpdateListener {
 			// thumbnailGC = new GC(thumbnailImage,
 			// sourceFigure.isMirrored() ? SWT.RIGHT_TO_LEFT : SWT.NONE);
 			thumbnailGC = new GC(thumbnailImage.getDevice(),
-					sourceFigure.isMirrored() ? SWT.RIGHT_TO_LEFT : SWT.NONE);
+					sourceFigure.isMirrored() ? org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT : SWT.NONE);
 			thumbnailGraphics = new ScaledGraphics(new SWTGraphics(thumbnailGC));
 			thumbnailGraphics.scale(getScaleX());
 			thumbnailGraphics.translate(getSourceRectangle().getLocation()

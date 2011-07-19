@@ -18,7 +18,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * A <code>FlowFigure</code> represented by a single {@link BlockBox} containing
@@ -162,7 +162,7 @@ public class BlockFlow extends FlowFigure {
 			parent = parent.getParent();
 		if (parent != null)
 			return ((BlockFlow) parent).getOrientation();
-		return isMirrored() ? SWT.RIGHT_TO_LEFT : SWT.LEFT_TO_RIGHT;
+		return isMirrored() ? org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT : SWT.LEFT_TO_RIGHT;
 	}
 
 	int getRightMargin() {
@@ -281,7 +281,7 @@ public class BlockFlow extends FlowFigure {
 	 * @since 3.1
 	 */
 	public void setOrientation(int orientation) {
-		orientation &= SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
+		orientation &= SWT.LEFT_TO_RIGHT | org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT;
 		if (this.orientation == orientation)
 			return;
 		this.orientation = orientation;

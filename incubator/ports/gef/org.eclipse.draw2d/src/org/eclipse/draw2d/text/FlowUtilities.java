@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.TextUtilities;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * Utility class for FlowFigures.

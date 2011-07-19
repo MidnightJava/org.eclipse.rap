@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.rap.swt.graphics.LineAttributes;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -1259,10 +1259,10 @@ public class SWTGraphics extends Graphics {
 			}
 
 			currentState.lineAttributes.dash = (float[]) value.clone();
-			currentState.lineAttributes.style = SWT.LINE_CUSTOM;
+			currentState.lineAttributes.style = org.eclipse.draw2d.rap.swt.SWT.LINE_CUSTOM;
 		} else {
 			currentState.lineAttributes.dash = null;
-			currentState.lineAttributes.style = SWT.LINE_SOLID;
+			currentState.lineAttributes.style = org.eclipse.draw2d.rap.swt.SWT.LINE_SOLID;
 		}
 	}
 
@@ -1474,7 +1474,7 @@ public class SWTGraphics extends Graphics {
 		int start = 0, end = 0;
 		for (int i = 0; i < types.length; i++) {
 			switch (types[i]) {
-			case SWT.PATH_MOVE_TO: {
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_MOVE_TO: {
 				if (start != end) {
 					int n = 0;
 					int[] temp = new int[end - start];
@@ -1487,11 +1487,11 @@ public class SWTGraphics extends Graphics {
 				end += 2;
 				break;
 			}
-			case SWT.PATH_LINE_TO: {
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_LINE_TO: {
 				end += 2;
 				break;
 			}
-			case SWT.PATH_CLOSE: {
+			case org.eclipse.draw2d.rap.swt.SWT.PATH_CLOSE: {
 				if (start != end) {
 					int n = 0;
 					int[] temp = new int[end - start];

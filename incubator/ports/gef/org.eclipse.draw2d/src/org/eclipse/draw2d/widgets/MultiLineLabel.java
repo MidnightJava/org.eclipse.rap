@@ -29,7 +29,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.text.FlowPage;
 import org.eclipse.draw2d.text.TextFlow;
 
@@ -113,7 +113,7 @@ public final class MultiLineLabel extends FigureCanvas {
 				Point p = getViewport().getViewLocation();
 				int dy = getFont().getFontData()[0].getHeight();
 				int dx = dy * 3 / 2;
-				boolean mirrored = (e.widget.getStyle() & SWT.MIRRORED) != 0;
+				boolean mirrored = (e.widget.getStyle() & org.eclipse.draw2d.rap.swt.SWT.MIRRORED) != 0;
 				if (e.keyCode == SWT.ARROW_DOWN) {
 					scrollToY(p.y + dy / 2);
 					scrollToY(p.y + dy);

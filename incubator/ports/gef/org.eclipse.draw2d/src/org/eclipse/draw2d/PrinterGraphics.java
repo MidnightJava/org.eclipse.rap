@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.draw2d.rap.swt.graphics.LineAttributes;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -109,7 +109,7 @@ public class PrinterGraphics extends ScaledGraphics {
 	 * @see org.eclipse.draw2d.ScaledGraphics#setLineAttributes(org.eclipse.swt.graphics.LineAttributes)
 	 */
 	public void setLineAttributes(LineAttributes attributes) {
-		 if (attributes.style == SWT.LINE_CUSTOM && attributes.dash != null
+		 if (attributes.style == org.eclipse.draw2d.rap.swt.SWT.LINE_CUSTOM && attributes.dash != null
 		 && attributes.dash.length > 0) {
 		 float[] newDashes = new float[attributes.dash.length];
 		 float printerDot = (float) (printer.getDPI().y

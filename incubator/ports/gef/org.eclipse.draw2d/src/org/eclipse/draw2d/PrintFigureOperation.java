@@ -7,7 +7,7 @@
  *
  * Contributors:
  *     IBM Corporation - initial API and implementation
- *     Sven Müller - Added tiling support
+ *     Sven Mï¿½ller - Added tiling support
  *******************************************************************************/
 package org.eclipse.draw2d;
 
@@ -16,14 +16,14 @@ import org.eclipse.swt.printing.Printer;
 import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 /**
  * Class responsible for printing Figures.
  * 
  * @author Dan Lee
  * @author Eric Bordeau
- * @author Sven Müller
+ * @author Sven Mï¿½ller
  */
 public class PrintFigureOperation extends PrintOperation {
 
@@ -83,7 +83,7 @@ public class PrintFigureOperation extends PrintOperation {
 	 * @see org.eclipse.draw2d.PrintOperation#getGraphicsOrientation()
 	 */
 	int getGraphicsOrientation() {
-		return getPrintSource().isMirrored() ? SWT.RIGHT_TO_LEFT
+		return getPrintSource().isMirrored() ? org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT
 				: SWT.LEFT_TO_RIGHT;
 	}
 
