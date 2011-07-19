@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.swt.graphics;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 
 public final class GCData {
@@ -23,7 +23,7 @@ public final class GCData {
 	public Font font;
 	public int alpha = 0xFF;
 	public float lineWidth;
-	public int lineStyle = SWT.LINE_SOLID;
+	public int lineStyle = org.eclipse.draw2d.rap.swt.SWT.LINE_SOLID;
 	public int lineCap = SWT.CAP_FLAT;
 	public int lineJoin = SWT.JOIN_MITER;
 	public float lineDashesOffset;

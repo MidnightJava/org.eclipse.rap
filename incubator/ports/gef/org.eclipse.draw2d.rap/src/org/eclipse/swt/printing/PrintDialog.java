@@ -1,7 +1,7 @@
 package org.eclipse.swt.printing;
 
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.*;
 

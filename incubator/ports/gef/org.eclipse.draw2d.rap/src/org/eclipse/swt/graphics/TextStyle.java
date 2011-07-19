@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.swt.graphics;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 
 
 /**
@@ -347,11 +347,11 @@ public String toString () {
 		if (buffer.length() > startLength) buffer.append(", "); //$NON-NLS-1$
 		buffer.append("underline="); //$NON-NLS-1$
 		switch (underlineStyle) {
-			case SWT.UNDERLINE_SINGLE: buffer.append("single"); break; //$NON-NLS-1$ 
-			case SWT.UNDERLINE_DOUBLE: buffer.append("double"); break; //$NON-NLS-1$ 
-			case SWT.UNDERLINE_SQUIGGLE: buffer.append("squiggle"); break; //$NON-NLS-1$ 
-			case SWT.UNDERLINE_ERROR: buffer.append("error"); break; //$NON-NLS-1$ 
-			case SWT.UNDERLINE_LINK: buffer.append("link"); break; //$NON-NLS-1$ 
+			case org.eclipse.draw2d.rap.swt.SWT.UNDERLINE_SINGLE: buffer.append("single"); break; //$NON-NLS-1$ 
+			case org.eclipse.draw2d.rap.swt.SWT.UNDERLINE_DOUBLE: buffer.append("double"); break; //$NON-NLS-1$ 
+			case org.eclipse.draw2d.rap.swt.SWT.UNDERLINE_SQUIGGLE: buffer.append("squiggle"); break; //$NON-NLS-1$ 
+			case org.eclipse.draw2d.rap.swt.SWT.UNDERLINE_ERROR: buffer.append("error"); break; //$NON-NLS-1$ 
+			case org.eclipse.draw2d.rap.swt.SWT.UNDERLINE_LINK: buffer.append("link"); break; //$NON-NLS-1$ 
 		}
 		if (underlineColor != null) {
 			buffer.append(", underlineColor="); //$NON-NLS-1$
@@ -370,9 +370,9 @@ public String toString () {
 		if (buffer.length() > startLength) buffer.append(", "); //$NON-NLS-1$
 		buffer.append("border="); //$NON-NLS-1$
 		switch (borderStyle) {
-			case SWT.BORDER_SOLID:	buffer.append("solid"); break; //$NON-NLS-1$
-			case SWT.BORDER_DOT:	buffer.append("dot"); break; //$NON-NLS-1$
-			case SWT.BORDER_DASH:	buffer.append("dash"); break; //$NON-NLS-1$
+			case org.eclipse.draw2d.rap.swt.SWT.BORDER_SOLID:	buffer.append("solid"); break; //$NON-NLS-1$
+			case org.eclipse.draw2d.rap.swt.SWT.BORDER_DOT:	buffer.append("dot"); break; //$NON-NLS-1$
+			case org.eclipse.draw2d.rap.swt.SWT.BORDER_DASH:	buffer.append("dash"); break; //$NON-NLS-1$
 		}
 		if (borderColor != null) {
 			buffer.append(", borderColor="); //$NON-NLS-1$

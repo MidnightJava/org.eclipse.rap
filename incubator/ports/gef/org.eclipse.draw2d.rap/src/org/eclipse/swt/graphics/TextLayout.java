@@ -12,7 +12,7 @@ package org.eclipse.swt.graphics;
 
 import intrinsic.flash.text.TextField;
 
-import org.eclipse.draw2d.rap.swt.SWT;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
@@ -618,8 +618,8 @@ int _getOffset(int offset, int movement, boolean forward) {
 	if (forward && offset == length) return length;
 	if (!forward && offset == 0) return 0;
 	int step = forward ? 1 : -1;
-	if ((movement & SWT.MOVEMENT_CHAR) != 0) return offset + step;
-	if ((movement & SWT.MOVEMENT_CLUSTER) != 0) return offset + step;
+	if ((movement & org.eclipse.draw2d.rap.swt.SWT.MOVEMENT_CHAR) != 0) return offset + step;
+	if ((movement & org.eclipse.draw2d.rap.swt.SWT.MOVEMENT_CLUSTER) != 0) return offset + step;
 	offset = translateOffset(offset);
 	
 	int lineIndex = textField.getLineIndexOfChar(Math.max(0, Math.min(length - 1, offset)));
@@ -646,10 +646,10 @@ int _getOffset(int offset, int movement, boolean forward) {
 		offset = newOffset + trailing;
 
 		switch (movement) {
-			case SWT.MOVEMENT_CLUSTER:
+			case org.eclipse.draw2d.rap.swt.SWT.MOVEMENT_CLUSTER:
 				return untranslateOffset(offset);
-			case SWT.MOVEMENT_WORD:
-			case SWT.MOVEMENT_WORD_START: {
+			case org.eclipse.draw2d.rap.swt.SWT.MOVEMENT_WORD:
+			case org.eclipse.draw2d.rap.swt.SWT.MOVEMENT_WORD_START: {
 				if (offset > 0) {
 					boolean letterOrDigit = Character.isLetterOrDigit(text.charAt(offset));
 					boolean previousLetterOrDigit = Character.isLetterOrDigit(text.charAt(offset - 1));
@@ -661,7 +661,7 @@ int _getOffset(int offset, int movement, boolean forward) {
 				}
 				break;
 			}
-			case SWT.MOVEMENT_WORD_END: {
+			case org.eclipse.draw2d.rap.swt.SWT.MOVEMENT_WORD_END: {
 				if (offset > 0) {
 					boolean isLetterOrDigit = Character.isLetterOrDigit(text.charAt(offset));
 					boolean previousLetterOrDigit = Character.isLetterOrDigit(text.charAt(offset - 1));
@@ -856,7 +856,7 @@ public void setJustify (boolean justify) {
 
 public void setOrientation (int orientation) {
 	checkLayout();
-	int mask = SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
+	int mask = SWT.LEFT_TO_RIGHT | org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT;
 	orientation &= mask;
 	if (orientation == 0) return;
 	if ((orientation & SWT.LEFT_TO_RIGHT) != 0) orientation = SWT.LEFT_TO_RIGHT;
