@@ -13,6 +13,7 @@ Import-Package: javax.servlet;version="3.0.0",
 Bundle-ActivationPolicy: lazy
 Export-Package: org.apache.catalina;version="7.0.12.qualifier",
  org.apache.catalina.connector;version="7.0.12.qualifier",
+ org.apache.catalina.core;version="7.0.12.qualifier",
  org.apache.catalina.deploy;version="7.0.12.qualifier",
  org.apache.catalina.ha.session;version="7.0.12.qualifier",
  org.apache.catalina.ha.tcp;version="7.0.12.qualifier",
