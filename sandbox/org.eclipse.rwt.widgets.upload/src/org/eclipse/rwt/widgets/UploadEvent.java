@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2002-2007 Critical Software S.A.
+ * Copyright (c) 2002, 2011 Critical Software S.A and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Tiago Rodrigues (Critical Software S.A.) - initial implementation
- *     Joel Oliveira (Critical Software S.A.) - initial commit
+ *    Tiago Rodrigues (Critical Software S.A.) - initial implementation
+ *    Joel Oliveira (Critical Software S.A.) - initial commit
  ******************************************************************************/
 package org.eclipse.rwt.widgets;
 
@@ -15,11 +15,12 @@ import org.eclipse.rwt.Adaptable;
 import org.eclipse.swt.events.TypedEvent;
 import org.eclipse.swt.widgets.Widget;
 
+
 /**
  * Represents an Upload Event.
  *
  * @author tjarodrigues
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @deprecated Use FileDialog or FileUpload implementation instead.
  */
 public class UploadEvent extends TypedEvent {

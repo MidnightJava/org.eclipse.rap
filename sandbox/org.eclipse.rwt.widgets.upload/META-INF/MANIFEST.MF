@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-SymbolicName: org.eclipse.rwt.widgets.upload;singleton:=true
+Bundle-SymbolicName: org.eclipse.rwt.widgets.upload
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.rap.rwt,
  org.eclipse.rap.rwt.supplemental.fileupload;bundle-version="1.4.0"
