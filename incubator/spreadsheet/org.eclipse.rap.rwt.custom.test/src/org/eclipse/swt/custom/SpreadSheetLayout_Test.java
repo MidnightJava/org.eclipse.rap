@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 import junit.framework.TestCase;
 
-import org.eclipse.rwt.Fixture;
+import org.eclipse.rap.rwt.testfixture.Fixture;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.*;
