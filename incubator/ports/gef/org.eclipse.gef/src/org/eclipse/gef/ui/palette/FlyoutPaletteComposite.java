@@ -1047,6 +1047,7 @@ public class FlyoutPaletteComposite extends Composite {
 					return Status.OK_STATUS;
 				}
 			};
+			dragJob.setSystem(true);
 			dragJob.schedule();
 		}
 

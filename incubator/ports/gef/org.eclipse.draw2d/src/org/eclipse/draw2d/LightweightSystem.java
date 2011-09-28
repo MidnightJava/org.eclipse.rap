@@ -451,6 +451,7 @@ public class LightweightSystem {
 					return Status.OK_STATUS;
 				}
 			};
+			dragJob.setSystem(true);
 			dragJob.schedule();
 		}
 
