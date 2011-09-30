@@ -8,9 +8,9 @@
  * Contributors:
  *    Frank Appel - initial API and implementation
  ******************************************************************************/
-package org.eclipse.rwt.engine;
+package org.eclipse.rwt.application;
 
 
-public interface Configurator {
-  void configure( Context context );
+public interface ApplicationConfigurator {
+  void configure( ApplicationConfiguration configuration );
 }
