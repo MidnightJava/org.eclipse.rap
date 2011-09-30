@@ -20,7 +20,7 @@ import org.eclipse.rwt.internal.lifecycle.SimpleLifeCycle;
 import org.eclipse.rwt.lifecycle.ILifeCycle;
 
 
-public class ApplicationContextImpl_Test extends TestCase {
+public class ApplicationConfigurationImpl_Test extends TestCase {
   
   private ApplicationConfigurationImpl context;
   private ApplicationContext applicationContext;
