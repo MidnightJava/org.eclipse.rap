@@ -17,8 +17,8 @@ package org.eclipse.rap.rwt.osgi;
  *
  * @since 1.5
  */
-public interface RWTContext {
+public interface ApplicationReference {
 
-  void stop();
+  void stopApplication();
 
 }
