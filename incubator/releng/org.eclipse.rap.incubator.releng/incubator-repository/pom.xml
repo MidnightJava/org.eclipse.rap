@@ -18,7 +18,6 @@
     <groupId>org.eclipse.rap.incubator</groupId>
     <artifactId>org.eclipse.rap.incubator-parent</artifactId>
     <version>1.5.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>incubator-repository</artifactId>

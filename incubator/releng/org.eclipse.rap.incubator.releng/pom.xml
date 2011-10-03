@@ -16,6 +16,11 @@
 
   <name>RAP Incubator build</name>
 
+  <groupId>org.eclipse.rap.incubator</groupId>
+  <artifactId>org.eclipse.rap.incubator-parent</artifactId>
+  <version>1.5.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
   <prerequisites>
     <maven>3.0</maven>
   </prerequisites>
@@ -28,11 +33,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <base-platform>3.8milestones/S-3.8M2-201109151308</base-platform>
   </properties>
-
-  <groupId>org.eclipse.rap.incubator</groupId>
-  <artifactId>org.eclipse.rap.incubator-parent</artifactId>
-  <version>1.5.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
 
   <modules>
     <module>incubator-repository</module>
