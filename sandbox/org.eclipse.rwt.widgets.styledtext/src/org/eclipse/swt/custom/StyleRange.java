@@ -26,6 +26,7 @@ import org.eclipse.swt.internal.CloneableCompatibility;
  *
  * @see <a href="http://www.eclipse.org/swt/">Sample code and further information</a>
  */
+@SuppressWarnings("restriction")
 public class StyleRange extends TextStyle implements CloneableCompatibility {
 	
 	/**
