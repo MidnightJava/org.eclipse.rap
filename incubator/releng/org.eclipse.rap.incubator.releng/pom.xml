@@ -51,7 +51,7 @@
     <repository>
       <id>rap-repository</id>
       <layout>p2</layout>
-      <url>http://download.eclipse.org/rt/rap/1.5/runtime</url>
+      <url>http://download.eclipse.org/rt/rap/nightly/runtime</url>
     </repository>
     <repository>
       <id>orbit-repository</id>
