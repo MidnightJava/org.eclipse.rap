@@ -17,7 +17,7 @@ import org.eclipse.ui.help.IWorkbenchHelpSystem;
 
 
 class HelpContextIds {
-  private static final String PREFIX = RWTLaunchActivator.PLUGIN_ID + ".";
+  private static final String PREFIX = RWTLaunchActivator.getPluginId() + ".";
   
   static final String MAIN_TAB = PREFIX + "launch_configuration_dialog_main_tab";
 
