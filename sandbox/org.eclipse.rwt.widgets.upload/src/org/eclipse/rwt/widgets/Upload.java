@@ -445,7 +445,7 @@ public class Upload extends Composite {
       }
     } );
     
-    GridData textLayoutData = new GridData( SWT.FILL, SWT.FILL, false, false );
+    GridData textLayoutData = new GridData( SWT.FILL, SWT.FILL, true, false );
     textLayoutData.widthHint = computeBaseWidth();
     if( hasStyle( SHOW_UPLOAD_BUTTON ) ) {
       fileText.setLayoutData( textLayoutData );
