@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
-Bundle-SymbolicName: org.eclipse.zest.layouts;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-SymbolicName: org.eclipse.rap.zest.layouts;singleton:=true
+Bundle-Version: 1.5.0.qualifier
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.zest.layouts,
@@ -16,5 +16,5 @@ Export-Package: org.eclipse.zest.layouts,
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="[1.4.0,2.0.0)",
  org.eclipse.core.runtime,
  org.eclipse.rap.jface;bundle-version="[1.4.0,2.0.0)",
- org.eclipse.draw2d
+ org.eclipse.rap.draw2d;bundle-version="1.5.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
