@@ -21,7 +21,7 @@
     <relativePath>../../../releng/org.eclipse.rap.incubator.releng/pom.xml</relativePath>
   </parent>
 
-  <artifactId>org.eclipse.zest.core</artifactId>
+  <artifactId>org.eclipse.rap.zest.core</artifactId>
   <packaging>eclipse-plugin</packaging>
 
 </project>
