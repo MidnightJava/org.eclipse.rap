@@ -21,46 +21,8 @@
          id="org.eclipse.rap.incubator.ports.gef.feature"
          version="0.0.0"/>
 
-   <plugin
-         id="org.eclipse.rap.rwt.supplemental.filedialog"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.rap.rwt.supplemental.fileupload"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.fileupload"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.io"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.rap.rwt.supplemental.fileupload.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.rap.rwt.supplemental.filedialog.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="org.eclipse.rap.incubator.supplemental.fileupload.feature"
+         version="0.0.0"/>
 
 </feature>
