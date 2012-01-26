@@ -23,13 +23,26 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+   <plugin
+         id="org.eclipse.rap.gef.demo.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
    <plugin
          id="org.eclipse.rap.draw2d"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+   
+   <plugin
+         id="org.eclipse.rap.draw2d.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>      
 
    <plugin
          id="org.eclipse.rap.draw2d.compatibility"
@@ -37,6 +50,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.rap.draw2d.compatibility.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>         
 
    <plugin
          id="org.eclipse.rap.gef"
@@ -44,6 +64,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.rap.gef.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>         
 
    <plugin
          id="org.eclipse.rap.zest.core"
@@ -51,6 +78,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.rap.zest.core.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>         
 
    <plugin
          id="org.eclipse.rap.zest.layouts"
@@ -58,5 +92,12 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.rap.zest.layouts.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>         
 
 </feature>
