@@ -3,5 +3,11 @@
    <feature url="../org.eclipse.rap.incubator.feature" id="org.eclipse.rap.incubator.feature" version="1.5.0.qualifier">
       <category name="org.eclipse.rap.incubator.feature.category"/>
    </feature>
+   <feature url="features/org.eclipse.rap.incubator.supplemental.fileupload.feature_1.5.0.qualifier.jar" id="org.eclipse.rap.incubator.supplemental.fileupload.feature" version="1.5.0.qualifier">
+      <category name="org.eclipse.rap.incubator.feature.category"/>
+   </feature>
+   <feature url="features/org.eclipse.rap.incubator.ports.gef.feature_1.5.0.qualifier.jar" id="org.eclipse.rap.incubator.ports.gef.feature" version="1.5.0.qualifier">
+      <category name="org.eclipse.rap.incubator.feature.category"/>
+   </feature>
    <category-def name="org.eclipse.rap.incubator.feature.category" label="Rich Ajax Platform (RAP) Incubator"/>
 </site>
