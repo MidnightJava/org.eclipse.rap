@@ -37,10 +37,17 @@
   <modules>
     <module>incubator-repository</module>
     <module>../org.eclipse.rap.incubator.feature</module>
-    <module>../org.eclipse.rap.incubator.ports.gef.feature</module>
+    <module>../org.eclipse.rap.incubator.supplemental.fileupload.feature</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.filedialog</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.fileupload</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.fileupload.test</module>
+    <module>../org.eclipse.rap.incubator.ports.gef.feature</module>    
+    <module>../../ports/gef/org.eclipse.draw2d</module>
+    <module>../../ports/gef/org.eclipse.draw2d.rap</module>
+    <module>../../ports/gef/org.eclipse.gef</module>
+    <module>../../ports/gef/org.eclipse.rap.gef.demo</module>
+    <module>../../ports/gef/org.eclipse.zest.core</module>
+    <module>../../ports/gef/org.eclipse.zest.layouts</module>
   </modules>
 
   <repositories>
