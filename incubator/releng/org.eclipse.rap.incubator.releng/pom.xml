@@ -37,6 +37,7 @@
   <modules>
     <module>incubator-repository</module>
     <module>../org.eclipse.rap.incubator.feature</module>
+    <module>../../common/org.eclipse.rap.rwt.excanvas</module>
     <module>../org.eclipse.rap.incubator.supplemental.fileupload.feature</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.filedialog</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.fileupload</module>
@@ -48,6 +49,11 @@
     <module>../../ports/gef/org.eclipse.rap.gef.demo</module>
     <module>../../ports/gef/org.eclipse.zest.core</module>
     <module>../../ports/gef/org.eclipse.zest.layouts</module>
+    <module>../org.eclipse.rap.incubator.visualization.feature</module>
+    <module>../../visualization/org.eclipse.rap.rwt.visualization.google</module>
+    <module>../../visualization/org.eclipse.rap.rwt.visualization.google.demo</module>
+    <module>../../visualization/org.eclipse.rap.rwt.visualization.jit</module>
+    <module>../../visualization/org.eclipse.rap.rwt.visualization.jit.demo</module>
   </modules>
 
   <repositories>
