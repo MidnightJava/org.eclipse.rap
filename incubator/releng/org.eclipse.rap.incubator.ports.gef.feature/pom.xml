@@ -22,15 +22,6 @@
   </parent>
 
   <artifactId>org.eclipse.rap.incubator.ports.gef.feature</artifactId>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>../../ports/gef/org.eclipse.draw2d</module>
-    <module>../../ports/gef/org.eclipse.draw2d.rap</module>
-    <module>../../ports/gef/org.eclipse.gef</module>
-    <module>../../ports/gef/org.eclipse.rap.gef.demo</module>
-    <module>../../ports/gef/org.eclipse.zest.core</module>
-    <module>../../ports/gef/org.eclipse.zest.layouts</module>
-  </modules>
+  <packaging>eclipse-feature</packaging>
   
 </project>
