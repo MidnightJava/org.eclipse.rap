@@ -21,7 +21,7 @@
     <relativePath>../../../releng/org.eclipse.rap.incubator.releng/pom.xml</relativePath>
   </parent>
 
-  <artifactId>org.eclipse.rap.rwt.supplemental.filedialog</artifactId>
+  <artifactId>org.eclipse.zest.layouts</artifactId>
   <packaging>eclipse-plugin</packaging>
 
 </project>
