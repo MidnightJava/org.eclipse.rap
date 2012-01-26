@@ -37,6 +37,7 @@
   <modules>
     <module>incubator-repository</module>
     <module>../org.eclipse.rap.incubator.feature</module>
+    <module>../org.eclipse.rap.incubator.ports.gef.feature</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.filedialog</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.fileupload</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.fileupload.test</module>
