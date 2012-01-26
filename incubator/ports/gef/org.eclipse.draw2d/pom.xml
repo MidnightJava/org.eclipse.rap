@@ -21,7 +21,7 @@
     <relativePath>../../../releng/org.eclipse.rap.incubator.releng/pom.xml</relativePath>
   </parent>
 
-  <artifactId>org.eclipse.draw2d</artifactId>
+  <artifactId>org.eclipse.rap.draw2d</artifactId>
   <packaging>eclipse-plugin</packaging>
 
 </project>
