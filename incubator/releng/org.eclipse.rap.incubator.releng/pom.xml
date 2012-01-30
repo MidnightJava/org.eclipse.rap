@@ -70,7 +70,7 @@
     <repository>
       <id>orbit-repository</id>
       <layout>p2</layout>
-      <url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120123151124/repository</url>
+      <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120119162704/repository</url>
     </repository>
   </repositories>
 
