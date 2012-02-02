@@ -31,7 +31,7 @@
     <junit-version>3.8.2</junit-version>
     <mockito-version>1.8.4</mockito-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <base-platform>3.8milestones/S-3.8M2-201109151308</base-platform>
+    <base-platform>4.2milestones/S-4.2M5-201201271145</base-platform>
   </properties>
 
   <modules>
