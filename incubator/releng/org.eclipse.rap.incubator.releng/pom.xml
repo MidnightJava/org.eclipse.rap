@@ -36,7 +36,6 @@
 
   <modules>
     <module>incubator-repository</module>
-    <module>../org.eclipse.rap.incubator.feature</module>
     <module>../../common/org.eclipse.rap.rwt.excanvas</module>
     <module>../org.eclipse.rap.incubator.supplemental.fileupload.feature</module>
     <module>../../supplemental/fileupload/org.eclipse.rap.rwt.supplemental.filedialog</module>

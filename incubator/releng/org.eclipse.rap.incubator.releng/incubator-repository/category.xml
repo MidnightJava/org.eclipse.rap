@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="../org.eclipse.rap.incubator.feature" id="org.eclipse.rap.incubator.feature" version="1.5.0.qualifier">
-      <category name="org.eclipse.rap.incubator.feature.category"/>
-   </feature>
    <feature url="features/org.eclipse.rap.incubator.supplemental.fileupload.feature_1.5.0.qualifier.jar" id="org.eclipse.rap.incubator.supplemental.fileupload.feature" version="1.5.0.qualifier">
       <category name="org.eclipse.rap.incubator.feature.category"/>
    </feature>
