@@ -14,6 +14,11 @@ package org.eclipse.draw2d;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DragDetectListener;
+import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MenuDetectListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Font;
@@ -21,12 +26,13 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Layout;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Slider;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.swt.SWT;
 
 /**
  * A scrolling Canvas that contains {@link Figure Figures} viewed through a
@@ -52,8 +58,12 @@ import org.eclipse.swt.SWT;
 public class FigureCanvas extends Composite {
 
 	private static final int ACCEPTED_STYLES = org.eclipse.draw2d.rap.swt.SWT.RIGHT_TO_LEFT
-			| SWT.LEFT_TO_RIGHT | SWT.V_SCROLL | SWT.H_SCROLL
-			| SWT.NO_BACKGROUND | SWT.NO_REDRAW_RESIZE | SWT.DOUBLE_BUFFERED
+			| SWT.LEFT_TO_RIGHT
+			| SWT.V_SCROLL
+			| SWT.H_SCROLL
+			| SWT.NO_BACKGROUND
+			| SWT.NO_REDRAW_RESIZE
+			| SWT.DOUBLE_BUFFERED
 			| SWT.BORDER;
 
 	/**
@@ -262,6 +272,56 @@ public class FigureCanvas extends Composite {
 			throw new IllegalArgumentException(
 					"Invalid style being set on FigureCanvas"); //$NON-NLS-1$
 		return style;
+	}
+
+	public void addFocusListener(FocusListener listener) {
+		super.addFocusListener(listener);
+		getInnerCanvas().addFocusListener(listener);
+	}
+
+	public void addDragDetectListener(DragDetectListener listener) {
+		super.addDragDetectListener(listener);
+		getInnerCanvas().addDragDetectListener(listener);
+	}
+
+	public void addMenuDetectListener(MenuDetectListener listener) {
+		super.addMenuDetectListener(listener);
+		getInnerCanvas().addMenuDetectListener(listener);
+	}
+
+	public void addKeyListener(KeyListener listener) {
+		super.addKeyListener(listener);
+		getInnerCanvas().addKeyListener(listener);
+	}
+
+	public void addListener(int eventType, Listener listener) {
+		super.addListener(eventType, listener);
+		getInnerCanvas().addListener(eventType, listener);
+	}
+
+	public void removeFocusListener(FocusListener listener) {
+		super.removeFocusListener(listener);
+		getInnerCanvas().removeFocusListener(listener);
+	}
+
+	public void removeDragDetectListener(DragDetectListener listener) {
+		super.removeDragDetectListener(listener);
+		getInnerCanvas().removeDragDetectListener(listener);
+	}
+
+	public void removeMenuDetectListener(MenuDetectListener listener) {
+		super.removeMenuDetectListener(listener);
+		getInnerCanvas().removeMenuDetectListener(listener);
+	}
+
+	public void removeKeyListener(KeyListener listener) {
+		super.removeKeyListener(listener);
+		getInnerCanvas().removeKeyListener(listener);
+	}
+
+	public void removeListener(int eventType, Listener listener) {
+		super.removeListener(eventType, listener);
+		getInnerCanvas().removeListener(eventType, listener);
 	}
 
 	/**
@@ -639,6 +699,11 @@ public class FigureCanvas extends Composite {
 	public void setFont(Font font) {
 		this.font = font;
 		super.setFont(font);
+	}
+
+	public void setMenu(Menu menu) {
+		super.setMenu(menu);
+		getInnerCanvas().setMenu(menu);
 	}
 
 	/**
